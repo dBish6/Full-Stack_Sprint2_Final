@@ -1,0 +1,26 @@
+<html lang="en">
+<%- include('../partials/header.ejs') %>
+
+<body>
+  <%- include('../partials/nav.ejs') %>
+  <div class="monSearchContainer">
+    <h2>MongoDb Search Results</h2>
+    <% if (mSearch.length > 0) { %>
+    <div class="searchGridContainer">
+      <% mSearch.forEach(result => { %>
+      <div class="movieBox">
+        <a href="<%= result._id %>"><img src="<%= result.poster %> " alt="/no-image.webp" width="225" height="225"></a>
+        <a href="<%= result._id %>">
+          <p><b><%= result.title %></b> (<%= result.year %>)</p>
+        </a>
+      </div>
+      <% }) %>
+      <% } else { %>
+      <p>No films found.</p>
+      <% } %>
+    </div>
+  </div>
+</body>
+<%- include('../partials/footer.ejs') %>
+
+</html>
