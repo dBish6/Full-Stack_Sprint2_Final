@@ -14,10 +14,10 @@
 
 const express = require("express");
 const app = express();
-const cors = require("cors");
+// const cors = require("cors");
 // const morgan = require("morgan");
 require("dotenv").config();
-console.log(process.env);
+// console.log(process.env);
 
 // const pool = require("./data/db.config");
 
