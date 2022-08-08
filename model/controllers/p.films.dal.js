@@ -14,16 +14,26 @@
 
 const dal = require("../postgres.db.config");
 
-const titleSearch = async (title) => {
+const displayAllPostgresFlims = async () => {
   let response;
   try {
-    response = await dal.query("SELECT * FROM film_list WHERE title = $1;", [
-      title,
-    ]);
+    response = await dal.query(
+      "SELECT fid, title, release_year FROM film_list ORDER BY random() LIMIT 50;"
+    );
     return response.rows;
   } catch (err) {
     console.error(err);
   }
 };
 
-module.exports = { titleSearch };
+const getFilmDetails = async (id) => {
+  let response;
+  try {
+    response = await dal.query("SELECT * FROM film_list WHERE fid = $1;", [id]);
+    return response.rows;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports = { displayAllPostgresFlims };
