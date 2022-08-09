@@ -1,14 +1,12 @@
 /* p.search.dal.js
-   Anything to do with the films in the DVD rentals database;
-   getFilmsDisplay() - fetches all the flims in the database.
-   getFilmDetails() - fetches the details of films from the database; description, rating, etc.
+   Dal functions that has to do with searching by Postgres.
+   titleSearch() - Searches by the givin text passed in from the search bar giving results that is LIKE the text passed in based on title.
 
    Author: David Bishop
    Creation Date: July 13, 2022
    Updates:
    Date, Author, Description
-   July 13, 2022, David, inital set up; require method.
-   July 14 2022, David, implemented getFilmsDisplay() and getFilmDetails() using async await.
+   August 8, 2022, David; implemented titleSearch().
 
 */
 
@@ -17,12 +15,14 @@ const dal = require("../postgres.db.config");
 const titleSearch = async (title) => {
   let response;
   try {
-    response = await dal.query("SELECT * FROM film_list WHERE title = $1;", [
-      title,
-    ]);
+    // ILIKE is simliar to LIKE but ILIKE makes it not case sensitive; better for searching.
+    response = await dal.query(
+      `SELECT * FROM film_list WHERE title ILIKE $1;`,
+      [`%${title}%`]
+    );
     return response.rows;
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
 };
 
