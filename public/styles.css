@@ -1,0 +1,16 @@
+/* Home Page */
+
+/* MongoDb Search Page */
+
+.searchGridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 0.5rem;
+}
+
+.movieBox {
+  display: flex;
+  flex-direction: column;
+  /* vertical-align: top;
+  text-align: center; */
+}
