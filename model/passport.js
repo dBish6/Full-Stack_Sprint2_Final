@@ -1,7 +1,7 @@
 const e = require("express");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const connection = require("./mongo.db.config");
+const db = require("./mongo.db.config1");
 const User = connection.models.User;
 
 const customFields = {
