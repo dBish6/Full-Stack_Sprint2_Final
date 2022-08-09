@@ -5,8 +5,9 @@
   <%- include("./partials/nav.ejs") %>
   <div class="moviesContainer">
     <h2>MongoDb Film Archive</h2>
-     <form action="/search/mongo" method="POST">
-      <input id="search" type="text" placeholder="Search by MongoDb" name="search" value="">
+    <form action="/search/mongo" method="GET">
+      <!-- The req.query comes from the name -->
+      <input type="text" placeholder="Search by MongoDb" name="search">
       <button type="submit">Search</button>
     </form>
     <% mMovies.forEach(movie => { %>
@@ -21,9 +22,9 @@
   </div>
   <div class="filmsContainer">
     <h2>Postgres Film Archive</h2>
-    <form action="/search/postgres" method="POST">
-        <input type="text" placeholder="Search by Postgres" name="search" value="">
-        <button type="submit">Search</button>
+    <form action="/search/postgres" method="GET">
+      <input type="text" placeholder="Search by Postgres" name="search">
+      <button type="submit">Search</button>
     </form>
     <% pMovies.forEach(film => { %>
     <p class="film">

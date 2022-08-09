@@ -3,30 +3,22 @@
 
 <body>
   <%- include('../partials/nav.ejs') %>
-  <div class="film_details_container">
+  <div class="gresSearchContainer">
+    <h2>Postgres Search Results</h2>
     <% if (pSearch.length > 0) { %>
-    <h2 class="details_header"><%= pSearch[0].title %> (<%= pSearch[0].release_year %>)</h2>
-    <div class="film_details">
-      <img src="/no-image.webp" alt="no-image.webp" width="225" height="225">
-      <div class="small_details">
-        <div>
-          <p>Category: <%= pSearch[0].category %></p>
-          <p>Length: <%= pSearch[0].period %> </p>
-          <p>Rating: <%= pSearch[0].rating %> </p>
-        </div>
-        <div class="actors">
-          <h4>Actors:</h4>
-          <p><%= pSearch[0].actors %>.</p>
-        </div>
+    <div class="searchGridContainer">
+      <% pSearch.forEach(film => { %>
+      <div class="movieBox">
+        <img src="/no-image.webp" alt="no-image.webp" width="280" height="280">
+        <a href="<%= film.fid %>">
+          <p><b><%= film.title %></b> (<%= film.release_year %>)</p>
+        </a>
       </div>
+      <% }) %>
+      <% } else { %>
+      <p>No Films found.</p>
+      <% } %>
     </div>
-    <div class="description">
-      <h4>Description:</h4>
-      <p><%= pSearch[0].description %></p>
-    </div>
-    <% } else { %>
-    <p>No Flims found.</p>
-    <% } %>
   </div>
 </body>
 <%- include('../partials/footer.ejs') %>
