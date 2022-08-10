@@ -1,30 +1,25 @@
-/* 
-   server.js
-   List of functions for running the node express HTTP sever on LocalHost
-   with routes for the following URL destinations on the server and for running the home page routes. 
-
-   http://localhost:${PORT}/
+/* m.search.dal.js
+   List of dal functions that has to do with searching by MongoDb.
+   fullSearch() - searches by an text based index from sample_mflix database.
 
    Author: David Bishop, Dominic Whelan, Chris Doucette and Blake Waddleton
    Creation Date: August 8, 2022
    Updates:
    Date, Author, Description
-   Aug 8, 2022, Name, ...
+   Aug 8, 2022, David; impemented first version of the fullSearch function.
+   Aug 9, 2022, David; impemented a new version of fullSearch() with the global collection varaible and more short hand.
    
 */
 
-const { ObjectId } = require("mongodb");
-const dal = require("../mongo.db.config");
+// const { ObjectId } = require("mongodb");
 
 // Can search by cast, fullplot, genres and title.
 const fullSearch = async (text) => {
-  await dal.connect();
-  const cursor = dal
-    .db("sample_mflix")
-    .collection("movies")
-    .find({ $text: { $search: text } });
-  const data = await cursor.toArray();
-  return data;
+  try {
+    return await collection.find({ $text: { $search: text } }).toArray();
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 module.exports = { fullSearch };

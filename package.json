@@ -1,0 +1,26 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Semester 3 Full-Stack final sprint project; back-end directory.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon"
+  },
+  "author": "David Bishop, Dominic Whelan, Chris Doucette and Blake Waddleton",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "moment": "^2.29.4",
+    "mongodb": "^4.8.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "pg": "^8.7.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

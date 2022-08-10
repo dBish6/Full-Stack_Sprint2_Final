@@ -142,8 +142,9 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-# Ingore the prettier ignore file
+# Ingore the ignore files.
 .prettierignore
+.gitignore
 
 # End of https://www.toptal.com/developers/gitignore/api/node
 
