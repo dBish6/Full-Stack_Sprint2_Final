@@ -43,7 +43,6 @@ const pMovieData = require("./model/controllers/p.films.dal");
 const mMovieData = require("./model/controllers/m.movies.dal");
 const searchRouter = require("./routes/search");
 const authRouter = require("./routes/auth");
-const e = require("express");
 
 // *Routers*
 // Mongo Search Router
