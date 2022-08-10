@@ -36,4 +36,4 @@ const getFilmDetails = async (id) => {
   }
 };
 
-module.exports = { displayAllPostgresFilms };
+module.exports = { displayAllPostgresFilms, getFilmDetails };

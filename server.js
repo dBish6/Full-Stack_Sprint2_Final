@@ -43,6 +43,7 @@ const pMovieData = require("./model/controllers/p.films.dal");
 const mMovieData = require("./model/controllers/m.movies.dal");
 const searchRouter = require("./routes/search");
 const authRouter = require("./routes/auth");
+const e = require("express");
 
 // *Routers*
 // Mongo Search Router
@@ -78,7 +79,12 @@ app.get("/", async (req, res) => {
       res.status(502).render("502");
     } else {
       // Render this route with home.ejs with the displayAllMongoMovies() and displayAllPostgresMovies().
-      res.render("home", { mMovies, pMovies, title: "Home" });
+      res.render("home", {
+        mMovies,
+        pMovies,
+        title: "Home",
+        _id: app.locals.openMongoDetails,
+      });
     }
   } catch (error) {
     console.error(error);
@@ -87,7 +93,28 @@ app.get("/", async (req, res) => {
   }
 });
 
-// Renders the 404.ejs when there is no GET found; middleware.
+// app.get("/:id", async (req, res) => {
+//   try {
+//     const pMovies = await pMovieData.getFilmDetails();
+//     if (DEBUG) console.log(pMovies);
+
+//     if (!req.app.locals.openMongoDetails) {
+//       // Render this route with home.ejs with the getFilmDetails function.
+//       res.render("p_filmDetails", { pMovies, title: "Home" });
+//     } else if (pMovies.length === 0) {
+//       // Send the 502 status code and render 502.ejs to the user.
+//       res.status(502).render("502");
+//     } else {
+//       res.render("m_filmDetails", { pMovies, title: "Home" });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//     // Send the 503 status code and render 503.ejs to the user.
+//     res.status(503).render("503");
+//   }
+// });
+
+// // Renders the 404.ejs when there is no GET found; middleware.
 app.use((req, res) => {
   res.status(404).render("404");
 });
