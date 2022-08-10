@@ -7,7 +7,8 @@
     Creaton Date: Monday August 8, 2022
     Updates:
     Date, Author, Description
-
+    Aug 9 2022, Chris Doucette, Updated the findUser & createUser functions to work with MongoDB
+    Aug 10 2022, Chris Doucette, Updated the deleteUser to work with MongoDB
 */
 
 const dal = require("../mongo.db.config");
@@ -15,11 +16,6 @@ const dal = require("../mongo.db.config");
 // <Query functions from the database>
 
 // Function to find / verify a user based on their email / password
-
-//Testing Data
-// let email = "alfie_allen@gameofthron.es";
-// let password = "$2b$12$x574mziridS3mEQVTbKbY.lK.ngIDyZJnTw17G7Gk6n4lnWVSrWL.";
-// let password = "adsfiweio23r412kelfjiop";
 
 const findUser = async (email, password) => {
   try {
@@ -32,21 +28,18 @@ const findUser = async (email, password) => {
 
     if (userVerified < 1) {
       console.log("User Not Found");
+      return false;
     } else {
       console.log(userVerified);
+      return true;
     }
   } catch (error) {
     console.error(error);
+    return false;
   }
 };
 
 // Function to Add user to Users Collection
-
-// Testing data
-// let name = "John Henry";
-let email = "john_henry@myemail.com";
-let password = "$2b$12$yGqxLG9LZpXA2xVDhuPnSOZd.VURVkz7wgOLY3pnO0s7u2S1ZO32y";
-
 const createUser = async (name, email, password) => {
   // Checking if user already exists
   try {
@@ -66,26 +59,29 @@ const createUser = async (name, email, password) => {
           password: password,
         });
         console.log(`User has been added to Users collection!`);
+        return true;
       } catch (error) {
         console.error(error);
       }
     } else {
       console.log("User already exists!");
+      return false;
     }
   } catch (error) {
     console.error(error);
+    return false;
   }
 };
+123456789123456789;
 
 // Function to delete user from user collections
 
 //Testing Data
-// let email = "john_henry@myemail.com";
-// let password = "$2b$12$yGqxLG9LZpXA2xVDhuPnSOZd.VURVkz7wgOLY3pnO0s7u2S1ZO32y";
-const deleteUser = async () => {
+const deleteUser = async (name, email, password) => {
   try {
     await dal.connect();
     const searching = dal.db("sample_mflix").collection("users").findOne({
+      name: name,
       email: email,
       password: password,
     });
@@ -102,22 +98,22 @@ const deleteUser = async () => {
       try {
         await dal.connect();
         dal.db("sample_mflix").collection("users").deleteOne({
+          name: name,
           email: email,
           password: password,
         });
         console.log("User Deleted");
+        return true;
       } catch (error) {
         console.error(error);
+        return false;
       }
     }
   } catch (error) {
     console.error(error);
+    return false;
   }
 };
-
-// findUser(email, password);
-// createUser(name, email, password);
-deleteUser(email, password);
 
 module.exports = {
   findUser,

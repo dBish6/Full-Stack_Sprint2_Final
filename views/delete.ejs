@@ -1,0 +1,31 @@
+<html lang="en">
+  <%- include("./partials/header.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <h2>Delete User</h2>
+
+    <form action="/auth/delete" method="POST">
+      <label for="fullname">Fullname:</label>
+      <input
+        type="text"
+        name="fullname"
+        id="fullname"
+        required
+        placeholder="Enter Fullname"
+      />
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter Email"
+        required
+      />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+  <%- include("./partials/footer.ejs") %>
+</html>
