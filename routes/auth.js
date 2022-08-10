@@ -1,16 +1,120 @@
+/*
+    m.auth.dal.js
+
+    Routes for the Authenticate(Search for User), Sign Up (Create) and Delete User
+
+    Author: Chris Doucette, David Bishop, Dominic Whelan & Blake Waddleton
+    Creaton Date: Tuesday August 9, 2022
+    Updates:
+    Date, Author, Description
+    Aug 9 2022, Chris Doucette. Added routes for the authenticate (Login / search for user) and Sign Up (Create) pages.
+    Aug 10, 2022, Chris Doucette, Added route for Deletion of user.
+*/
+
+const { application } = require("express");
 const express = require("express");
 // const bcrypt = require('bcrypt');
 // const uuid = require('uuid');
 const router = express.Router();
 
-const {} = require("../model/controllers/m.auth.dal");
+const {
+  findUser,
+  createUser,
+  deleteUser,
+} = require("../model/controllers/m.auth.dal");
+const { route } = require("./search");
 
 router.use(express.static("public"));
 
 // <Sign in Sign up routes go here>
+// Sign In route
+router.get("/login", async (req, res) => {
+  res.render("login", { title: "Login" });
+});
 
-// One route will be getting (still a post) a user from the database when they login; /.
+router.post("/authenticate", async (req, res) => {
+  try {
+    // if (DEBUG) console.log(req.body);
 
-// then posting new users to the database; /new
+    let userFound = await findUser(req.body.email, req.body.password);
+
+    if (userFound) {
+      // Code when User is Logged In
+      res.send("User logged In!!!!!");
+      res.end();
+    } else {
+      // Code when user is not found in Users collection
+      res.send("User NOT found, Please re-enter!");
+      res.end();
+    }
+  } catch (error) {
+    console.error(error);
+    // Send the 503 status code and render 503.ejs to the user.
+    res.status(503).render("503");
+    res.end();
+  }
+});
+
+// Sign up Route
+router.get("/signup", async (req, res) => {
+  res.render("signup", { title: "Sign Up" });
+});
+
+router.post("/signup", async (req, res) => {
+  if (DEBUG) console.log(req.body);
+  try {
+    let userCreated = await createUser(
+      req.body.fullname,
+      req.body.email,
+      req.body.password
+    );
+
+    if (userCreated) {
+      // code for user created successfully
+      res.send("User was successfully created!!");
+      res.end();
+    } else {
+      // code for user not created
+      // will adjust to add message for error or if user already exists in Users collection
+      res.send("User NOT created!");
+      res.end();
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(503).render("503");
+    res.end();
+  }
+});
+
+// Deletion of user routes
+router.get("/delete", async (req, res) => {
+  res.render("delete", { title: "Delete User" });
+});
+
+router.post("/delete", async (req, res) => {
+  if (DEBUG) console.log(req.body);
+  try {
+    let userDeletion = await deleteUser(
+      req.body.fullname,
+      req.body.email,
+      req.body.password
+    );
+
+    if (userDeletion) {
+      // code for user successfully deleted
+      res.send("User was successfully deleted!!");
+      res.end();
+    } else {
+      // code for user not deleted
+      // will adjust to add message for error or if user already exists in Users collection
+      res.send("User NOT deleted!");
+      res.end();
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(503).render("503");
+    res.end();
+  }
+});
 
 module.exports = router;

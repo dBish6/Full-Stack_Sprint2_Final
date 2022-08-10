@@ -1,0 +1,23 @@
+<html lang="en">
+  <%- include("./partials/header.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <h2>Login In Page</h2>
+
+    <form action="/auth/authenticate" method="POST">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter Email"
+        required
+      />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+  <%- include("./partials/footer.ejs") %>
+</html>
