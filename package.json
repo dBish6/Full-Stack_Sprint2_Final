@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dBish6/Full-Stack_Sprint2_Final.git"
+  },
   "author": "David Bishop, Dominic Whelan, Chris Doucette and Blake Waddleton",
   "license": "ISC",
   "dependencies": {
