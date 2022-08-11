@@ -11,7 +11,7 @@
    August 8, 2022, David; set up databases configs and everything, impemented modules for server, imports and necessary middleware,
    set up the views and made the home routes for searching.
    August 9, 2022, David; impemented a mongoDb connection in app.listen.
-   August 10, 2022, David; impemented working details views and routes when in home page.
+   August 11, 2022, David; Styled home page and partials.
       
 */
 
