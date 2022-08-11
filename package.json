@@ -1,7 +1,7 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "Semester 3 Full-Stack final sprint project; back-end directory.",
+  "description": "Semester 3 Full-Stack final sprint project.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
