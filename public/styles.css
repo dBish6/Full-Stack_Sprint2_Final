@@ -1,4 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&family=Lato&family=Montserrat:wght@500&family=Oldenburg&family=Righteous&display=swap");
+
+/* Global */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+html {
+  background-color: rgba(67, 198, 172, 0.15);
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(174, 174, 174);
+  font-style: italic;
+  position: relative;
+  bottom: 0;
+  height: 2.5rem;
+  background-color: rgb(25, 22, 84);
+  border-top: 2px solid rgb(255, 255, 255, 0.7);
+}
+
+/* Nav Bar */
+
+.navBarContainer {
+  position: relative;
+  display: flex;
+  padding: 1rem 2.625rem 1rem 2.625rem;
+  align-items: center;
+  justify-content: space-between;
+
+  /* background: linear-gradient(145deg, rgb(67, 198, 172), rgb(25, 22, 84)); */
+  background: linear-gradient(145deg, rgb(25, 22, 84), rgb(67, 198, 172) 50%);
+  /* background: linear-gradient(145deg, rgb(25, 22, 84), rgb(73, 227, 178) 50%); */
+  border-bottom: 2px solid rgb(255, 255, 255, 0.7);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+.navBarContainer .left img {
+  position: relative;
+  float: left;
+  top: 6px;
+}
+
+.navBarContainer .left h1 {
+  float: left;
+  text-align: center;
+  margin: 19.92px 1rem 19.92px 1rem;
+  color: rgb(67, 198, 172);
+  -webkit-text-stroke: 1.2px rgb(202, 202, 202);
+
+  font-family: "Righteous", cursive;
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.navBarContainer .navFlex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navBarContainer .navFlex .right {
+  margin: auto 1rem auto 5rem;
+}
+
+.navBarContainer .navFlex .right a,
+.navBarContainer .navFlex .home a {
+  display: inline-block;
+  padding: 14px;
+
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 23px;
+  color: rgb(255, 255, 255, 0.68);
+}
+
+.navBarContainer .navFlex .right a:hover,
+.navBarContainer .navFlex .home a:hover {
+  border-radius: 50px;
+  background-color: rgba(25, 22, 84, 0.15);
+  color: rgb(255, 255, 255, 0.89);
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.navBarContainer .navFlex .right a:active,
+.navBarContainer .navFlex .home a:active {
+  background-color: white;
+}
+
 /* Home Page */
+
+.moviesContainer {
+  margin-top: 2rem;
+}
 
 /* MongoDb Search Page */
 
