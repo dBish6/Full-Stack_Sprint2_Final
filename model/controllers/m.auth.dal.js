@@ -9,6 +9,7 @@
     Date, Author, Description
     Aug 9 2022, Chris Doucette, Updated the findUser & createUser functions to work with MongoDB
     Aug 10 2022, Chris Doucette, Updated the deleteUser to work with MongoDB
+    Aug 11 2022, Chris Doucette, After some jest testing adding a return false to deleteUser function
 */
 
 const dal = require("../mongo.db.config");
@@ -27,10 +28,10 @@ const findUser = async (email, password) => {
     const userVerified = await searching;
 
     if (userVerified < 1) {
-      console.log("User Not Found");
+      // console.log("User Not Found");
       return false;
     } else {
-      console.log(userVerified);
+      // console.log(userVerified);
       return true;
     }
   } catch (error) {
@@ -58,13 +59,13 @@ const createUser = async (name, email, password) => {
           email: email,
           password: password,
         });
-        console.log(`User has been added to Users collection!`);
+        // console.log(`User has been added to Users collection!`);
         return true;
       } catch (error) {
         console.error(error);
       }
     } else {
-      console.log("User already exists!");
+      // console.log("User already exists!");
       return false;
     }
   } catch (error) {
@@ -72,7 +73,6 @@ const createUser = async (name, email, password) => {
     return false;
   }
 };
-123456789123456789;
 
 // Function to delete user from user collections
 
@@ -88,12 +88,13 @@ const deleteUser = async (name, email, password) => {
 
     const userToDelete = await searching;
 
-    console.log(userToDelete);
+    // console.log(userToDelete);
 
     if (userToDelete < 1) {
-      console.log(
-        "No User with matches entered email and password combination"
-      );
+      // console.log(
+      //   "No User with matches entered email and password combination"
+      // );
+      return false;
     } else {
       try {
         await dal.connect();
@@ -102,7 +103,7 @@ const deleteUser = async (name, email, password) => {
           email: email,
           password: password,
         });
-        console.log("User Deleted");
+        // console.log("User Deleted");
         return true;
       } catch (error) {
         console.error(error);
