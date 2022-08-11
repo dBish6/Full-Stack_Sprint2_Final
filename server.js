@@ -11,11 +11,13 @@
    August 8, 2022, David; set up databases configs and everything, impemented modules for server, imports and necessary middleware,
    set up the views and made the home routes for searching.
    August 9, 2022, David; impemented a mongoDb connection in app.listen.
+   August 10, 2022, David; impemented working details views and routes when in home page.
       
 */
 
 const express = require("express");
 const app = express();
+
 const morgan = require("morgan");
 require("dotenv").config();
 
@@ -31,13 +33,12 @@ app.set("view engine", "ejs");
 if (DEBUG) app.use(morgan("dev"));
 // So express can use your static files, which is my public folder; css, images, HTML, etc.
 app.use(express.static("public"));
-// So express can read the new perameters off the url and encoding them corrently; we can now use req.body.
+// So express can read the new perameters off the url and encoding them corrently.
 app.use(express.urlencoded({ extended: true }));
-app.disable("etag");
+// app.use(express.static("/search/mongo"));
 
 // *Posgres Imports*
 const pMovieData = require("./model/controllers/p.films.dal");
-// <Require data.dal here>
 
 // *Mongo Imports*
 const mMovieData = require("./model/controllers/m.movies.dal");
@@ -66,6 +67,12 @@ app.listen(PORT, "localhost", async () => {
   }
 });
 
+// app.get("/search/mongo", (req, res, next) => {
+//   res.setHeader("Last-Modified", new Date().toUTCString());
+//   next();
+// });
+
+// Display both movies from both databases.
 app.get("/", async (req, res) => {
   try {
     const mMovies = await mMovieData.displayAllMongoMovies();
@@ -73,12 +80,16 @@ app.get("/", async (req, res) => {
     const pMovies = await pMovieData.displayAllPostgresFilms();
     if (DEBUG) console.log(pMovies);
 
-    if (mMovies.length === 0) {
+    if (mMovies.length === 0 || pMovies.length === 0) {
       // Send the 502 status code and render 502.ejs to the user.
       res.status(502).render("502");
     } else {
       // Render this route with home.ejs with the displayAllMongoMovies() and displayAllPostgresMovies().
-      res.render("home", { mMovies, pMovies, title: "Home" });
+      res.render("home", {
+        mMovies,
+        pMovies,
+        title: "Home",
+      });
     }
   } catch (error) {
     console.error(error);
@@ -87,7 +98,40 @@ app.get("/", async (req, res) => {
   }
 });
 
-// Renders the 404.ejs when there is no GET found; middleware.
+app.get("/:id", async (req, res) => {
+  try {
+    if (DEBUG) console.log(req.params);
+
+    // If the url is a mongo _id because they always have a "a" in them, display mongo details.
+    if (req.url.includes("a")) {
+      const mMovies = await mMovieData.getMongoMovieDetails(req.params.id);
+      if (DEBUG) console.log(mMovies);
+
+      if (mMovies.length === 0) {
+        res.status(502).render("502");
+      } else {
+        // Render this route with m_filmDetails.ejs with the getMongoFilmDetails function.
+        res.render("m_filmDetails", { mMovies, title: "Home" });
+      }
+      // Else just display postgres details to the user because the id includes all numbers.
+    } else {
+      const pMovies = await pMovieData.getPostgresFilmDetails(req.params.id);
+      if (DEBUG) console.log(pMovies);
+
+      if (pMovies.length === 0) {
+        res.status(502).render("502");
+      } else {
+        // Render this route with p_filmDetails.ejs with the getPostgresFilmDetails function.
+        res.render("p_filmDetails", { pMovies, title: "Home" });
+      }
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(503).render("503");
+  }
+});
+
+// // Renders the 404.ejs when there is no GET found; middleware.
 app.use((req, res) => {
   res.status(404).render("404");
 });

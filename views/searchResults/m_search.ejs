@@ -9,8 +9,8 @@
     <div class="searchGridContainer">
       <% mSearch.forEach(result => { %>
       <div class="movieBox">
-        <img src="<%= result.poster %> " alt="no-image.webp" width="280" height="280">
-        <a href="<%= result._id %>">
+        <img src="<%= result.poster %>" alt="no-image.webp" width="280" height="280">
+        <a href="/search/mongo/<%= result._id %>">
           <p><b><%= result.title %></b> (<%= result.year %>)</p>
         </a>
       </div>

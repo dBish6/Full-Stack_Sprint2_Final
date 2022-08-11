@@ -1,0 +1,73 @@
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+<body>
+  <%- include('./partials/nav.ejs') %>
+  <div class="film_details_container">
+    <h2 class="details_header"><%= mMovies[0].title %> (<%= mMovies[0].year %>)</h2>
+    <div class="film_details">
+      <% mMovies.forEach(result => { %>
+      <img src="<%= result.poster %>" alt="no-image.webp" width="225" height="225">
+      <div class="small_details">
+        <div>
+          <p>Category: <%= result.genres %></p>
+          <p>Length: <%= result.runtime %> </p>
+          <% if (!result.rated) {%>
+          <p>Rating: Not Rated </p>
+          <% } else { %>
+          <p>Rating: <%= result.rated %> </p>
+          <% } %>
+          <div>
+            <% if (result.languages != null) {%>
+            <p>languages: <%= result.languages %></p>
+            <% } %>
+          </div>
+        </div>
+        
+        <div class="contributors">
+          <h3>Contributors</h3>
+          <p>Actors:</p>
+          <% if (result.cast.length > 1) {%>
+          <p><%= result.cast.join(", ")%> </p>
+          <% } else {%>
+          <p><%= result.cast%> </p>
+          <% } %>
+
+          <p>Directors:</p>
+          <% if (result.directors.length > 1) {%>
+          <p><%= result.directors.join(", ") %></p>
+          <% } else {%>
+          <p><%= result.directors%> </p>
+          <% } %>
+
+          <p>Writers:</p>
+          <% if (result.writers.length > 1) {%>
+          <p><%= result.writers.join(", ") %></p>
+          <% } else {%>
+          <p><%= result.writers %> </p>
+          <% } %>
+        </div>
+
+        <div class="rating">
+          <h3>Ratings:</h3>
+          <% if (result.imdb.rating) {%>
+          <p>Imdb Rating: <%= result.imdb.rating %></p>
+          <% } %>
+          <% if (result.metacritic) {%>
+          <p>Metacritic Rating: <%= result.metacritic %></p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <div class="description">
+      <% if (result.fullplot) {%>
+      <h3>Description:</h3>
+      <p><%= result.fullplot %></p>
+      <% } %>
+    </div>
+    <% }) %>
+  </div>
+</body>
+<%- include('./partials/footer.ejs') %>
+
+</html>

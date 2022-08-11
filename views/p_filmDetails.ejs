@@ -1,0 +1,30 @@
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+
+<body>
+  <%- include('./partials/nav.ejs') %>
+  <div class="film_details_container">
+    <h2 class="details_header"><%= pMovies[0].title %> (<%= pMovies[0].release_year %>)</h2>
+    <div class="film_details">
+      <img src="/no-image.webp" alt="no-image.webp" width="225" height="225">
+      <div class="small_details">
+        <div>
+          <p>Category: <%= pMovies[0].category %></p>
+          <p>Length: <%= pMovies[0].period %> </p>
+          <p>Rating: <%= pMovies[0].rating %> </p>
+        </div>
+        <div class="actors">
+          <h4>Actors:</h4>
+          <p><%= pMovies[0].actors %>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="description">
+      <h4>Description:</h4>
+      <p><%= pMovies[0].description %></p>
+    </div>
+  </div>
+</body>
+<%- include('./partials/footer.ejs') %>
+
+</html>

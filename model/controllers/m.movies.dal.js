@@ -9,10 +9,11 @@
    Date, Author, Description
    Aug 8, 2022, David; impemented first version of displayAllMongoMovies function.
    Aug 9, 2022, David; impemented a new version of displayAllMongoMovies() with the global collection varaible and more short hand.
+   Aug 10, 2022, David; added getMongoMovieDetails function.
    
 */
 
-// const { ObjectId } = require("mongodb");
+const { ObjectId } = require("mongodb");
 
 // Gets all movies from the sample_mflix MongoDb database and randomizes them by a limit of 50.
 const displayAllMongoMovies = async () => {
@@ -24,4 +25,13 @@ const displayAllMongoMovies = async () => {
   }
 };
 
-module.exports = { displayAllMongoMovies };
+const getMongoMovieDetails = async (_id) => {
+  try {
+    return await collection.find({ _id: ObjectId(`${_id}`) }).toArray();
+    // return await collection.find(`${_id}`);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = { displayAllMongoMovies, getMongoMovieDetails };

@@ -142,13 +142,8 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-# Ingore the ignore files.
+# Ignore the ignore files.
 .prettierignore
 .gitignore
 
 # End of https://www.toptal.com/developers/gitignore/api/node
-
-node_modules
-package.json
-package-lock.json
-.gitignore

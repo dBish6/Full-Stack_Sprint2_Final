@@ -1,11 +1,15 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "Semester 3 Full-Stack final sprint project; back-end directory.",
+  "description": "Semester 3 Full-Stack final sprint project.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dBish6/Full-Stack_Sprint2_Final.git"
   },
   "author": "David Bishop, Dominic Whelan, Chris Doucette and Blake Waddleton",
   "license": "ISC",

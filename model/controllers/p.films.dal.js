@@ -7,7 +7,7 @@
    Creation Date: July 13, 2022
    Updates:
    Date, Author, Description
-   August 8, 2022, David; impemented displayAllPostgresFilms() and getFilmDetails().
+   August 8, 2022, David; impemented displayAllPostgresFilms() and getPostgresFilmDetails().
 
 */
 
@@ -26,7 +26,7 @@ const displayAllPostgresFilms = async () => {
 };
 
 // Gets the film details by whatever id passed in as a parameter.
-const getFilmDetails = async (id) => {
+const getPostgresFilmDetails = async (id) => {
   let response;
   try {
     response = await dal.query("SELECT * FROM film_list WHERE fid = $1;", [id]);
@@ -36,4 +36,4 @@ const getFilmDetails = async (id) => {
   }
 };
 
-module.exports = { displayAllPostgresFilms };
+module.exports = { displayAllPostgresFilms, getPostgresFilmDetails };

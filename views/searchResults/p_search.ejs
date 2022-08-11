@@ -10,7 +10,7 @@
       <% pSearch.forEach(film => { %>
       <div class="movieBox">
         <img src="/no-image.webp" alt="no-image.webp" width="280" height="280">
-        <a href="<%= film.fid %>">
+        <a href="/search/postgres/<%= film.fid %>">
           <p><b><%= film.title %></b> (<%= film.release_year %>)</p>
         </a>
       </div>
