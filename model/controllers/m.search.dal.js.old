@@ -11,8 +11,6 @@
    
 */
 
-// const { ObjectId } = require("mongodb");
-
 // Can search by cast, fullplot, genres and title.
 const fullSearch = async (text) => {
   try {
