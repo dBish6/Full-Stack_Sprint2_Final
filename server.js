@@ -46,7 +46,7 @@ const searchRouter = require("./routes/search");
 const authRouter = require("./routes/auth");
 
 // *Routers*
-// Mongo Search Router
+// Mongo/postgres Search Router
 app.use("/search", searchRouter);
 // Mongo Auth Router
 app.use("/auth", authRouter);
