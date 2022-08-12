@@ -27,24 +27,30 @@
         <div class="contributors">
           <h3>Contributors</h3>
           <p>Actors:</p>
+          <% if (result.cast) {%>
           <% if (result.cast.length > 1) {%>
           <p><%= result.cast.join(", ")%> </p>
           <% } else {%>
           <p><%= result.cast%> </p>
           <% } %>
+          <% } %>
 
           <p>Directors:</p>
+          <% if (result.directors) {%>
           <% if (result.directors.length > 1) {%>
           <p><%= result.directors.join(", ") %></p>
           <% } else {%>
           <p><%= result.directors%> </p>
           <% } %>
+          <% } %>
 
           <p>Writers:</p>
+          <% if (result.writers) {%>
           <% if (result.writers.length > 1) {%>
           <p><%= result.writers.join(", ") %></p>
           <% } else {%>
           <p><%= result.writers %> </p>
+          <% } %>
           <% } %>
         </div>
 

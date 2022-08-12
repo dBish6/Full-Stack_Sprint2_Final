@@ -3,38 +3,51 @@
 
 <body>
   <%- include("./partials/nav.ejs") %>
-  <div class="moviesContainer">
-    <h2>MongoDb Film Archive</h2>
-    <form action="/search/mongo" method="GET">
+  <div class="homeContainer">
+    <div class="mongoHeader">
+      <h2>MongoDb Film Archive</h2>
+      <img src="/mongo-leaves.webp" alt="mongo-leaves.webp" width="38px" height="38px">
+    </div>
+    <form class="monSearch" action="/search/mongo" method="GET">
       <!-- The req.query comes from the name -->
       <input type="text" placeholder="Search by MongoDb" name="search">
       <button type="submit">Search</button>
     </form>
-    <% mMovies.forEach(movie => { %>
-    <p class="movie">
-      <a href="<%= movie._id %>"> <b><%= movie.title %></b> (<%= movie.year %>)</a>
-    </p>
-    <% }) %>
-  </div>
-  <div class="movieMore">
-    <!-- Instead of this, maybe we can have a expand button to view 50 more movies? -->
-    <p>Search to view more!</p>
-  </div>
-  <div class="filmsContainer">
-    <h2>Postgres Film Archive</h2>
-    <form action="/search/postgres" method="GET">
+    <div class="moviesContainer">
+      <% mMovies.forEach(movie => { %>
+      <p class="movie">
+        <a href="<%= movie._id %>"> <b><%= movie.title %></b> (<%= movie.year %>)</a>
+      </p>
+      <% }) %>
+    </div>
+
+    <div class="movieMore">
+      <button name="monBtn">expand</button>
+    </div>
+
+    <hr />
+
+    <div class="postgresHeader">
+      <h2>Postgres Film Archive</h2>
+      <img src="/postgres-icon.webp" alt="postgres-icon.webp" width="38px" height="38px">
+    </div>
+    <form class="gresSearch" action="/search/postgres" method="GET">
       <input type="text" placeholder="Search by Postgres" name="search">
       <button type="submit">Search</button>
     </form>
-    <% pMovies.forEach(film => { %>
-    <p class="film">
-      <a href="<%= film.fid %>"> <b><%= film.title %></b> (<%= film.release_year %>)</a>
-    </p>
-    <% }) %>
+    <div class="filmsContainer">
+      <% pMovies.forEach(film => { %>
+      <p class="film">
+        <a href="<%= film.fid %>"> <b><%= film.title %></b> (<%= film.release_year %>)</a>
+      </p>
+      <% }) %>
+    </div>
+
+    <div class="movieMore">
+      <button name="gresBtn">expand</button>
+    </div>
+
   </div>
-  <div class="movieMore">
-    <!-- Instead of this, maybe we can have a expand button to view 50 more movies? -->
-    <p>Search to view more!</p>
   </div>
 </body>
 <%- include("./partials/footer.ejs") %>
