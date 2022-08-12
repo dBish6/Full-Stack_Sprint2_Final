@@ -24,7 +24,7 @@ const {
   checkNotAuthenticated,
 } = require("../model/controllers/m.auth.dal");
 
-const { getUserByEmail } = require("../model/controllers/m.auth.dal");
+const { addUser } = require("../model/controllers/m.auth.dal");
 // const { route } = require("./search");
 
 router.use(express.static("public"));
@@ -76,6 +76,7 @@ router.get("/register", checkNotAuthenticated, async (req, res) => {
 router.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    console.log(req.body.password);
     const user = {
       name: req.body.name,
       email: req.body.email,
@@ -83,10 +84,10 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
     };
     DEBUG && console.log(user);
     addUser(user);
-    res.redirect("/login");
-  } catch {
-    console.error("User Register Failed");
-    res.redirect("/register");
+    res.redirect("/auth/login");
+  } catch (err) {
+    console.error(err);
+    res.redirect("/auth/register");
   }
 });
 
@@ -117,11 +118,11 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
 // });
 
 // Deletion of user routes
-router.get("/delete", async (req, res) => {
-  res.render("delete", { title: "Delete User" });
+router.get("/profile", checkAuthenticated, async (req, res) => {
+  res.render("profile", { title: "My Profile" });
 });
 
-router.post("/delete", async (req, res) => {
+router.delete("/profile", checkAuthenticated, async (req, res) => {
   if (DEBUG) console.log(req.body);
   try {
     let userDeletion = await deleteUser(
@@ -133,7 +134,12 @@ router.post("/delete", async (req, res) => {
     if (userDeletion) {
       // code for user successfully deleted
       res.send("User was successfully deleted!!");
-      res.end();
+      req.logout(function (err) {
+        if (err) {
+          return next(err);
+        }
+        res.redirect("/login");
+      });
     } else {
       // code for user not deleted
       // will adjust to add message for error or if user already exists in Users collection
@@ -145,6 +151,15 @@ router.post("/delete", async (req, res) => {
     res.status(503).render("503");
     res.end();
   }
+});
+
+router.delete("/logout", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/auth/login");
+  });
 });
 
 module.exports = router;

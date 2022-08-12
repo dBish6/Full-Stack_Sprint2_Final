@@ -47,7 +47,7 @@ if (DEBUG) app.use(morgan("dev"));
 // So express can use your static files, which is my public folder; css, images, HTML, etc.
 app.use(express.static("public"));
 // So express can read the new perameters off the url and encoding them corrently.
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(flash());
 app.use(

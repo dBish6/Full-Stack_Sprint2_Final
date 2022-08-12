@@ -1,0 +1,43 @@
+<html lang="en">
+  <%- include("./partials/header.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs") %>
+    <h2>My Account</h2>
+    <div id="profileContainer">
+
+      <table id="profileDetailsTable">
+        <tr>
+          <th>Account details</th>
+        </tr>
+        <tr>
+          <td>User ID:</td>
+          <td><%= user._id %></td>
+        </tr>
+        <tr>
+          <td>Full Name:</td>
+          <td><%= user.name %></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><%= user.email %></td>
+        </tr>
+      </table>
+      <% if(user.img){ %>
+        <img src= <%= user.img %>  alt="profilePic">
+      <% } %> 
+      <!-- <ul>
+        <li>User ID: <%= user._id %></li>
+        <li>Full Name: <%= user.name %></li>
+        <li>Email: <%= user.email %></li>
+      </ul> -->
+    </div>
+    <form action="/auth/logout/?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+
+    <form action="/auth/profile/?_method=DELETE" method="POST">
+      <button type="submit">UnSubscribe</button>
+    </form>
+  </body>
+  <%- include("./partials/footer.ejs") %>
+</html>

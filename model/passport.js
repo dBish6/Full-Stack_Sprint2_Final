@@ -9,7 +9,7 @@
    Date, Author, Description
    August 9, 2022, Dominic; initial setup of the file
    August 10, 2022, Dominic; Reconfigured file to exclude mongoose module
-      
+     
 */
 
 const localStrategy = require("passport-local").Strategy;

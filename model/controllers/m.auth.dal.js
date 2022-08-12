@@ -54,8 +54,8 @@ async function getUserByEmail(email) {
     const user = await searching;
     global.user = user;
 
-    if (user < 1) {
-      console.log("Could not get User");
+    if (user === null) {
+      console.log("getUserByEmail() Could not get User");
     } else {
       console.log("User Found");
       return user;
