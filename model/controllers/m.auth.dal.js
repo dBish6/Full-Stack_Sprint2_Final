@@ -9,6 +9,7 @@
     Date, Author, Description
     Aug 9 2022, Chris Doucette, Updated the findUser & createUser functions to work with MongoDB
     Aug 10 2022, Chris Doucette, Updated the deleteUser to work with MongoDB
+    Aug 11 2022, Dominic Whelan, Function additions and edits
 */
 
 const dal = require("../mongo.db.config");
@@ -16,18 +17,18 @@ const dal = require("../mongo.db.config");
 const getUsers = async () => {
   try {
     await dal.connect();
-    const searching = dal.db("sample_mflix").collection("users").findOne({
-      email: email,
-      password: password,
-    });
-    const userVerified = await searching;
+    const searching = dal
+      .db("sample_mflix")
+      .collection("users")
+      .find()
+      .toArray();
+    const users = await searching;
 
-    if (userVerified < 1) {
-      // console.log("User Not Found");
-      return false;
+    if (users < 1) {
+      console.log("Could not get Users");
     } else {
-      console.log(userVerified);
-      return true;
+      console.log("Users Get Success");
+      return users;
     }
   } catch (error) {
     console.error(error);
@@ -37,77 +38,65 @@ const getUsers = async () => {
 async function addUser(user) {
   try {
     await dal.connect();
-    const searching = dal.db("sample_mflix").collection("users").findOne({
-      email: email,
-    });
-    const userVerified = await searching;
-
-    if (userVerified < 1) {
-      // User does not exist, adding to users
-      try {
-        await dal.connect();
-        dal.db("sample_mflix").collection("users").insertOne({
-          name: name,
-          email: email,
-          password: password,
-        });
-        // console.log(`User has been added to Users collection!`);
-        return true;
-      } catch (error) {
-        console.error(error);
-      }
-    } else {
-      // console.log("User already exists!");
-      return false;
-    }
-  } catch (error) {
-    console.error(error);
-    return false;
+    const adding = dal.db("sample_mflix").collection("users").insertOne(user);
+  } catch (err) {
+    console.log(err);
   }
 }
-123456789123456789;
 
-// Function to delete user from user collections
-
-//Testing Data
-const deleteUser = async (name, email, password) => {
+async function getUserByEmail(email) {
   try {
     await dal.connect();
-    const searching = dal.db("sample_mflix").collection("users").findOne({
-      name: name,
-      email: email,
-      password: password,
-    });
+    const searching = dal
+      .db("sample_mflix")
+      .collection("users")
+      .findOne({ email: email });
+    const user = await searching;
+    global.user = user;
 
-    const userToDelete = await searching;
-
-    console.log(userToDelete);
-
-    if (userToDelete < 1) {
-      // console.log(
-      //   "No User with matches entered email and password combination"
-      // );
-      return false;
+    if (user < 1) {
+      console.log("Could not get User");
     } else {
-      try {
-        await dal.connect();
-        dal.db("sample_mflix").collection("users").deleteOne({
-          name: name,
-          email: email,
-          password: password,
-        });
-        console.log("User Deleted");
-        return true;
-      } catch (error) {
-        console.error(error);
-        return false;
-      }
+      console.log("User Found");
+      return user;
     }
-  } catch (error) {
-    console.error(error);
-    return false;
+  } catch (err) {
+    console.log(err);
   }
-};
+}
+
+async function getUserById(id) {
+  try {
+    await dal.connect();
+    const searching = dal
+      .db("sample_mflix")
+      .collection("users")
+      .findOne({ _id: id });
+    const user = await searching;
+
+    if (user < 1) {
+      console.log("Could not get User");
+    } else {
+      console.log("User Found");
+      return user;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/auth/login");
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+  next();
+}
 
 module.exports = {
   getUsers,
