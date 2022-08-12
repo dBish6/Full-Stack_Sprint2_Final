@@ -11,15 +11,27 @@
    August 8, 2022, David; set up databases configs and everything, impemented modules for server, imports and necessary middleware,
    set up the views and made the home routes for searching.
    August 9, 2022, David; impemented a mongoDb connection in app.listen.
-   August 11, 2022, David; Styled home page and partials.
+   August 10, 2022, David; impemented working details views and routes when in home page.
       
 */
 
 const express = require("express");
 const app = express();
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session");
+const methodOverride = require("method-override");
 
 const morgan = require("morgan");
 require("dotenv").config();
+
+const initializePassport = require("./model/passport");
+initializePassport(passport);
+
+const {
+  checkAuthenticated,
+  checkNotAuthenticated,
+} = require("./model/controllers/m.auth.dal");
 
 global.DEBUG = true;
 
@@ -35,6 +47,24 @@ if (DEBUG) app.use(morgan("dev"));
 app.use(express.static("public"));
 // So express can read the new perameters off the url and encoding them corrently.
 app.use(express.urlencoded({ extended: true }));
+
+app.use(flash());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride("_method"));
+
+app.use((req, res, next) => {
+  console.log(req.session);
+  next();
+});
 // app.use(express.static("/search/mongo"));
 
 // *Posgres Imports*
@@ -73,7 +103,7 @@ app.listen(PORT, "localhost", async () => {
 // });
 
 // Display both movies from both databases.
-app.get("/", async (req, res) => {
+app.get("/", checkAuthenticated, async (req, res) => {
   try {
     const mMovies = await mMovieData.displayAllMongoMovies();
     // if (DEBUG) console.log(mMovies);

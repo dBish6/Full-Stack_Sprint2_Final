@@ -142,7 +142,7 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-# Ingore the ignore files.
+# Ignore the ignore files.
 .prettierignore
 .gitignore
 
@@ -150,5 +150,3 @@ dist
 routes/.DS_Store
 views/.DS_Store
 views/partials/.DS_Store
-package.json
-package-lock.json

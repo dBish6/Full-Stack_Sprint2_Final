@@ -2,19 +2,16 @@
   <%- include("./partials/header.ejs") %>
   <body>
     <main>
-      <h3>Sign in here...</h3>
-      <% if(messages.error) { %> <%- messages.error %> <% } %>
-      <form action="/auth/login" method="POST">
+      <h3>Sign Up here...</h3>
+      <form action="/auth/register" method="POST">
+        <label for="name">Enter Full Name: </label>
+        <input type="name" name="name" id="name" required />
         <label for="email">Email: </label>
         <input type="email" name="email" id="email" required />
         <label for="password">Password: </label>
         <input type="password" name="password" id="password" required />
-        <button type="submit">Sign_In</button>
+        <button type="submit">Sign Up</button>
       </form>
-      <h3>
-        No Account? No Problem! Register
-        <a href="http://localhost:4000/auth/register">HERE</a>
-      </h3>
     </main>
   </body>
   <%- include("./partials/footer.ejs") %>
