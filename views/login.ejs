@@ -1,0 +1,21 @@
+<html lang="en">
+  <%- include("./partials/header.ejs") %>
+  <body>
+    <main>
+      <h3>Sign in here...</h3>
+      <% if(messages.error) { %> <%- messages.error %> <% } %>
+      <form action="/auth/login" method="POST">
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email" required />
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" required />
+        <button type="submit">Sign_In</button>
+      </form>
+      <h3>
+        No Account? No Problem! Register
+        <a href="http://localhost:4000/auth/register">HERE</a>
+      </h3>
+    </main>
+  </body>
+  <%- include("./partials/footer.ejs") %>
+</html>

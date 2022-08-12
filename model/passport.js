@@ -18,7 +18,7 @@ const bcrypt = require("bcrypt");
 const {
   getUserByEmail,
   getUserById,
-} = require("./model/controllers/m.auth.dal");
+} = require("../model/controllers/m.auth.dal");
 
 function initialize(passport) {
   const authenticateUser = async (email, password, done) => {
