@@ -44,6 +44,17 @@ async function addUser(user) {
   }
 }
 
+async function deleteUser(user) {
+  try {
+    await dal.connect();
+    const deleting = dal
+      .db("sample_mflix")
+      .remove({ "users.name": `${user.name}` });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 async function getUserByEmail(email) {
   try {
     await dal.connect();
