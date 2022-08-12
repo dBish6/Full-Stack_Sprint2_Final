@@ -411,3 +411,45 @@ footer p {
   /* vertical-align: top;
   text-align: center; */
 }
+
+/* CSS for the Login page */
+
+.loginContainer {
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.loginContainer form {
+  width: 30%;
+  font-size: 1.6rem;
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 1rem;
+  row-gap: 16px;
+  background-color: #02ffd5a4;
+  margin: auto;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  display: grid;
+  columns: 2;
+}
+
+.loginContainer h3 {
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.loginContainer form input {
+  padding: 8px;
+}
+
+.loginContainer button {
+  margin: auto;
+  color: white;
+  background-color: rgb(21, 132, 183);
+  border-radius: 2rem;
+  font-size: 1.6rem;
+  width: fit-content;
+  padding: 8px 16px;
+}
