@@ -32,7 +32,7 @@ router.use(express.static("public"));
 // <Sign in Sign up routes go here>
 // Sign In route
 router.get("/login", checkNotAuthenticated, async (req, res) => {
-  res.render("login", { title: "Login" });
+  res.render("auth/login", { title: "Login" });
 });
 
 // router.post("/authenticate", checkNotAuthenticated, async (req, res) => {
@@ -70,7 +70,7 @@ router.post(
 
 // Sign up Route
 router.get("/register", checkNotAuthenticated, async (req, res) => {
-  res.render("register", { title: "Sign Up" });
+  res.render("auth/register", { title: "Sign Up" });
 });
 
 router.post("/register", checkNotAuthenticated, async (req, res) => {
@@ -119,7 +119,7 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
 
 // Deletion of user routes
 router.get("/profile", checkAuthenticated, async (req, res) => {
-  res.render("profile", { title: "My Profile" });
+  res.render("auth/profile", { title: "My Profile" });
 });
 
 router.delete("/profile", checkAuthenticated, async (req, res) => {
