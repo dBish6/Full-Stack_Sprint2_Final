@@ -1,38 +1,60 @@
 const {
-  findUser,
-  createUser,
+  getUserByEmail,
   deleteUser,
+  addUser,
 } = require("../model/controllers/m.auth.dal");
+
 // const { displayAllMongoMovies } = require("../model/controllers/m.movies.dal");
 
-test("findUser function testing", async () => {
-  expect(await findUser("chris.doucette@keyin.com", "123456789")).toBe(true);
-  expect(await findUser("chris.doucette@keyin.com", "45678914354")).toBe(false);
-  expect(await findUser("chris.doucette@outlook.com", "1234566789")).toBe(
-    false
-  );
+test("addUser function testing", async () => {
+  //Test Criteria 1
+  const userInfo = {
+    name: "Test Tester",
+    email: "test.test@testing.com",
+    password: "123456789",
+  };
+  await addUser(userInfo);
+  let user = await getUserByEmail(userInfo.email);
+  expect(user.email).toEqual(expect.stringMatching(userInfo.email));
+
+  //Test Criteria 2
+  let userInfo2 = {
+    name: "Testing Tester",
+    email: "test2.test2@testing.com",
+    password: "123456789",
+  };
+  await addUser(userInfo2);
+  let user2 = await getUserByEmail(userInfo2.email);
+  expect(user2.email).toEqual(expect.stringMatching(userInfo2.email));
 });
 
-test("createUser function testing", async () => {
-  expect(
-    await createUser("Testing McTester", "testing@test.com", "testtest")
-  ).toBe(true);
-  expect(
-    await createUser("Chris Doucette", "chris.doucette@keyin.com", "123456789")
-  ).toBe(false);
-  expect(
-    await createUser("Chris Doucette", "chris.doucette@keyin.com", "789456123")
-  ).toBe(false);
+test("getUserByEmail function testing", async () => {
+  // await getUserByEmail("hockeyman136@hotmail.com").objectContaining({
+  //   x: expect.arrayContaining({ name: "Chris Doucette" }),
+  // });
+  let email = "test.test@testing.com";
+  let user = await getUserByEmail(email);
+  expect(user.email).toEqual(expect.stringMatching(email));
+
+  email = "test2.test2@testing.com";
+  user = await getUserByEmail(email);
+  expect(user.email).toEqual(expect.stringMatching(email));
 });
 
 test("deleteUser function testing", async () => {
-  expect(
-    await deleteUser("Testing McTester", "testing@test.com", "testtest")
-  ).toBe(true);
-  expect(
-    await deleteUser("Chris Doucette", "chris.doucette@keyin.com", "789456123")
-  ).toBe(false);
-  expect(
-    await deleteUser("Testing McTester", "testing@test.com", "testtest")
-  ).toBe(false);
+  // Deleting users created in addUser Test function
+  const userEmail1 = "test.test@testing.com";
+  const userEmail2 = "test2.test2@testing.com";
+
+  let user1 = await deleteUser(userEmail1);
+  // console.log(user1);
+  expect(user1).toEqual({ acknowledged: true, deletedCount: 1 });
+
+  let user2 = await deleteUser(userEmail2);
+  // console.log(user2);
+  expect(user2).toEqual({ acknowledged: true, deletedCount: 1 });
 });
+
+// afterAll(() => {
+//   dal.close();
+// });
