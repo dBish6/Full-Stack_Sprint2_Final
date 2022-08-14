@@ -57,11 +57,7 @@ async function deleteUser(email) {
 }
 
 async function getUserByEmail(email) {
-<<<<<<< HEAD
-  DEBUG && console.log("getUserByEmail(" + email + ")");
-=======
-  // DEBUG && console.log(email);
->>>>>>> 499d862 (Jest Unit Testing for add, find & delete users)
+  DEBUG && console.log(email);
   try {
     const user = await userCollection.findOne({ email: email });
     global.user = user;
