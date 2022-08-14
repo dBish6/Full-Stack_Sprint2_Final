@@ -61,7 +61,7 @@ async function deleteUser(email) {
 }
 
 async function getUserByEmail(email) {
-  DEBUG && console.log(email);
+  // DEBUG && console.log(email);
   try {
     await dal.connect();
     const searching = dal
