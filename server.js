@@ -17,7 +17,7 @@
    August 12, 2022, David; We all fixed bugs when Dominic added authentication into the main project.
    August 13, 2022, David; Styling.
    August 13, 2022, Dominic; Comments added, cleanup
-
+   August 13, 2022, David; Stylied mongo details page and search results.
 */
 
 // Module Imports
