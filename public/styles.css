@@ -212,8 +212,9 @@ footer p {
 
 .homeContainer .monSearch input:focus::placeholder {
   background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .homeContainer .monSearch button {
