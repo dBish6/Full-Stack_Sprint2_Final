@@ -3,9 +3,11 @@
   <body>
     <%- include("../partials/nav.ejs") %>
     <main class="loginContainer">
-      <% if(messages.error) { %> <%- messages.error %> <% } %>
       <form action="/auth/login" method="POST">
         <h3>Sign In to Database Gallore</h3>
+        <h4 class="authMessage">
+          <% if(messages.error) { %> <%- messages.error %> <% } %>
+        </h4>
         <label for="email">Email: </label>
         <input type="email" name="email" id="email" required />
         <label for="password">Password: </label>

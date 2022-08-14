@@ -5,7 +5,6 @@
     <%- include("../partials/nav.ejs") %>
     <h2>My Account</h2>
     <div id="profileContainer">
-
       <table id="profileDetailsTable">
         <tr>
           <th>Account details</th>
@@ -23,19 +22,12 @@
           <td><%= user.email %></td>
         </tr>
       </table>
-      <% if(user.img){ %>
-        <img src= <%= user.img %>  alt="profilePic">
-      <% } %> 
-      <!-- <ul>
-        <li>User ID: <%= user._id %></li>
-        <li>Full Name: <%= user.name %></li>
-        <li>Email: <%= user.email %></li>
-      </ul> -->
     </div>
     <form action="/auth/logout/?_method=DELETE" method="POST">
       <button type="submit">Log Out</button>
+    </form>
 
-    <form action="/auth/profile/?_method=DELETE" method="POST">
+    <form action="/auth/profile" method="POST">
       <button type="submit">UnSubscribe</button>
     </form>
   </body>

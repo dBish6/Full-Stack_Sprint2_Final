@@ -47,8 +47,9 @@ if (DEBUG) app.use(morgan("dev"));
 // So express can use your static files, which is my public folder; css, images, HTML, etc.
 app.use(express.static("public"));
 // So express can read the new perameters off the url and encoding them corrently.
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
+// For error messaging
 app.use(flash());
 app.use(
   session({
@@ -62,10 +63,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(methodOverride("_method"));
 
-app.use((req, res, next) => {
-  console.log(req.session);
-  next();
-});
+DEBUG &&
+  app.use((req, res, next) => {
+    console.log(req.session);
+    next();
+  });
+
 // app.use(express.static("/search/mongo"));
 
 // *Posgres Imports*
@@ -129,7 +132,7 @@ app.get("/", checkAuthenticated, async (req, res) => {
   }
 });
 
-app.get("/:id", async (req, res) => {
+app.get("/:id", checkAuthenticated, async (req, res) => {
   try {
     if (DEBUG) console.log(req.params);
 
