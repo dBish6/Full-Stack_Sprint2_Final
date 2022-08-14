@@ -10,6 +10,7 @@
     Aug 9 2022, Chris Doucette, Updated the findUser & createUser functions to work with MongoDB
     Aug 10 2022, Chris Doucette, Updated the deleteUser to work with MongoDB
     Aug 11 2022, Dominic Whelan, Function additions and edits
+    Aug 13 2022, Dominic Whelan, Fixed getUserById() by requiring "ObjectId" from mongodb
 */
 
 const dal = require("../mongo.db.config");
@@ -61,7 +62,7 @@ async function deleteUser(email) {
 }
 
 async function getUserByEmail(email) {
-  DEBUG && console.log(email);
+  DEBUG && console.log("getUserByEmail(" + email + ")");
   try {
     await dal.connect();
     const searching = dal
@@ -70,7 +71,6 @@ async function getUserByEmail(email) {
       .findOne({ email: email });
     const user = await searching;
     global.user = user;
-    console.log(user);
 
     if (user === null) {
       console.log("getUserByEmail() Could not get User");
@@ -106,6 +106,9 @@ async function getUserById(id) {
     console.log(err);
   }
 }
+
+// Add fields to user document
+async function addToProfile(field, value) {}
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
