@@ -14,6 +14,8 @@
    August 10, 2022, David; impemented working details views and routes when in home page.
    August 11, 2022, Dominic; Authentication middleware added
    August 11, 2022, David; Styled home page and partials.
+   August 12, 2022, David; We all fixed bugs when Dominic added authentication into the main project.
+   August 13, 2022, David; Styling.
    August 13, 2022, Dominic; Comments added, cleanup
 
 */
@@ -72,8 +74,6 @@ DEBUG &&
     next();
   });
 
-// app.use(express.static("/search/mongo"));
-
 // *Posgres Imports*
 const pMovieData = require("./model/controllers/p.films.dal");
 
@@ -104,11 +104,6 @@ app.listen(PORT, "localhost", async () => {
   }
 });
 
-// app.get("/search/mongo", (req, res, next) => {
-//   res.setHeader("Last-Modified", new Date().toUTCString());
-//   next();
-// });
-
 // Display both movies from both databases.
 app.get("/", checkAuthenticated, async (req, res) => {
   try {
@@ -135,6 +130,7 @@ app.get("/", checkAuthenticated, async (req, res) => {
   }
 });
 
+// Display movies details for both databases.
 app.get("/:id", checkAuthenticated, async (req, res) => {
   try {
     if (DEBUG) console.log(req.params);
