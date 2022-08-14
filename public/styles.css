@@ -174,6 +174,7 @@ footer p {
 
 .homeContainer .mongoHeader h2 {
   font-family: "Montserrat", sans-serif;
+  font-size: 26px;
   margin-right: 0.5rem;
   background: linear-gradient(#d3d3d3, rgb(39, 167, 112));
   -webkit-background-clip: text;
@@ -310,6 +311,7 @@ footer p {
 
 .homeContainer .postgresHeader h2 {
   font-family: "Montserrat", sans-serif;
+  font-size: 26px;
   margin-right: 0.5rem;
   background: linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
   -webkit-background-clip: text;
@@ -427,54 +429,134 @@ footer p {
 
 /* MongoDb Details Page */
 
-.moviesDtailsContainer {
-  margin: 2rem 1rem auto 1rem;
+.mongoLogo {
+  position: relative;
+  margin: 10px auto 6px 1rem;
 }
 
-.moviesDtailsContainer h2 {
+.moviesDetailsContainer {
+  margin: auto 1rem auto 1rem;
+  height: 50%;
+}
+
+.moviesDetailsContainer h2 {
   font-family: "Montserrat", sans-serif;
-  margin-right: 0.5rem;
+  font-size: 26px;
+  margin-bottom: 0.7rem;
   background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* .moviesDtailsContainer .moviesDetails {
-  display: grid;
-  grid-template-columns: 35% 10% 20%;
-  grid-template-rows: 1%;
-  grid-template-columns: 1fr 35% 35%;
-  grid-row-gap: 1.5rem;
-  grid-row: span 2;
-} */
-
-/* .moviesDtailsContainer .moviesDetails .monDescription {
-  grid-row: span 2;
-} */
-
-.moviesDetailsContainer .moviesDetails .monDescription {
-  display: flex;
-  flex-direction: column;
-
-  float: left;
-  width: 21%;
-}
-
-/* .moviesDtailsContainer .moviesDetails .monDescription h3 p {
-  width: 50%;
-} */
-
-.moviesDetailsContainer .moviesDetails .monDescription img {
+.moviesDetailsContainer img {
   border: 2px solid rgb(25, 22, 84);
   width: 380px;
-  height: 380px;
+  height: 415px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+  float: left;
 }
 
-/* .moviesDetailsContainer .moviesDetails .monSmallDetails {
+.moviesDetailsContainer .moviesDetails .monSmallDetails {
   position: relative;
-  right: 13%;
-} */
+  left: 1rem;
+  width: 45%;
+  margin-bottom: 1rem;
+}
+
+.moviesDetailsContainer .moviesDetails .monSmallDetails h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  /* text-decoration: underline; */
+}
+
+.moviesDetailsContainer .moviesDetails .monSmallDetails b {
+  color: rgb(37, 37, 37, 0.7);
+}
+
+.moviesDetailsContainer .moviesDetails .monSmallDetails p {
+  position: relative;
+  left: 6px;
+  color: rgb(37, 37, 37, 0.6);
+  color: rgb(115, 115, 115);
+  font-size: 16px;
+}
+
+.moviesDetailsContainer .moviesDetails .contributors {
+  position: relative;
+  left: 1rem;
+  width: 45%;
+  margin-bottom: 1rem;
+}
+
+.moviesDetailsContainer .moviesDetails .contributors h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  /* text-decoration: underline; */
+}
+
+.moviesDetailsContainer .moviesDetails .contributors b {
+  position: relative;
+  left: 6px;
+  color: rgb(37, 37, 37, 0.7);
+}
+
+.moviesDetailsContainer .moviesDetails .contributors p {
+  position: relative;
+  left: 1rem;
+  color: rgb(115, 115, 115);
+}
+
+.moviesDetailsContainer .moviesDetails .rating {
+  position: relative;
+  left: 1rem;
+  width: 45%;
+}
+
+.moviesDetailsContainer .moviesDetails .rating h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  /* text-decoration: underline; */
+}
+
+.moviesDetailsContainer .moviesDetails .rating p {
+  position: relative;
+  left: 6px;
+  color: rgb(115, 115, 115);
+}
+
+.monDescription {
+  position: relative;
+  width: 45%;
+  margin: 1rem 1rem 1rem 1rem;
+  line-height: 21px;
+}
+
+.monDescription h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.monDescription p::first-letter {
+  color: rgb(37, 37, 37, 0.7);
+  font-family: "Oldenburg", cursive;
+  letter-spacing: 1px;
+  font-size: 30px;
+}
+
+.monDescription p {
+  position: relative;
+  left: 6px;
+
+  /* font-family: "Alegreya Sans", sans-serif; */
+  font-size: 18px;
+  color: rgb(115, 115, 115);
+}
 
 /* MongoDb Search Page */
 
@@ -509,6 +591,11 @@ footer p {
   border-radius: 1rem;
   row-gap: 16px;
   background-color: rgb(67, 198, 172);
+  background-image: linear-gradient(
+    170deg,
+    rgb(67, 198, 172),
+    rgb(25, 22, 84) 200%
+  );
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
   margin: auto;
   margin-top: 4%;
@@ -549,6 +636,8 @@ footer p {
   font-size: 1.6rem;
   color: #c20808;
 }
+
+/* Account Page */
 
 .profileContainer {
   display: inline-block;

@@ -3,92 +3,89 @@
 
 <body>
   <%- include('./partials/nav.ejs') %>
+  <img class="mongoLogo" src="/mongo-leaves.webp" alt="mongo-leaves.webp" width="38px" height="38px">
   <div class="moviesDetailsContainer">
-    <img src="/mongo-leaves.webp" alt="mongo-leaves.webp" width="38px" height="38px">
     <h2><%= mMovies[0].title %> (<%= mMovies[0].year %>)</h2>
     <% mMovies.forEach(result => { %>
+    <img src="<%= result.poster %>" alt="no-image.webp" width="350" height="">
+
     <div class="moviesDetails">
-      <div class="monDescription">
-        <img src="<%= result.poster %>" alt="no-image.webp" width="350" height="">
-
-        <% if (result.fullplot) {%>
-        <h3>Description</h3>
-        <p><%= result.fullplot %></p>
-        <% } %>
-      </div>
-
       <div class="monSmallDetails">
-        <h3>Contributors</h3>
+        <h3>Details</h3>
+        <% if (result.genres != null) {%>
         <% if (result.genres.length > 1) {%>
-        <p>Category: <%= result.genres.join(", ") %></p>
+        <p><b>Category:</b>&nbsp&nbsp<%= result.genres.join(", ") %></p>
         <% } else {%>
-        <p>Category: <%= result.genres%> </p>
+        <p><b>Category:</b>&nbsp&nbsp<%= result.genres%> </p>
         <% } %>
-        <p>Length: <%= result.runtime %> </p>
+        <% } %>
+        <p><b>Length:</b>&nbsp&nbsp<%= result.runtime %> </p>
         <% if (!result.rated) {%>
-        <p>Rating: Not Rated </p>
+        <p><b>Rated:</b>&nbsp&nbspNot Rated </p>
         <% } else { %>
-        <p>Rating: <%= result.rated %> </p>
+        <p><b>Rated:</b>&nbsp&nbsp<%= result.rated %> </p>
         <% } %>
         <% if (result.languages != null) {%>
         <% if (result.languages.length > 1) {%>
-        <p>languages: <%= result.languages.join(", ") %></p>
+        <p><b>Languages:</b>&nbsp&nbsp<%= result.languages.join(", ") %></p>
         <% } else {%>
-        <p><%= result.languages%> </p>
+        <p><b>Language:</b>&nbsp&nbsp<%= result.languages%> </p>
         <% } %>
         <% } %>
       </div>
-    </div>
 
-    <div class="contributors">
-      <h3>Contributors</h3>
-      <p>Actors:</p>
-      <% if (result.cast) {%>
-      <% if (result.cast.length > 1) {%>
-      <p><%= result.cast.join(", ")%> </p>
-      <% } else {%>
-      <p><%= result.cast%> </p>
-      <% } %>
-      <% } %>
+      <div class="contributors">
+        <h3>Contributors</h3>
+        <b>Actors:</b>
+        <% if (result.cast) {%>
+        <% if (result.cast.length > 1) {%>
+        <p><%= result.cast.join(", ")%> </p>
+        <% } else {%>
+        <p><%= result.cast%> </p>
+        <% } %>
+        <% } %>
 
-      <p>Directors:</p>
-      <% if (result.directors) {%>
-      <% if (result.directors.length > 1) {%>
-      <p><%= result.directors.join(", ") %></p>
-      <% } else {%>
-      <p><%= result.directors%> </p>
-      <% } %>
-      <% } %>
+        <br />
 
-      <p>Writers:</p>
-      <% if (result.writers) {%>
-      <% if (result.writers.length > 1) {%>
-      <p><%= result.writers.join(", ") %></p>
-      <% } else {%>
-      <p><%= result.writers %> </p>
-      <% } %>
-      <% } %>
-    </div>
+        <b>Directors:</b>
+        <% if (result.directors) {%>
+        <% if (result.directors.length > 1) {%>
+        <p><%= result.directors.join(", ") %></p>
+        <% } else {%>
+        <p><%= result.directors%> </p>
+        <% } %>
+        <% } %>
 
-    <div class="rating">
-      <h3>Ratings:</h3>
-      <% if (result.imdb.rating) {%>
-      <p>Imdb Rating: <%= result.imdb.rating %></p>
-      <% } %>
-      <% if (result.metacritic) {%>
-      <p>Metacritic Rating: <%= result.metacritic %></p>
-      <% } %>
+        <br />
+
+        <b>Writers:</b>
+        <% if (result.writers) {%>
+        <% if (result.writers.length > 1) {%>
+        <p><%= result.writers.join(", ") %></p>
+        <% } else {%>
+        <p><%= result.writers %> </p>
+        <% } %>
+        <% } %>
+      </div>
+
+      <div class="rating">
+        <h3>Ratings</h3>
+        <% if (result.imdb.rating) {%>
+        <p>Imdb Rating: <%= result.imdb.rating %></p>
+        <% } %>
+        <% if (result.metacritic) {%>
+        <p>Metacritic Rating: <%= result.metacritic %></p>
+        <% } %>
+      </div>
     </div>
   </div>
-  </div>
-  <div class="description">
+  <div class="monDescription">
     <% if (result.fullplot) {%>
     <h3>Description:</h3>
     <p><%= result.fullplot %></p>
     <% } %>
   </div>
   <% }) %>
-  </div>
 </body>
 <%- include('./partials/altFooter.ejs') %>
 
