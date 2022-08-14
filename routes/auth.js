@@ -12,7 +12,6 @@
     Aug 11, 2022, Dominic Whelan, Route additions and edits
 */
 
-const { application } = require("express"); // Is this needed --Dominic
 const express = require("express");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
@@ -22,10 +21,9 @@ const router = express.Router();
 const {
   checkAuthenticated,
   checkNotAuthenticated,
+  addUser,
+  deleteUser,
 } = require("../model/controllers/m.auth.dal");
-
-const { addUser } = require("../model/controllers/m.auth.dal");
-// const { route } = require("./search");
 
 router.use(express.static("public"));
 
@@ -35,29 +33,7 @@ router.get("/login", checkNotAuthenticated, async (req, res) => {
   res.render("auth/login", { title: "Login" });
 });
 
-// router.post("/authenticate", checkNotAuthenticated, async (req, res) => {
-// try {
-//   // if (DEBUG) console.log(req.body);
-
-//   let userFound = await findUser(req.body.email, req.body.password);
-
-//   if (userFound) {
-//     // Code when User is Logged In
-//     res.send("User logged In!!!!!");
-//     res.end();
-//   } else {
-//     // Code when user is not found in Users collection
-//     res.send("User NOT found, Please re-enter!");
-//     res.end();
-//   }
-// } catch (error) {
-//   console.error(error);
-//   // Send the 503 status code and render 503.ejs to the user.
-//   res.status(503).render("503");
-//   res.end();
-// }
-// });
-
+// Submits login information to be authenticated
 router.post(
   "/login",
   checkNotAuthenticated,
@@ -73,6 +49,7 @@ router.get("/register", checkNotAuthenticated, async (req, res) => {
   res.render("auth/register", { title: "Sign Up" });
 });
 
+// Submits user information to be added to the database
 router.post("/register", checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -82,7 +59,7 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       email: req.body.email,
       password: hashedPassword,
     };
-    DEBUG && console.log(user);
+    DEBUG && console.log("Registered User: " + user);
     addUser(user);
     res.redirect("/auth/login");
   } catch (err) {
@@ -117,43 +94,48 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
 //   }
 // });
 
-// Deletion of user routes
+// Route to User Account page
 router.get("/profile", checkAuthenticated, async (req, res) => {
   res.render("auth/profile", { title: "My Profile" });
 });
 
-router.delete("/profile", checkAuthenticated, async (req, res) => {
-  if (DEBUG) console.log(req.body);
+// Submits a request to delete user from
+router.post("/profile", checkAuthenticated, async (req, res) => {
+  console.log("Unsubscribing...");
+  console.log("profile-POST" + user.email);
   try {
-    let userDeletion = await deleteUser(
-      req.body.fullname,
-      req.body.email,
-      req.body.password
-    );
+    await deleteUser(user.email);
+    res.redirect("/auth/login");
+    //   let userDeletion = await deleteUser(
+    //     req.body.fullname,
+    //     req.body.email,
+    //     req.body.password
+    //   );
 
-    if (userDeletion) {
-      // code for user successfully deleted
-      res.send("User was successfully deleted!!");
-      req.logout(function (err) {
-        if (err) {
-          return next(err);
-        }
-        res.redirect("/login");
-      });
-    } else {
-      // code for user not deleted
-      // will adjust to add message for error or if user already exists in Users collection
-      res.send("User NOT deleted!");
-      res.end();
-    }
+    // if (userDeletion) {
+    //   // code for user successfully deleted
+    //   res.send("User was successfully deleted!!");
+    //   req.logout(function (err) {
+    //     if (err) {
+    //       return next(err);
+    //     }
+    //     res.redirect("/login");
+    //   });
+    // } else {
+    //   // code for user not deleted
+    //   // will adjust to add message for error or if user already exists in Users collection
+    //   res.send("User NOT deleted!");
+    //   res.end();
+    // }
   } catch (error) {
     console.error(error);
-    res.status(503).render("503");
-    res.end();
+    // res.status(503).render("503");
+    // res.end();
   }
 });
 
 router.delete("/logout", (req, res, next) => {
+  DEBUG && console.log("logout initialized");
   req.logout(function (err) {
     if (err) {
       return next(err);

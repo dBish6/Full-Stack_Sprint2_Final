@@ -13,6 +13,7 @@
 */
 
 const dal = require("../mongo.db.config");
+const { ObjectId } = require("mongodb");
 
 const getUsers = async () => {
   try {
@@ -44,18 +45,23 @@ async function addUser(user) {
   }
 }
 
-async function deleteUser(user) {
+async function deleteUser(email) {
   try {
+    console.log(email);
     await dal.connect();
     const deleting = dal
       .db("sample_mflix")
-      .remove({ "users.name": `${user.name}` });
+      .collection("users")
+      .deleteOne({ email: `${email}` });
+    const userDeleted = await deleting;
+    return userDeleted;
   } catch (err) {
     console.log(err);
   }
 }
 
 async function getUserByEmail(email) {
+  DEBUG && console.log(email);
   try {
     await dal.connect();
     const searching = dal
@@ -64,6 +70,7 @@ async function getUserByEmail(email) {
       .findOne({ email: email });
     const user = await searching;
     global.user = user;
+    console.log(user);
 
     if (user === null) {
       console.log("getUserByEmail() Could not get User");
@@ -77,15 +84,19 @@ async function getUserByEmail(email) {
 }
 
 async function getUserById(id) {
+  console.log(id);
+  const par = ObjectId(`${id}`);
   try {
     await dal.connect();
     const searching = dal
       .db("sample_mflix")
       .collection("users")
-      .findOne({ _id: id });
-    const user = await searching;
+      .findOne({ _id: par });
 
-    if (user < 1) {
+    const user = await searching;
+    console.log(user);
+
+    if (user === null) {
       console.log("Could not get User");
     } else {
       console.log("User Found");
@@ -114,6 +125,7 @@ module.exports = {
   getUserByEmail,
   getUserById,
   addUser,
+  deleteUser,
   checkAuthenticated,
   checkNotAuthenticated,
 };
