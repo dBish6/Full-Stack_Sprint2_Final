@@ -3,33 +3,42 @@
 
   <body>
     <%- include("../partials/nav.ejs") %>
-    <h2>My Account</h2>
-    <div id="profileContainer">
-      <table id="profileDetailsTable">
-        <tr>
-          <th>Account details</th>
-        </tr>
-        <tr>
-          <td>User ID:</td>
-          <td><%= user._id %></td>
-        </tr>
-        <tr>
-          <td>Full Name:</td>
-          <td><%= user.name %></td>
-        </tr>
-        <tr>
-          <td>Email:</td>
-          <td><%= user.email %></td>
-        </tr>
-      </table>
-    </div>
-    <form action="/auth/logout/?_method=DELETE" method="POST">
-      <button type="submit">Log Out</button>
-    </form>
 
-    <form action="/auth/profile" method="POST">
-      <button type="submit">UnSubscribe</button>
-    </form>
+    <div class="profileContainer">
+      <h2>My Account</h2>
+      <hr />
+      <div class="profileDetails">
+        <table class="profileDetailsTable">
+          <tr>
+            <th>Account details</th>
+          </tr>
+          <tr>
+            <td>User ID:</td>
+            <td><%= user._id %></td>
+          </tr>
+          <tr>
+            <td>Full Name:</td>
+            <td><%= user.name %></td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td><%= user.email %></td>
+          </tr>
+        </table>
+        <% if(user.img){ %>
+        <img src="`${user.img}`" alt="profile picture" />
+        <% } %>
+      </div>
+      <div class="profileButtons">
+        <form action="/auth/logout/?_method=DELETE" method="POST">
+          <button type="submit">Log Out</button>
+        </form>
+
+        <form action="/auth/profile" method="POST">
+          <button type="submit">UnSubscribe</button>
+        </form>
+      </div>
+    </div>
   </body>
   <%- include("../partials/altFooter.ejs") %>
 </html>

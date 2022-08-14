@@ -176,7 +176,7 @@ footer p {
   font-family: "Montserrat", sans-serif;
   margin-right: 0.5rem;
   background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -307,7 +307,7 @@ footer p {
   font-family: "Montserrat", sans-serif;
   margin-right: 0.5rem;
   background: -webkit-linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -432,13 +432,15 @@ footer p {
 
 /* CSS for the Login page */
 
-.loginContainer {
+.loginContainer,
+.registerContainer {
   align-items: center;
   justify-content: center;
   padding: 10px;
 }
 
-.loginContainer form {
+.loginContainer form,
+.registerContainer form {
   width: 30%;
   font-size: 1.6rem;
   padding: 16px;
@@ -446,23 +448,27 @@ footer p {
   border-radius: 1rem;
   row-gap: 16px;
   background-color: rgb(67, 198, 172);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
   margin: auto;
   margin-top: 4%;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
   display: grid;
   columns: 2;
 }
 
-.loginContainer h3 {
+.loginContainer h3,
+.registerContainer h3 {
   text-align: center;
   margin: 10px 0px;
 }
 
-.loginContainer form input {
+.loginContainer form input,
+.registerContainer form input {
   padding: 8px;
 }
 
-.loginContainer button {
+.loginContainer button,
+.registerContainer button {
   margin: auto;
   color: white;
   background-color: rgb(25, 22, 84);
@@ -470,4 +476,51 @@ footer p {
   font-size: 1.6rem;
   width: fit-content;
   padding: 8px 16px;
+}
+
+.loginContainer button:hover,
+.registerContainer button:hover {
+  background-color: rgb(39, 32, 172);
+}
+
+.authMessage {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #c20808;
+}
+
+.profileContainer {
+  display: inline-block;
+  margin: 2%;
+  padding: 2%;
+}
+
+.profileDetails {
+  margin: 2% 0;
+}
+
+.profileDetailsTable tr {
+  color: rgb(25, 22, 84);
+  height: 30px;
+  font-weight: 700;
+}
+
+.profileButtons {
+  display: flex;
+}
+
+.profileButtons form {
+  margin-right: 2%;
+  padding: 2%;
+}
+
+.profileButtons form button {
+  background-color: rgb(25, 22, 84);
+  color: white;
+  width: 200px;
+  padding: 2%;
+}
+
+.profileButtons form button:hover {
+  background-color: rgb(39, 32, 172);
 }

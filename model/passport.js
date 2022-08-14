@@ -22,9 +22,9 @@ const {
 
 function initialize(passport) {
   const authenticateUser = async (email, password, done) => {
-    DEBUG && console.log(email);
+    DEBUG && console.log("Authenticating..." + email);
     const user = await getUserByEmail(email);
-    DEBUG && console.log(user);
+    DEBUG && console.log("Authenticated User: " + user);
     if (user == null) {
       return done(null, false, {
         message: `There is no user with email ${email}`,
