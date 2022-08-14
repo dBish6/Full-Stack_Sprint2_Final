@@ -175,9 +175,11 @@ footer p {
 .homeContainer .mongoHeader h2 {
   font-family: "Montserrat", sans-serif;
   margin-right: 0.5rem;
-  background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
+  background: linear-gradient(#d3d3d3, rgb(39, 167, 112));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Had to put this here because it tells me to "define the standard property 'backhround-clip for compatibility"? */
+  background-clip: text;
 }
 
 .homeContainer .monSearch {
@@ -211,15 +213,16 @@ footer p {
 } */
 
 .homeContainer .monSearch input:focus::placeholder {
-  background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
+  background: linear-gradient(#d3d3d3, rgb(39, 167, 112));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .homeContainer .monSearch button {
-  width: 125px;
-  height: 50px;
+  width: 105px;
+  height: 40px;
+  margin-top: 4px;
   border: none;
   font-size: 1rem;
   color: rgb(255, 255, 255, 0.9);
@@ -244,14 +247,16 @@ footer p {
     #ff0000
   );
   border-image-slice: 1;
+  box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
   transition: 0.3s;
 }
 
 .moviesContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* grid-column-gap: 35%; */
+  grid-template-columns: repeat(2, 40%);
   grid-row-gap: 1.5rem;
+  position: relative;
+  left: 10%;
 }
 
 .moviesContainer .movie {
@@ -281,7 +286,7 @@ footer p {
   border-color: rgb(255, 255, 255, 0.7);
   transition: 0.3s;
   /* transform: translateY(-2rem); */
-  box-shadow: 0px 5px 80px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.35);
   /* margin-top: 3.5rem; */
 }
 
@@ -306,9 +311,10 @@ footer p {
 .homeContainer .postgresHeader h2 {
   font-family: "Montserrat", sans-serif;
   margin-right: 0.5rem;
-  background: -webkit-linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
+  background: linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .homeContainer .gresSearch {
@@ -342,14 +348,16 @@ footer p {
 } */
 
 .homeContainer .gresSearch input:focus::placeholder {
-  background: -webkit-linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
-  background-clip: text;
+  background: linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .homeContainer .gresSearch button {
-  width: 125px;
-  height: 50px;
+  width: 105px;
+  height: 40px;
+  margin-top: 4px;
   border: none;
   font-size: 1rem;
   color: rgb(255, 255, 255, 0.9);
@@ -374,14 +382,16 @@ footer p {
     #ff0000
   );
   border-image-slice: 1;
+  box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
   transition: 0.3s;
 }
 
 .filmsContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* grid-column-gap: 35%; */
+  grid-template-columns: repeat(2, 40%);
   grid-row-gap: 1.5rem;
+  position: relative;
+  left: 10%;
 }
 
 .filmsContainer .film {
@@ -411,9 +421,60 @@ footer p {
   border-color: rgb(255, 255, 255, 0.7);
   transition: 0.3s;
   /* transform: translateY(-2rem); */
-  box-shadow: 0px 5px 80px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.35);
   /* margin-top: 3.5rem; */
 }
+
+/* MongoDb Details Page */
+
+.moviesDtailsContainer {
+  margin: 2rem 1rem auto 1rem;
+}
+
+.moviesDtailsContainer h2 {
+  font-family: "Montserrat", sans-serif;
+  margin-right: 0.5rem;
+  background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* .moviesDtailsContainer .moviesDetails {
+  display: grid;
+  grid-template-columns: 35% 10% 20%;
+  grid-template-rows: 1%;
+  grid-template-columns: 1fr 35% 35%;
+  grid-row-gap: 1.5rem;
+  grid-row: span 2;
+} */
+
+/* .moviesDtailsContainer .moviesDetails .monDescription {
+  grid-row: span 2;
+} */
+
+.moviesDetailsContainer .moviesDetails .monDescription {
+  display: flex;
+  flex-direction: column;
+
+  float: left;
+  width: 21%;
+}
+
+/* .moviesDtailsContainer .moviesDetails .monDescription h3 p {
+  width: 50%;
+} */
+
+.moviesDetailsContainer .moviesDetails .monDescription img {
+  border: 2px solid rgb(25, 22, 84);
+  width: 380px;
+  height: 380px;
+}
+
+/* .moviesDetailsContainer .moviesDetails .monSmallDetails {
+  position: relative;
+  right: 13%;
+} */
 
 /* MongoDb Search Page */
 
@@ -430,7 +491,7 @@ footer p {
   text-align: center; */
 }
 
-/* CSS for the Login page */
+/* Login page */
 
 .loginContainer,
 .registerContainer {
