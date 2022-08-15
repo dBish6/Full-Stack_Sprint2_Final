@@ -13,10 +13,6 @@
             <th>Account details</th>
           </tr>
           <tr>
-            <td>User ID:</td>
-            <td><%= user._id %></td>
-          </tr>
-          <tr>
             <td>Full Name:</td>
             <td><%= user.name %></td>
           </tr>
@@ -35,17 +31,17 @@
         </table>
         <div class="profileImage">
           <% if(user.image != null){ %>
-          <img src="<%= user.image[0] %>" alt="profile picture" />
+          <img src="<%= user.image %>" alt="profile picture" />
           <% } %>
         </div>
       </div>
       <div class="profileFunctionsContainer">
         <div class="profileAdditions">
           <form action="/auth/profile/image/?_method=PUT" method="POST">
-            <h4>Add a link to your profile image</h4>
+            <h4>Submit a link to your profile image</h4>
             <label for="imageLink">Paste link here</label>
             <input type="text" name="imageLink" id="imageLink" required />
-            <button type="submit">Add Image</button>
+            <button type="submit">Set Image</button>
           </form>
         </div>
         <div class="profileButtons">

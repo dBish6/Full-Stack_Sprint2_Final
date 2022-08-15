@@ -17,28 +17,6 @@
 const dal = require("../mongo.db.config");
 const { ObjectId } = require("mongodb");
 
-// function is not used, delete? Dominic Aug.14/22
-const getUsers = async () => {
-  try {
-    await dal.connect();
-    const searching = dal
-      .db("sample_mflix")
-      .collection("users")
-      .find()
-      .toArray();
-    const users = await searching;
-
-    if (users < 1) {
-      console.log("Could not get Users");
-    } else {
-      console.log("Users Get Success");
-      return users;
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 async function addUser(user) {
   try {
     await userCollection.insertOne(user);
@@ -56,6 +34,7 @@ async function deleteUser(email) {
   }
 }
 
+// Function used for authentication, Retreival of user info
 async function getUserByEmail(email) {
   DEBUG && console.log("getUserByEmail(" + email + ")");
   try {
@@ -73,6 +52,7 @@ async function getUserByEmail(email) {
   }
 }
 
+// Function used for Passport
 async function getUserById(id) {
   DEBUG && console.log(id);
   const par = ObjectId(`${id}`);
@@ -91,18 +71,19 @@ async function getUserById(id) {
   }
 }
 
-// Add fields to user document
+// Add Image Url to user document
 async function addProfileImage(link) {
   try {
     await userCollection.updateOne(
       { _id: user._id },
-      { $addToSet: { image: `${link}` } }
+      { $set: { image: `${link}` } }
     );
     DEBUG && console.log("Profile Image added to UserId: " + user._id);
   } catch (err) {
     console.log(err);
   }
 }
+// Middleware functions to allow/block access to routes
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -118,7 +99,6 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 module.exports = {
-  getUsers,
   getUserByEmail,
   getUserById,
   addUser,
@@ -127,111 +107,3 @@ module.exports = {
   checkAuthenticated,
   checkNotAuthenticated,
 };
-
-// <Query functions from the database>
-
-// Function to find / verify a user based on their email / password
-
-// const findUser = async (email, password) => {
-//   try {
-//     await dal.connect();
-//     const searching = dal.db("sample_mflix").collection("users").findOne({
-//       email: email,
-//       password: password,
-//     });
-//     const userVerified = await searching;
-
-//     if (userVerified < 1) {
-//       console.log("User Not Found");
-//       return false;
-//     } else {
-//       console.log(userVerified);
-//       return true;
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     return false;
-//   }
-// };
-
-// Function to Add user to Users Collection
-// const createUser = async (name, email, password) => {
-//   // Checking if user already exists
-//   try {
-//     await dal.connect();
-//     const searching = dal.db("sample_mflix").collection("users").findOne({
-//       email: email,
-//     });
-//     const userVerified = await searching;
-
-//     if (userVerified < 1) {
-//       // User does not exist, adding to users
-//       try {
-//         await dal.connect();
-//         dal.db("sample_mflix").collection("users").insertOne({
-//           name: name,
-//           email: email,
-//           password: password,
-//         });
-//         console.log(`User has been added to Users collection!`);
-//         return true;
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     } else {
-//       console.log("User already exists!");
-//       return false;
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     return false;
-//   }
-// };
-// 123456789123456789;
-
-// Function to delete user from user collections
-
-//Testing Data
-// const deleteUser = async (name, email, password) => {
-//   try {
-//     await dal.connect();
-//     const searching = dal.db("sample_mflix").collection("users").findOne({
-//       name: name,
-//       email: email,
-//       password: password,
-//     });
-
-//     const userToDelete = await searching;
-
-//     console.log(userToDelete);
-
-//     if (userToDelete < 1) {
-//       console.log(
-//         "No User with matches entered email and password combination"
-//       );
-//     } else {
-//       try {
-//         await dal.connect();
-//         dal.db("sample_mflix").collection("users").deleteOne({
-//           name: name,
-//           email: email,
-//           password: password,
-//         });
-//         console.log("User Deleted");
-//         return true;
-//       } catch (error) {
-//         console.error(error);
-//         return false;
-//       }
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     return false;
-//   }
-// };
-
-// module.exports = {
-//   findUser,
-//   createUser,
-//   deleteUser,
-// };
