@@ -36,7 +36,7 @@ async function deleteUser(email) {
 
 // Function used for authentication, Retreival of user info
 async function getUserByEmail(email) {
-  DEBUG && console.log("getUserByEmail(" + email + ")");
+  // DEBUG && console.log(email);
   try {
     const user = await userCollection.findOne({ email: email });
     global.user = user;

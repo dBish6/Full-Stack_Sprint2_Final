@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "server": "nodemon",
-    "test": "jest --setupFiles dotenv/config --coverage --detectOpenHandles"
+    "test": "jest --setupFiles dotenv/config --coverage"
   },
   "repository": {
     "type": "git",
