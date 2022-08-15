@@ -490,12 +490,13 @@ footer p {
 }
 
 .profileContainer {
-  display: inline-block;
-  margin: 2%;
+  margin: 2rem;
   padding: 2%;
 }
 
 .profileDetails {
+  display: flex;
+  justify-content: center;
   margin: 2% 0;
 }
 
@@ -507,6 +508,7 @@ footer p {
 
 .profileButtons {
   display: flex;
+  justify-content: center;
 }
 
 .profileButtons form {
@@ -523,4 +525,16 @@ footer p {
 
 .profileButtons form button:hover {
   background-color: rgb(39, 32, 172);
+}
+
+.profileImage img {
+  border: 2px solid rgb(39, 32, 172);
+  border-radius: 2rem;
+  height: 16rem;
+  margin: 0 20px;
+}
+
+.profileFunctionsContainer {
+  display: block;
+  text-align: center;
 }

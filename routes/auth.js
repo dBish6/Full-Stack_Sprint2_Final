@@ -24,6 +24,7 @@ const {
   checkNotAuthenticated,
   getUserByEmail,
   addUser,
+  addProfileImage,
   deleteUser,
 } = require("../model/controllers/m.auth.dal");
 
@@ -97,6 +98,16 @@ router.post("/profile", checkAuthenticated, async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+  }
+});
+
+router.put("/profile/image", checkAuthenticated, async (req, res, next) => {
+  console.log("Adding Profile Image");
+  try {
+    await addProfileImage(req.body.imageLink);
+    res.redirect("/auth/profile");
+  } catch (error) {
+    next(error);
   }
 });
 
