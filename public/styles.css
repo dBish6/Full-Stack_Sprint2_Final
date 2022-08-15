@@ -644,7 +644,7 @@ footer p {
 /* Account Page */
 
 .profileContainer {
-  margin: 2rem;
+  margin: 1rem 2rem;
   padding: 2%;
 }
 
@@ -656,7 +656,7 @@ footer p {
 
 .profileDetailsTable tr {
   color: rgb(25, 22, 84);
-  height: 30px;
+  height: 1.6rem;
   font-weight: 700;
 }
 
@@ -673,8 +673,14 @@ footer p {
 .profileButtons form button {
   background-color: rgb(25, 22, 84);
   color: white;
-  width: 200px;
+  width: 10rem;
   padding: 2%;
+}
+
+.profileFunctionsContainer button {
+  background-color: rgb(25, 22, 84);
+  color: white;
+  padding: 0.2rem 0.5rem;
 }
 
 .profileButtons form button:hover {
@@ -684,8 +690,11 @@ footer p {
 .profileImage img {
   border: 2px solid rgb(39, 32, 172);
   border-radius: 2rem;
-  height: 16rem;
+  height: 10rem;
   margin: 0 20px;
+}
+.navProfileImage {
+  border-radius: 50%;
 }
 
 .profileFunctionsContainer {
