@@ -94,7 +94,7 @@ app.listen(PORT, "localhost", async () => {
   try {
     await dal.connect();
     // You actually don't need global here, it works somehow without it, but it makes sense having it there.
-    global.collection = dal.db("sample_mflix").collection("movies");
+    global.movieCollection = dal.db("sample_mflix").collection("movies");
     global.userCollection = dal.db("sample_mflix").collection("users");
 
     console.log(
