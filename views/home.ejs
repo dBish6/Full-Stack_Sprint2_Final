@@ -22,7 +22,7 @@
     </div>
 
     <div class="movieMore">
-      <button name="monBtn">More</button>
+      <button id="monBtn" onclick="loadMore()">expand</button>
     </div>
 
     <hr />
@@ -44,12 +44,28 @@
     </div>
 
     <div class="movieMore">
-      <button name="gresBtn">More</button>
+      <button name="gresBtn">Expand</button>
     </div>
 
   </div>
-  </div>
 </body>
+<script>
+  // For expand button with mongodb.
+  const loadMore = () => {
+    const expandBtn = document.querySelector("#monBtn")
+    let movies = JSON.parse(document.querySelector("#ejsMoviesData").innerHTML)
+    console.log(movies);
+    expandBtn.addEventListener("click", () => {
+      movies.forEach(mov => {
+        return `<div class="moviesContainer>
+        <p class="movie">
+          <a href="${mov._id}"> <b> ${mov.title} </b> ( ${mov.year} )</a>
+        </p>
+      </div`
+      })
+    })
+  }
+</script>
 <%- include("./partials/footer.ejs") %>
 
 </html>
