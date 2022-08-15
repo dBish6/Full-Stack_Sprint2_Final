@@ -13,7 +13,20 @@
       <a href="/">Home</a>
     </div>
     <div class="right">
+      <% if(profileIcon != null){ %>
+      <img
+        src="<%= profileIcon %>"
+        alt="user.webp"
+        width="32px"
+        height="32px"
+        class="navProfileImage"
+      />
+
+      <% } else { %>
+
       <img src="/user.webp" alt="user.webp" width="32px" height="32px" />
+
+      <% } %>
 
       <a href="http://localhost:4000/auth/profile">Account</a>
     </div>

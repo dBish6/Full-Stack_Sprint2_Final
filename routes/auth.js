@@ -117,6 +117,7 @@ router.put("/profile/image", checkAuthenticated, async (req, res, next) => {
 // Route to call function to log out user
 router.delete("/logout", (req, res, next) => {
   DEBUG && console.log("logout initialized");
+  global.profileIcon = null;
   req.logout(function (err) {
     if (err) {
       return next(err);
