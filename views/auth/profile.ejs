@@ -24,19 +24,39 @@
             <td>Email:</td>
             <td><%= user.email %></td>
           </tr>
+          <tr>
+            <td>Phone:</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Favorite Genre:</td>
+            <td></td>
+          </tr>
         </table>
-        <% if(user.img){ %>
-        <img src="`${user.img}`" alt="profile picture" />
-        <% } %>
+        <div class="profileImage">
+          <% if(user.image != null){ %>
+          <img src="<%= user.image[0] %>" alt="profile picture" />
+          <% } %>
+        </div>
       </div>
-      <div class="profileButtons">
-        <form action="/auth/logout/?_method=DELETE" method="POST">
-          <button type="submit">Log Out</button>
-        </form>
+      <div class="profileFunctionsContainer">
+        <div class="profileAdditions">
+          <form action="/auth/profile/image/?_method=PUT" method="POST">
+            <h4>Add a link to your profile image</h4>
+            <label for="imageLink">Paste link here</label>
+            <input type="text" name="imageLink" id="imageLink" required />
+            <button type="submit">Add Image</button>
+          </form>
+        </div>
+        <div class="profileButtons">
+          <form action="/auth/logout/?_method=DELETE" method="POST">
+            <button type="submit">Log Out</button>
+          </form>
 
-        <form action="/auth/profile" method="POST">
-          <button type="submit">UnSubscribe</button>
-        </form>
+          <form action="/auth/profile" method="POST">
+            <button type="submit">UnSubscribe</button>
+          </form>
+        </div>
       </div>
     </div>
   </body>

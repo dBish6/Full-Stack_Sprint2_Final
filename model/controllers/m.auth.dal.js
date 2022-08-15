@@ -11,11 +11,13 @@
     Aug 10 2022, Chris Doucette, Updated the deleteUser to work with MongoDB
     Aug 11 2022, Dominic Whelan, Function additions and edits
     Aug 13 2022, Dominic Whelan, Fixed getUserById() by requiring "ObjectId" from mongodb
+    Aug 14 2022, Dominic Whelan, cleaned up code
 */
 
 const dal = require("../mongo.db.config");
 const { ObjectId } = require("mongodb");
 
+// function is not used, delete? Dominic Aug.14/22
 const getUsers = async () => {
   try {
     await dal.connect();
@@ -39,8 +41,7 @@ const getUsers = async () => {
 
 async function addUser(user) {
   try {
-    await dal.connect();
-    const adding = dal.db("sample_mflix").collection("users").insertOne(user);
+    await userCollection.insertOne(user);
   } catch (err) {
     console.log(err);
   }
@@ -48,14 +49,8 @@ async function addUser(user) {
 
 async function deleteUser(email) {
   try {
-    console.log(email);
-    await dal.connect();
-    const deleting = dal
-      .db("sample_mflix")
-      .collection("users")
-      .deleteOne({ email: `${email}` });
-    const userDeleted = await deleting;
-    return userDeleted;
+    DEBUG && console.log("Deleting..." + email);
+    await userCollection.deleteOne({ email: `${email}` });
   } catch (err) {
     console.log(err);
   }
@@ -64,12 +59,7 @@ async function deleteUser(email) {
 async function getUserByEmail(email) {
   DEBUG && console.log("getUserByEmail(" + email + ")");
   try {
-    await dal.connect();
-    const searching = dal
-      .db("sample_mflix")
-      .collection("users")
-      .findOne({ email: email });
-    const user = await searching;
+    const user = await userCollection.findOne({ email: email });
     global.user = user;
 
     if (user === null) {
@@ -84,17 +74,11 @@ async function getUserByEmail(email) {
 }
 
 async function getUserById(id) {
-  console.log(id);
+  DEBUG && console.log(id);
   const par = ObjectId(`${id}`);
   try {
-    await dal.connect();
-    const searching = dal
-      .db("sample_mflix")
-      .collection("users")
-      .findOne({ _id: par });
-
-    const user = await searching;
-    console.log(user);
+    const user = await userCollection.findOne({ _id: par });
+    DEBUG && console.log(user);
 
     if (user === null) {
       console.log("Could not get User");
@@ -108,7 +92,17 @@ async function getUserById(id) {
 }
 
 // Add fields to user document
-async function addToProfile(field, value) {}
+async function addProfileImage(link) {
+  try {
+    await userCollection.updateOne(
+      { _id: user._id },
+      { $addToSet: { image: `${link}` } }
+    );
+    DEBUG && console.log("Profile Image added to UserId: " + user._id);
+  } catch (err) {
+    console.log(err);
+  }
+}
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -129,6 +123,7 @@ module.exports = {
   getUserById,
   addUser,
   deleteUser,
+  addProfileImage,
   checkAuthenticated,
   checkNotAuthenticated,
 };
