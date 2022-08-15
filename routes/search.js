@@ -18,9 +18,7 @@
 const express = require("express");
 const router = express.Router();
 
-// const moment = require("moment");
 router.use(express.static("public"));
-// router.use(express.static("/search/mongo"));
 
 // Search event logging.
 const EventEmitter = require("events");
@@ -40,11 +38,6 @@ const pMovieData = require("../model/controllers/p.films.dal");
 // *Mongo Imports*
 // const monSearchData = require("../model/controllers/m.search.dal");
 const mMovieData = require("../model/controllers/m.movies.dal");
-
-// router.get("/mongo", function (req, res, next) {
-//   res.setHeader("Last-Modified", new Date().toUTCString());
-//   next();
-// });
 
 // *Old Search*
 // router.get("/mongo", async (req, res) => {
@@ -82,7 +75,6 @@ router.get("/mongo", async (req, res) => {
       .limit(30);
     const mSearch = await auto.toArray();
     // if (DEBUG) console.log(mSearch);
-    // res.setHeader("Last-Modified", new Date().toUTCString());
     // Render this route with m.search.ejs with the autocomplete.
     res.render("searchResults/m_search", { mSearch, title: "Mongo Search" });
     // Event emitter.

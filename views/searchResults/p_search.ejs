@@ -21,6 +21,10 @@
     </div>
   </div>
 </body>
-<%- include('../partials/footer.ejs') %>
+<% if (pSearch.length <= 8) { %>
+  <%- include('../partials/altFooter.ejs') %>
+  <% } else {%>
+  <%- include('../partials/footer.ejs') %>
+  <% } %>
 
 </html>
