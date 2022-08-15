@@ -12,7 +12,6 @@
     Aug 15 2022, Chris Doucette, Added beforeAll to get db Connection & updated deleteUser to check for toBeUndefined()
 */
 
-const { Connection } = require("pg");
 const {
   getUserByEmail,
   deleteUser,
@@ -23,9 +22,10 @@ require("dotenv").config();
 const dal = require("../model/mongo.db.config");
 
 describe("Testing on some functions", () => {
-  // Setting up db connection and console.log tracking
+  // Setting up db connection
   beforeAll(async () => {
     try {
+      // const app = require("../server");
       await dal.connect();
       global.userCollection = dal.db("sample_mflix").collection("users");
       global.DEBUG = true;
@@ -78,11 +78,18 @@ describe("Testing on some functions", () => {
     const userEmail1 = "test.test@testing.com";
     const userEmail2 = "test2.test2@testing.com";
 
-    let user1 = await deleteUser(userEmail1);
+    // Searches for user by Email
+    // Then deletes the search criteria
+    // Then searches again to make sure search results are then undefined
+    let user1 = await getUserByEmail(userEmail1);
+    expect(user1.email).toBe(userEmail1);
+    user1 = await deleteUser(userEmail1);
     user1 = await getUserByEmail(userEmail1);
     expect(user1).toBeUndefined();
 
-    let user2 = await deleteUser(userEmail2);
+    let user2 = await getUserByEmail(userEmail2);
+    expect(user2.email).toBe(userEmail2);
+    user2 = await deleteUser(userEmail2);
     user2 = await getUserByEmail(userEmail2);
     expect(user2).toBeUndefined();
   });
