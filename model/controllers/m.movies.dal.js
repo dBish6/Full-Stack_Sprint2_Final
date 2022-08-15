@@ -19,7 +19,9 @@ const { ObjectId } = require("mongodb");
 const displayAllMongoMovies = async () => {
   try {
     // Aggregate is a pipeline, in this case, the $sample operator randomizes through 50 documents.
-    return await collection.aggregate([{ $sample: { size: 50 } }]).toArray();
+    return await movieCollection
+      .aggregate([{ $sample: { size: 50 } }])
+      .toArray();
   } catch (error) {
     console.error(error);
   }
@@ -27,7 +29,7 @@ const displayAllMongoMovies = async () => {
 
 const getMongoMovieDetails = async (_id) => {
   try {
-    return await collection.find({ _id: ObjectId(`${_id}`) }).toArray();
+    return await movieCollection.find({ _id: ObjectId(`${_id}`) }).toArray();
     // return await collection.find(`${_id}`);
   } catch (error) {
     console.error(error);
