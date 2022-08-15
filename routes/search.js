@@ -58,7 +58,7 @@ router.get("/mongo", async (req, res) => {
   try {
     if (DEBUG) console.log(req.query);
     // Autocomplete search or fuzzy search by the search index in the mongoDb movie collection on title.
-    let auto = collection
+    let auto = movieCollection
       .aggregate([
         {
           $search: {
@@ -80,7 +80,7 @@ router.get("/mongo", async (req, res) => {
     // Event emitter.
     myEmitter.emit(
       "log",
-      `Searched: ${req.query.search}\tSTATUS: ${res.statusCode}`,
+      `UserID: ${user._id}\tSearched: ${req.query.search}\tSTATUS: ${res.statusCode}`,
       "INFO",
       "searchLog.log"
     );
@@ -102,7 +102,7 @@ router.get("/postgres", async (req, res) => {
     // Event emitter.
     myEmitter.emit(
       "log",
-      `Searched: ${req.query.search}\tSTATUS: ${res.statusCode}`,
+      `UserID: ${user._id}\tSearched: ${req.query.search}\tSTATUS: ${res.statusCode}`,
       "INFO",
       "searchLog.log"
     );
