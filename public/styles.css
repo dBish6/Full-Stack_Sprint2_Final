@@ -687,8 +687,11 @@ footer p {
   padding: 0.2rem 0.5rem;
 }
 
-.profileButtons form button:hover {
+.profileButtons form button:hover,
+.profileFunctionsContainer button:hover {
   background-color: rgb(39, 32, 172);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .profileImage img {
