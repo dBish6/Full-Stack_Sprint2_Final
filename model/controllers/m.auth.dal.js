@@ -57,7 +57,7 @@ async function deleteUser(email) {
 }
 
 async function getUserByEmail(email) {
-  DEBUG && console.log("getUserByEmail(" + email + ")");
+  // DEBUG && console.log(email);
   try {
     const user = await userCollection.findOne({ email: email });
     global.user = user;
