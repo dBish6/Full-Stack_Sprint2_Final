@@ -12,27 +12,30 @@
    set up the views and made the home routes for searching.
    August 9, 2022, David; impemented a mongoDb connection in app.listen.
    August 10, 2022, David; impemented working details views and routes when in home page.
+   August 11, 2022, Dominic; Authentication middleware added
    August 11, 2022, David; Styled home page and partials.
-
+   August 12, 2022, David; We all fixed bugs when Dominic added authentication into the main project.
+   August 13, 2022, David; Styling.
+   August 13, 2022, Dominic; Comments added, cleanup
+   August 13, 2022, David; Stylied mongo details page and search results.
 */
 
+// Module Imports
 const express = require("express");
 const app = express();
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
-
 const morgan = require("morgan");
 require("dotenv").config();
 
+// Declare function to initialize Passport
 const initializePassport = require("./model/passport");
 initializePassport(passport);
 
-const {
-  checkAuthenticated,
-  checkNotAuthenticated,
-} = require("./model/controllers/m.auth.dal");
+// Middleware Function that verifies user authentication
+const { checkAuthenticated } = require("./model/controllers/m.auth.dal");
 
 global.DEBUG = true;
 
@@ -47,10 +50,12 @@ if (DEBUG) app.use(morgan("dev"));
 // So express can use your static files, which is my public folder; css, images, HTML, etc.
 app.use(express.static("public"));
 // So express can read the new perameters off the url and encoding them corrently.
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // For error messaging
 app.use(flash());
+
+// Define parameters of the session
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -68,8 +73,6 @@ DEBUG &&
     console.log(req.session);
     next();
   });
-
-// app.use(express.static("/search/mongo"));
 
 // *Posgres Imports*
 const pMovieData = require("./model/controllers/p.films.dal");
@@ -92,6 +95,7 @@ app.listen(PORT, "localhost", async () => {
     await dal.connect();
     // You actually don't need global here, it works somehow without it, but it makes sense having it there.
     global.collection = dal.db("sample_mflix").collection("movies");
+    global.userCollection = dal.db("sample_mflix").collection("users");
 
     console.log(
       `Server is running on http://localhost:${PORT}; Ctrl-C to terminate...`
@@ -100,11 +104,6 @@ app.listen(PORT, "localhost", async () => {
     console.error(error);
   }
 });
-
-// app.get("/search/mongo", (req, res, next) => {
-//   res.setHeader("Last-Modified", new Date().toUTCString());
-//   next();
-// });
 
 // Display both movies from both databases.
 app.get("/", checkAuthenticated, async (req, res) => {
@@ -132,6 +131,7 @@ app.get("/", checkAuthenticated, async (req, res) => {
   }
 });
 
+// Display movies details for both databases.
 app.get("/:id", checkAuthenticated, async (req, res) => {
   try {
     if (DEBUG) console.log(req.params);

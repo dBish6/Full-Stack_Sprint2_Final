@@ -174,10 +174,13 @@ footer p {
 
 .homeContainer .mongoHeader h2 {
   font-family: "Montserrat", sans-serif;
+  font-size: 26px;
   margin-right: 0.5rem;
-  background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
-  background-clip: text;
+  background: linear-gradient(#d3d3d3, rgb(39, 167, 112));
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Had to put this here because it tells me to "define the standard property 'backhround-clip for compatibility"? */
+  background-clip: text;
 }
 
 .homeContainer .monSearch {
@@ -211,15 +214,16 @@ footer p {
 } */
 
 .homeContainer .monSearch input:focus::placeholder {
-  background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
+  background: linear-gradient(#d3d3d3, rgb(39, 167, 112));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .homeContainer .monSearch button {
-  width: 125px;
-  height: 50px;
+  width: 105px;
+  height: 40px;
+  margin-top: 4px;
   border: none;
   font-size: 1rem;
   color: rgb(255, 255, 255, 0.9);
@@ -244,14 +248,16 @@ footer p {
     #ff0000
   );
   border-image-slice: 1;
+  box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
   transition: 0.3s;
 }
 
 .moviesContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* grid-column-gap: 35%; */
+  grid-template-columns: repeat(2, 40%);
   grid-row-gap: 1.5rem;
+  position: relative;
+  left: 10%;
 }
 
 .moviesContainer .movie {
@@ -281,7 +287,7 @@ footer p {
   border-color: rgb(255, 255, 255, 0.7);
   transition: 0.3s;
   /* transform: translateY(-2rem); */
-  box-shadow: 0px 5px 80px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.35);
   /* margin-top: 3.5rem; */
 }
 
@@ -305,10 +311,12 @@ footer p {
 
 .homeContainer .postgresHeader h2 {
   font-family: "Montserrat", sans-serif;
+  font-size: 26px;
   margin-right: 0.5rem;
-  background: -webkit-linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
-  background-clip: text;
+  background: linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .homeContainer .gresSearch {
@@ -342,14 +350,16 @@ footer p {
 } */
 
 .homeContainer .gresSearch input:focus::placeholder {
-  background: -webkit-linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
-  background-clip: text;
+  background: linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .homeContainer .gresSearch button {
-  width: 125px;
-  height: 50px;
+  width: 105px;
+  height: 40px;
+  margin-top: 4px;
   border: none;
   font-size: 1rem;
   color: rgb(255, 255, 255, 0.9);
@@ -374,14 +384,16 @@ footer p {
     #ff0000
   );
   border-image-slice: 1;
+  box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
   transition: 0.3s;
 }
 
 .filmsContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* grid-column-gap: 35%; */
+  grid-template-columns: repeat(2, 40%);
   grid-row-gap: 1.5rem;
+  position: relative;
+  left: 10%;
 }
 
 .filmsContainer .film {
@@ -411,8 +423,139 @@ footer p {
   border-color: rgb(255, 255, 255, 0.7);
   transition: 0.3s;
   /* transform: translateY(-2rem); */
-  box-shadow: 0px 5px 80px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.35);
   /* margin-top: 3.5rem; */
+}
+
+/* MongoDb Details Page */
+
+.mongoLogo {
+  position: relative;
+  margin: 10px auto 6px 1rem;
+}
+
+.moviesDetailsContainer {
+  margin: auto 1rem auto 1rem;
+  height: 50%;
+}
+
+.moviesDetailsContainer h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 26px;
+  margin-bottom: 0.7rem;
+  background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.moviesDetailsContainer img {
+  border: 2px solid rgb(25, 22, 84);
+  width: 380px;
+  height: 415px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+  float: left;
+}
+
+.moviesDetailsContainer .moviesDetails .monSmallDetails {
+  position: relative;
+  left: 1rem;
+  width: 45%;
+  margin-bottom: 1rem;
+}
+
+.moviesDetailsContainer .moviesDetails .monSmallDetails h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  /* text-decoration: underline; */
+}
+
+.moviesDetailsContainer .moviesDetails .monSmallDetails b {
+  color: rgb(37, 37, 37, 0.7);
+}
+
+.moviesDetailsContainer .moviesDetails .monSmallDetails p {
+  position: relative;
+  left: 6px;
+  color: rgb(37, 37, 37, 0.6);
+  color: rgb(115, 115, 115);
+  font-size: 16px;
+}
+
+.moviesDetailsContainer .moviesDetails .contributors {
+  position: relative;
+  left: 1rem;
+  width: 45%;
+  margin-bottom: 1rem;
+}
+
+.moviesDetailsContainer .moviesDetails .contributors h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  /* text-decoration: underline; */
+}
+
+.moviesDetailsContainer .moviesDetails .contributors b {
+  position: relative;
+  left: 6px;
+  color: rgb(37, 37, 37, 0.7);
+}
+
+.moviesDetailsContainer .moviesDetails .contributors p {
+  position: relative;
+  left: 1rem;
+  color: rgb(115, 115, 115);
+}
+
+.moviesDetailsContainer .moviesDetails .rating {
+  position: relative;
+  left: 1rem;
+  width: 45%;
+}
+
+.moviesDetailsContainer .moviesDetails .rating h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  /* text-decoration: underline; */
+}
+
+.moviesDetailsContainer .moviesDetails .rating p {
+  position: relative;
+  left: 6px;
+  color: rgb(115, 115, 115);
+}
+
+.monDescription {
+  position: relative;
+  width: 45%;
+  margin: 1rem 1rem 1rem 1rem;
+  line-height: 21px;
+}
+
+.monDescription h3 {
+  color: rgb(39, 167, 112);
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.monDescription p::first-letter {
+  color: rgb(37, 37, 37, 0.7);
+  font-family: "Oldenburg", cursive;
+  letter-spacing: 1px;
+  font-size: 30px;
+}
+
+.monDescription p {
+  position: relative;
+  left: 6px;
+
+  /* font-family: "Alegreya Sans", sans-serif; */
+  font-size: 18px;
+  color: rgb(115, 115, 115);
 }
 
 /* MongoDb Search Page */
@@ -430,15 +573,17 @@ footer p {
   text-align: center; */
 }
 
-/* CSS for the Login page */
+/* Login page */
 
-.loginContainer {
+.loginContainer,
+.registerContainer {
   align-items: center;
   justify-content: center;
   padding: 10px;
 }
 
-.loginContainer form {
+.loginContainer form,
+.registerContainer form {
   width: 30%;
   font-size: 1.6rem;
   padding: 16px;
@@ -446,23 +591,32 @@ footer p {
   border-radius: 1rem;
   row-gap: 16px;
   background-color: rgb(67, 198, 172);
+  background-image: linear-gradient(
+    170deg,
+    rgb(67, 198, 172),
+    rgb(25, 22, 84) 200%
+  );
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
   margin: auto;
   margin-top: 4%;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
   display: grid;
   columns: 2;
 }
 
-.loginContainer h3 {
+.loginContainer h3,
+.registerContainer h3 {
   text-align: center;
   margin: 10px 0px;
 }
 
-.loginContainer form input {
+.loginContainer form input,
+.registerContainer form input {
   padding: 8px;
 }
 
-.loginContainer button {
+.loginContainer button,
+.registerContainer button {
   margin: auto;
   color: white;
   background-color: rgb(25, 22, 84);
@@ -470,4 +624,67 @@ footer p {
   font-size: 1.6rem;
   width: fit-content;
   padding: 8px 16px;
+}
+
+.loginContainer button:hover,
+.registerContainer button:hover {
+  background-color: rgb(39, 32, 172);
+}
+
+.authMessage {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #c20808;
+}
+
+/* Account Page */
+
+.profileContainer {
+  margin: 2rem;
+  padding: 2%;
+}
+
+.profileDetails {
+  display: flex;
+  justify-content: center;
+  margin: 2% 0;
+}
+
+.profileDetailsTable tr {
+  color: rgb(25, 22, 84);
+  height: 30px;
+  font-weight: 700;
+}
+
+.profileButtons {
+  display: flex;
+  justify-content: center;
+}
+
+.profileButtons form {
+  margin-right: 2%;
+  padding: 2%;
+}
+
+.profileButtons form button {
+  background-color: rgb(25, 22, 84);
+  color: white;
+  width: 200px;
+  padding: 2%;
+}
+
+.profileButtons form button:hover {
+  background-color: rgb(39, 32, 172);
+}
+
+.profileImage img {
+  border: 2px solid rgb(39, 32, 172);
+  border-radius: 2rem;
+  height: 16rem;
+  margin: 0 20px;
+}
+
+.profileFunctionsContainer {
+  display: block;
+  text-align: center;
 }
