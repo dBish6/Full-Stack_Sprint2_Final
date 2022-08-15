@@ -1,44 +1,48 @@
 <html lang="en">
-<%- include("./partials/header.ejs") %>
+<%- include("./partials/headerMonData.ejs") %>
 
 <body>
   <%- include("./partials/nav.ejs") %>
   <div class="homeContainer">
     <div class="mongoHeader">
       <h2>MongoDb Film Archive</h2>
-      <img src="/mongo-leaves.webp" alt="mongo-leaves.webp" width="38px" height="38px">
+      <img src="/mongo-leaves.webp" alt="mongo-leaves.webp" width="38px" height="38px" />
     </div>
     <form class="monSearch" action="/search/mongo" method="GET">
       <!-- The req.query comes from the name -->
-      <input type="text" placeholder="Search by MongoDb" name="search">
+      <input type="text" placeholder="Search by MongoDb" name="search" />
       <button type="submit">Search</button>
     </form>
     <div class="moviesContainer">
       <% mMovies.forEach(movie => { %>
       <p class="movie">
-        <a href="<%= movie._id %>"> <b><%= movie.title %></b> (<%= movie.year %>)</a>
+        <a href="<%= movie._id %>">
+          <b><%= movie.title %></b> (<%= movie.year %>)</a>
       </p>
       <% }) %>
     </div>
 
+    <div class="moviesContainer" id="monMoreData"></div>
+
     <div class="movieMore">
-      <button id="monBtn" onclick="loadMore()">expand</button>
+      <button id="monBtn">Expand</button>
     </div>
 
     <hr />
 
     <div class="postgresHeader">
       <h2>Postgres Film Archive</h2>
-      <img src="/postgres-icon.webp" alt="postgres-icon.webp" width="38px" height="38px">
+      <img src="/postgres-icon.webp" alt="postgres-icon.webp" width="38px" height="38px" />
     </div>
     <form class="gresSearch" action="/search/postgres" method="GET">
-      <input type="text" placeholder="Search by Postgres" name="search">
+      <input type="text" placeholder="Search by Postgres" name="search" />
       <button type="submit">Search</button>
     </form>
     <div class="filmsContainer">
       <% pMovies.forEach(film => { %>
       <p class="film">
-        <a href="<%= film.fid %>"> <b><%= film.title %></b> (<%= film.release_year %>)</a>
+        <a href="<%= film.fid %>">
+          <b><%= film.title %></b> (<%= film.release_year %>)</a>
       </p>
       <% }) %>
     </div>
@@ -46,26 +50,29 @@
     <div class="movieMore">
       <button name="gresBtn">Expand</button>
     </div>
-
   </div>
+
+  <script>
+    // For expand button with mongodb.
+    const loadMore = () => {
+      const expandBtn = document.querySelector("#monBtn");
+      let movies = JSON.parse(
+        document.querySelector("#ejsMoviesData").innerHTML
+      );
+
+      let output = "";
+      expandBtn.addEventListener("click", () => {
+        movies.forEach((mov) => {
+          output += `<p class="movie">
+                       <a href="${mov._id}"> <b> ${mov.title} </b> ( ${mov.year} )</a>
+                     </p>`;
+        });
+        return document.querySelector("#monMoreData").innerHTML = output;
+      });
+    };
+    loadMore()
+  </script>
 </body>
-<script>
-  // For expand button with mongodb.
-  const loadMore = () => {
-    const expandBtn = document.querySelector("#monBtn")
-    let movies = JSON.parse(document.querySelector("#ejsMoviesData").innerHTML)
-    console.log(movies);
-    expandBtn.addEventListener("click", () => {
-      movies.forEach(mov => {
-        return `<div class="moviesContainer>
-        <p class="movie">
-          <a href="${mov._id}"> <b> ${mov.title} </b> ( ${mov.year} )</a>
-        </p>
-      </div`
-      })
-    })
-  }
-</script>
 <%- include("./partials/footer.ejs") %>
 
 </html>
