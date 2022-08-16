@@ -121,6 +121,7 @@ router.put("/profile/image", checkAuthenticated, async (req, res, next) => {
   console.log("Adding Profile Image");
   try {
     await addProfileImage(req.body.imageLink);
+    user.image = req.body.imageLink;
     res.redirect("/auth/profile");
   } catch (error) {
     next(error);
