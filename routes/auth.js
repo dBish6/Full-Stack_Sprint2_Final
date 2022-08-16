@@ -68,6 +68,18 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       favorite_genre: null,
       image: null,
     };
+
+    if (req.body.phone) {
+      user.phone = req.body.phone;
+    }
+
+    if (req.body.favorite_genre) {
+      user.favorite_genre = req.body.favorite_genre;
+    }
+
+    if (req.body.image) {
+      user.image = req.body.image;
+    }
     // Check to see if user already exists
     const userCheck = await getUserByEmail(user.email);
     if (userCheck != null) {

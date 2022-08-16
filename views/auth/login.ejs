@@ -8,9 +8,9 @@
         <h4 class="authMessage">
           <% if(messages.error) { %> <%- messages.error %> <% } %>
         </h4>
-        <label for="email">Email: </label>
+        <label for="email">Email: <span class="required">*</span> </label>
         <input type="email" name="email" id="email" required />
-        <label for="password">Password: </label>
+        <label for="password">Password: <span class="required">*</span> </label>
         <input type="password" name="password" id="password" required />
         <button type="submit">Sign In</button>
       </form>
