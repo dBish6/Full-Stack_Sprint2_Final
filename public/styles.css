@@ -706,6 +706,11 @@ footer p {
 
 /* Login page */
 
+.required {
+  color: #ff0000;
+  font-size: 1.2rem;
+}
+
 .loginContainer,
 .registerContainer {
   align-items: center;
@@ -717,11 +722,12 @@ footer p {
 .registerContainer form {
   width: 520px;
   font-size: 1.2rem;
+  font-weight: 700;
   color: rgb(37, 37, 37, 0.88);
-  padding: 16px;
+  padding: 6px 12px;
   border: 2px solid black;
   border-radius: 1rem;
-  row-gap: 16px;
+  row-gap: 12px;
   background-color: rgb(67, 198, 172);
   background-image: linear-gradient(
     170deg,
@@ -737,13 +743,13 @@ footer p {
 }
 
 .registerExtras {
-  padding: 2% 0;
+  padding: 2% 0 0 0;
 }
 
 .loginContainer h3,
 .registerContainer h3 {
   text-align: center;
-  margin: 10px 0px;
+  margin: 6px 0px;
 }
 
 .loginContainer form input,
