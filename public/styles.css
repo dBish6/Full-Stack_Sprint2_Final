@@ -23,17 +23,42 @@ body {
   overflow-x: hidden;
 }
 
-/* .mainFooter {
+.mainFooter {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+
+  color: rgba(174, 174, 174);
+  margin: auto 1rem auto 1rem;
+}
+
+.mainFooter div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+  position: fixed;
+  bottom: 10;
+
+}
+
+/* .altFooter {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
-  color: rgba(174, 174, 174);;
+  color: rgba(174, 174, 174);
+  background-color: rgb(25, 22, 84);
+  background-color: rgb(196, 255, 244);
+  background-image: linear-gradient(rgb(37, 37, 37, 0.7) 5%, rgb(255, 255, 255, 0.7));
+  background-color: rgb(67, 198, 172);
+  background-image: linear-gradient(rgb(37, 37, 37, 0.7) 5%, rgb(255, 255, 255, 0.7));
+  border-top: 2px solid rgb(255, 255, 255, 0.7);
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.35);
   padding: 0.8rem;
 } */
 
-.mainFooter {
+.altFooter {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,31 +66,12 @@ body {
 
   color: rgba(174, 174, 174);
   background-color: rgb(25, 22, 84);
-  /* background-color: rgb(196, 255, 244);
-  background-image: linear-gradient(rgb(37, 37, 37, 0.7) 5%, rgb(255, 255, 255, 0.7)); */
-  /* background-color: rgb(67, 198, 172);
-  background-image: linear-gradient(rgb(37, 37, 37, 0.7) 5%, rgb(255, 255, 255, 0.7)); */
   border-top: 2px solid rgb(255, 255, 255, 0.7);
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.35);
   padding: 0.8rem;
 }
 
-.altFooter {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  text-align: center;
-  color: rgba(174, 174, 174);
-  background-color: rgb(25, 22, 84);
-  /* background-image: linear-gradient(rgb(25, 22, 84) 85%, #d3d3d3); */
-  border-top: 2px solid rgb(255, 255, 255, 0.7);
-  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.35);
-  padding: 0.8rem;
-}
-
-footer p {
+footer .ital {
   font-style: italic;
 }
 
@@ -456,12 +462,12 @@ footer p {
 
 .mongoLogo {
   position: relative;
-  margin: 10px auto 6px 1rem;
+  margin: 12px auto 6px 1rem;
 }
 
 .moviesDetailsContainer {
   margin: auto 1rem auto 1rem;
-  height: 50%;
+  height: 28.95rem
 }
 
 .moviesDetailsContainer h2 {
@@ -475,25 +481,27 @@ footer p {
 }
 
 .moviesDetailsContainer img {
-  border: 2px solid rgb(25, 22, 84);
+  border: 2px solid rgb(37, 37, 37);
   width: 380px;
   height: 415px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.35);
   float: left;
 }
 
+.moviesDetailsContainer .moviesDetails {
+  display: flex;
+  flex-direction: row;
+}
+
 .moviesDetailsContainer .moviesDetails .monSmallDetails {
-  position: relative;
-  left: 1rem;
-  width: 45%;
-  margin-bottom: 1rem;
+  width: 20%;
+  margin-left: 1rem;
 }
 
 .moviesDetailsContainer .moviesDetails .monSmallDetails h3 {
   color: rgb(39, 167, 112);
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
-  /* text-decoration: underline; */
 }
 
 .moviesDetailsContainer .moviesDetails .monSmallDetails b {
@@ -508,17 +516,14 @@ footer p {
 }
 
 .moviesDetailsContainer .moviesDetails .contributors {
-  position: relative;
-  left: 1rem;
-  width: 45%;
-  margin-bottom: 1rem;
+  width: 40%;
+  margin-left: 1rem;
 }
 
 .moviesDetailsContainer .moviesDetails .contributors h3 {
   color: rgb(39, 167, 112);
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
-  /* text-decoration: underline; */
 }
 
 .moviesDetailsContainer .moviesDetails .contributors b {
@@ -534,9 +539,8 @@ footer p {
 }
 
 .moviesDetailsContainer .moviesDetails .rating {
-  position: relative;
-  left: 1rem;
-  width: 45%;
+  width: 20%;
+  margin-left: 1rem;
 }
 
 .moviesDetailsContainer .moviesDetails .rating h3 {
@@ -550,6 +554,39 @@ footer p {
   position: relative;
   left: 6px;
   color: rgb(115, 115, 115);
+}
+
+/* .moviesDetailsContainer .monTextArea {
+  display: flex;
+  flex-direction: column;
+} */
+
+.moviesDetailsContainer .monTextArea textarea {
+  margin: 2rem auto auto 1.5rem;
+  padding: 0.5rem;
+  resize: none;
+  border: 2px solid rgb(37, 37, 37, 0.7);
+  border-radius: 6px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.35);
+  background: transparent;
+}
+
+.moviesDetailsContainer .monTextArea button {
+  padding: 0.1rem;
+  margin: 0.5rem auto auto 1.5rem;
+  width: 4rem;
+  color: rgb(37, 37, 37, 0.7);
+  border: 1px solid rgb(37, 37, 37, 0.7);
+  border-radius: 4px;
+
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+.moviesDetailsContainer .monTextArea button:hover {
+  /* padding: 0.2rem; */
+  color: rgb(37, 37, 37, 0.);
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
+  transition: 0.3s;
 }
 
 .monDescription {
@@ -582,6 +619,134 @@ footer p {
   color: rgb(115, 115, 115);
 }
 
+/* Postgres Details Page */
+
+.postgresLogo {
+  position: relative;
+  margin: 12px auto 6px 1rem;
+}
+
+.filmDetailsContainer {
+  margin: auto 1rem auto 1rem;
+  height: 28.95rem
+}
+
+.filmDetailsContainer h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 26px;
+  margin-bottom: 0.7rem;
+  background: linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.filmDetailsContainer img {
+  border: 2px solid rgb(37, 37, 37);
+  width: 380px;
+  height: 415px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.35);
+  float: left;
+}
+
+.filmDetailsContainer .filmDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.filmDetailsContainer .filmDetails h3 {
+  color: rgb(54, 141, 206);;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+.filmDetailsContainer .filmDetails .smallDetails b {
+  color: rgb(37, 37, 37, 0.7);
+}
+
+.filmDetailsContainer .filmDetails .smallDetails p {
+  position: relative;
+  left: 6px;
+  color: rgb(115, 115, 115);
+  font-size: 16px;
+}
+
+.filmDetailsContainer .filmDetails .smallDetails {
+  width: 20%;
+  margin-left: 1rem;
+}
+
+.filmDetailsContainer .filmDetails .actors {
+  width: 20%;
+  margin-left: 1rem;
+}
+
+.filmDetailsContainer .filmDetails .actors p {
+  position: relative;
+  left: 6px;
+  color: rgb(115, 115, 115);
+  font-size: 16px;
+}
+
+
+.filmDetailsContainer .monTextArea textarea {
+  margin: 2rem auto auto 1.5rem;
+  padding: 0.5rem;
+  resize: none;
+  border: 2px solid rgb(37, 37, 37, 0.7);
+  border-radius: 6px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.35);
+  background: transparent;
+}
+
+.filmDetailsContainer .monTextArea button {
+  padding: 0.1rem;
+  margin: 0.5rem auto auto 1.5rem;
+  width: 4rem;
+  color: rgb(37, 37, 37, 0.7);
+  border: 1px solid rgb(37, 37, 37, 0.7);
+  border-radius: 4px;
+
+  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+.filmDetailsContainer .monTextArea button:hover {
+  /* padding: 0.2rem; */
+  color: rgb(37, 37, 37, 0.);
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
+  transition: 0.3s;
+}
+
+.gresDescription {
+  position: relative;
+  width: 45%;
+  margin: 1rem 1rem 1rem 1rem;
+  line-height: 21px;
+}
+
+.gresDescription h3 {
+  color: rgb(54, 141, 206);;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.gresDescription p::first-letter {
+  color: rgb(37, 37, 37, 0.7);
+  font-family: "Oldenburg", cursive;
+  letter-spacing: 1px;
+  font-size: 30px;
+}
+
+.gresDescription p {
+  position: relative;
+  left: 6px;
+
+  /* font-family: "Alegreya Sans", sans-serif; */
+  font-size: 18px;
+  color: rgb(115, 115, 115);
+}
+
 /* MongoDb Search Page */
 
 .searchMongoLogo {
@@ -596,7 +761,7 @@ footer p {
 
 .monSearchContainer h2 {
   font-family: "Montserrat", sans-serif;
-  font-size: 26px;
+  font-size: 28px;
   margin-bottom: 1rem;
   margin-left: 2.5rem;
   background: -webkit-linear-gradient(#d3d3d3, rgb(39, 167, 112));
@@ -665,8 +830,9 @@ footer p {
 
 .gresSearchContainer h2 {
   font-family: "Montserrat", sans-serif;
-  font-size: 26px;
+  font-size: 28px;
   margin-bottom: 1rem;
+  margin-left: 2.5rem;
   background: linear-gradient(rgb(34, 167, 240), rgb(17, 95, 154));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -702,10 +868,7 @@ footer p {
   font-size: 18px;
 }
 
-.gresSearchContainer .searchGridContainer .filmBox a:active {
-  color: rgb(54, 141, 206);
-}
-
+.gresSearchContainer .searchGridContainer .filmBox a:active,
 .gresSearchContainer .searchGridContainer .filmBox a:visited {
   color: rgb(54, 141, 206);
 }

@@ -3,28 +3,36 @@
 
 <body>
   <%- include('./partials/nav.ejs') %>
-  <div class="film_details_container">
+  <img class="postgresLogo" src="/postgres-icon.webp" alt="postgres-icon.webp" width="38px" height="38px">
+  <div class="filmDetailsContainer">
     <h2 class="details_header"><%= pMovies[0].title %> (<%= pMovies[0].release_year %>)</h2>
-    <div class="film_details">
-      <img src="/no-image.webp" alt="no-image.webp" width="225" height="225">
-      <div class="small_details">
-        <div>
-          <p>Category: <%= pMovies[0].category %></p>
-          <p>Length: <%= pMovies[0].period %> </p>
-          <p>Rating: <%= pMovies[0].rating %> </p>
-        </div>
-        <div class="actors">
-          <h4>Actors:</h4>
-          <p><%= pMovies[0].actors %>.</p>
-        </div>
+    <img src="/no-image.webp" alt="no-image.webp" width="225" height="225">
+    <div class="filmDetails">
+      <div class="smallDetails">
+        <h3>Details</h3>
+        <p><b>Category:</b>&nbsp&nbsp<%= pMovies[0].category %></p>
+        <p><b>Length:</b>&nbsp&nbsp<%= pMovies[0].period %> </p>
+        <p><b>Rating:</b>&nbsp&nbsp<%= pMovies[0].rating %> </p>
+      </div>
+      <div class="actors">
+        <h3>Actors:</h3>
+        <p><%= pMovies[0].actors %>.</p>
       </div>
     </div>
-    <div class="description">
-      <h4>Description:</h4>
-      <p><%= pMovies[0].description %></p>
-    </div>
+
+    <form class="monTextArea" action="/<%= pMovies[0].fid %>/post-review" method="POST">
+      <textarea placeholder="Write a review, it will be saved in your account." name="paragraph_text" cols="50" rows="5"></textarea>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+  </div>
+  <div class="gresDescription">
+    <h3>Description:</h3>
+    <p><%= pMovies[0].description %></p>
   </div>
 </body>
-<%- include('./partials/altFooter.ejs') %>
+<%- include('./partials/footer.ejs') %>
 
 </html>

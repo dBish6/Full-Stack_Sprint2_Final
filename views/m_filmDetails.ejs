@@ -36,8 +36,8 @@
 
       <div class="contributors">
         <h3>Contributors</h3>
-        <b>Actors:</b>
         <% if (result.cast) {%>
+        <b>Actors:</b>
         <% if (result.cast.length > 1) {%>
         <p><%= result.cast.join(", ")%> </p>
         <% } else {%>
@@ -47,8 +47,8 @@
 
         <br />
 
-        <b>Directors:</b>
         <% if (result.directors) {%>
+        <b>Directors:</b>
         <% if (result.directors.length > 1) {%>
         <p><%= result.directors.join(", ") %></p>
         <% } else {%>
@@ -58,8 +58,8 @@
 
         <br />
 
-        <b>Writers:</b>
         <% if (result.writers) {%>
+        <b>Writers:</b>
         <% if (result.writers.length > 1) {%>
         <p><%= result.writers.join(", ") %></p>
         <% } else {%>
@@ -78,7 +78,15 @@
         <% } %>
       </div>
     </div>
+
+    <form class="monTextArea" action="/<%= result._id %>/post-review" method="POST">
+      <textarea placeholder="Write a review, it will be saved in your account." name="paragraph_text" cols="50" rows="5"></textarea>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
   </div>
+
   <div class="monDescription">
     <% if (result.fullplot) {%>
     <h3>Description:</h3>
@@ -87,6 +95,6 @@
   </div>
   <% }) %>
 </body>
-<%- include('./partials/altFooter.ejs') %>
+<%- include('./partials/footer.ejs') %>
 
 </html>

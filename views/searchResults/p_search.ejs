@@ -24,10 +24,10 @@
     </div>
   </div>
 </body>
-<% if (pSearch.length <= 8) { %>
-  <%- include('../partials/altFooter.ejs') %>
-  <% } else {%>
+<% if (pSearch.length <= 5) { %>
   <%- include('../partials/footer.ejs') %>
+  <% } else {%>
+  <%- include('../partials/altFooter.ejs') %>
   <% } %>
 
 </html>
