@@ -25,6 +25,8 @@ const {
   getUserByEmail,
   addUser,
   addProfileImage,
+  addPhone,
+  addGenre,
   deleteUser,
 } = require("../model/controllers/m.auth.dal");
 
@@ -108,6 +110,28 @@ router.put("/profile/image", checkAuthenticated, async (req, res, next) => {
   console.log("Adding Profile Image");
   try {
     await addProfileImage(req.body.imageLink);
+    res.redirect("/auth/profile");
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/profile/phone", checkAuthenticated, async (req, res, next) => {
+  console.log("Adding Profile Image");
+  try {
+    await addPhone(req.body.phone);
+    user.phone = req.body.phone;
+    res.redirect("/auth/profile");
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put("/profile/genre", checkAuthenticated, async (req, res, next) => {
+  console.log("Adding Favorite Genre");
+  try {
+    await addGenre(req.body.genre);
+    user.favorite_genre = req.body.genre;
     res.redirect("/auth/profile");
   } catch (error) {
     next(error);

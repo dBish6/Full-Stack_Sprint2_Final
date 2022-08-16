@@ -715,6 +715,10 @@ footer p {
   font-weight: 700;
 }
 
+.profileDetailsTable td {
+  width: max-content;
+}
+
 .profileButtons {
   display: flex;
   justify-content: center;
@@ -732,14 +736,18 @@ footer p {
   padding: 2%;
 }
 
-.profileFunctionsContainer button {
+.profileFunctionsContainer button,
+.phoneAddBtn,
+.genreAddBtn {
   background-color: rgb(25, 22, 84);
   color: white;
   padding: 0.2rem 0.5rem;
 }
 
 .profileButtons form button:hover,
-.profileFunctionsContainer button:hover {
+.profileFunctionsContainer button:hover,
+.phoneAddBtn:hover,
+.genreAddBtn:hover {
   background-color: rgb(39, 32, 172);
   transition: 0.3s;
   cursor: pointer;
