@@ -1,5 +1,5 @@
 <html lang="en">
-<%- include("./partials/headerMonData.ejs") %>
+<%- include("./partials/headerData.ejs") %>
 
 <body>
   <%- include("./partials/nav.ejs") %>
@@ -47,30 +47,50 @@
       <% }) %>
     </div>
 
+    <div class="filmsContainer" id="gresMoreData"></div>
+
     <div class="movieMore">
-      <button name="gresBtn">Expand</button>
+      <button id="gresBtn">Expand</button>
     </div>
   </div>
 
   <script>
     // For expand button with mongodb.
-    const loadMore = () => {
+    const loadMoreMon = () => {
       const expandBtn = document.querySelector("#monBtn");
       let movies = JSON.parse(
-        document.querySelector("#ejsMoviesData").innerHTML
+        document.querySelector("#ejsMonMoviesData").innerHTML
       );
 
       let output = "";
       expandBtn.addEventListener("click", () => {
-        movies.forEach((mov) => {
+        movies.forEach((movie) => {
           output += `<p class="movie">
-                       <a href="${mov._id}"> <b> ${mov.title} </b> ( ${mov.year} )</a>
+                       <a href="${movie._id}"><b>${movie.title}</b> ( ${movie.year} )</a>
                      </p>`;
         });
         return document.querySelector("#monMoreData").innerHTML = output;
       });
     };
-    loadMore()
+    loadMoreMon()
+
+    const loadMoreGres = () => {
+      const expandBtn = document.querySelector("#gresBtn");
+      let movies = JSON.parse(
+        document.querySelector("#ejsGresFilmData").innerHTML
+      );
+
+      let output = "";
+      expandBtn.addEventListener("click", () => {
+        movies.forEach((film) => {
+          output += `<p class="film">
+                       <a href="${film.fid}"><b>${film.title}</b> ( ${film.release_year} )</a>
+                     </p>`;
+        });
+        return document.querySelector("#gresMoreData").innerHTML = output;
+      });
+    };
+    loadMoreGres()
   </script>
 </body>
 <%- include("./partials/footer.ejs") %>
