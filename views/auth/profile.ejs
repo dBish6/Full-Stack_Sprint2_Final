@@ -22,11 +22,28 @@
           </tr>
           <tr>
             <td>Phone:</td>
-            <td></td>
+            <td>
+              <% if(user.phone != null){ %> 
+                <%= user.phone %>
+                 <form action="/auth/profile/phone/?_method=PUT" method="POST"> 
+                   <input type="text" name="phone" value="Edit Phone" required> <button type="submit">edit</button> </form>
+                <% } else { %> 
+                   <form action="/auth/profile/phone/?_method=PUT" method="POST"><input type="text" name="phone" value="Add Phone" required> <button type="submit" class="phoneAddBtn">add</button> </form>
+                  <% } %> 
+            </td>
           </tr>
+          
           <tr>
             <td>Favorite Genre:</td>
-            <td></td>
+            <td>
+              <% if(user.favorite_genre != null){ %> 
+                <%= user.favorite_genre %>
+                <form action="/auth/profile/genre/?_method=PUT" method="POST"> 
+                  <input type="text" name="genre" value="Edit Genre">> &nbsp; <button type="submit">edit</button> </form>
+               <% } else { %> 
+                  <form action="/auth/profile/genre/?_method=PUT" method="POST"> <input type="text" name="genre" value="Add Genre"> <button type="submit" class="phoneAddBtn">add</button> </form>
+                 <% } %>
+            </td>
           </tr>
         </table>
         <div class="profileImage">

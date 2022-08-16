@@ -84,6 +84,34 @@ async function addProfileImage(link) {
     console.log(err);
   }
 }
+
+async function addPhone(text) {
+  try {
+    await userCollection.updateOne(
+      { _id: user._id },
+      { $set: { phone: `${text}` } }
+    );
+    DEBUG &&
+      console.log("Phone number: " + text + " added to UserId: " + user._id);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function addGenre(text) {
+  try {
+    await userCollection.updateOne(
+      { _id: user._id },
+      { $set: { favorite_genre: `${text}` } }
+    );
+    DEBUG &&
+      console.log(
+        "Favorite genre: " + text + " updated for UserId: " + user._id
+      );
+  } catch (err) {
+    console.log(err);
+  }
+}
 // Middleware functions to allow/block access to routes
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -105,6 +133,8 @@ module.exports = {
   addUser,
   deleteUser,
   addProfileImage,
+  addPhone,
+  addGenre,
   checkAuthenticated,
   checkNotAuthenticated,
 };
