@@ -444,9 +444,8 @@ footer p {
 
 .filmsContainer .film a:active,
 .filmsContainer .film a:visited {
-  background-color: rgb(54, 141, 206);;
+  background-color: rgb(54, 141, 206);
 }
-
 
 /* MongoDb Details Page */
 
@@ -705,7 +704,6 @@ footer p {
   color: rgb(54, 141, 206);
 }
 
-
 /* Login page */
 
 .loginContainer,
@@ -717,8 +715,9 @@ footer p {
 
 .loginContainer form,
 .registerContainer form {
-  width: 30%;
-  font-size: 1.6rem;
+  width: 520px;
+  font-size: 1.2rem;
+  color: rgb(37, 37, 37, 0.88);
   padding: 16px;
   border: 2px solid black;
   border-radius: 1rem;
@@ -731,10 +730,14 @@ footer p {
   );
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
   margin: auto;
-  margin-top: 4%;
+  margin-top: 2%;
   margin-bottom: 2%;
   display: grid;
   columns: 2;
+}
+
+.registerExtras {
+  padding: 2% 0;
 }
 
 .loginContainer h3,
@@ -745,7 +748,7 @@ footer p {
 
 .loginContainer form input,
 .registerContainer form input {
-  padding: 8px;
+  padding: 4px;
 }
 
 .loginContainer button,
