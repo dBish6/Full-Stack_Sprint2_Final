@@ -7,9 +7,15 @@
   <link rel="icon" type="image/png" href="/favicon-16x16.png" />
   <link rel="stylesheet" href="/styles.css" type="text/css" />
 
-  <% if (mMovies) {%>
-  <object id="ejsMoviesData" type="text/plain">
+  <% if (mMovies.length > 0) {%>
+  <object id="ejsMonMoviesData" type="text/plain">
     <%= JSON.stringify(mMovies) %>
   </object>
   <% } %>
+
+  <% if (pMovies.length > 0) {%>
+    <object id="ejsGresFilmData" type="text/plain">
+      <%= JSON.stringify(pMovies) %>
+    </object>
+    <% } %>
 </head>

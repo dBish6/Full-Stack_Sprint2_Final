@@ -57,6 +57,10 @@ const mMovieData = require("../model/controllers/m.movies.dal");
 router.get("/mongo", async (req, res) => {
   try {
     if (DEBUG) console.log(req.query);
+    // Redirects the user if there is no input.
+    if (!req.query.search) {
+      res.redirect("/")
+    }
     // Autocomplete search or fuzzy search by the search index in the mongoDb movie collection on title.
     let auto = movieCollection
       .aggregate([
@@ -95,6 +99,9 @@ router.get("/mongo", async (req, res) => {
 router.get("/postgres", async (req, res) => {
   try {
     if (DEBUG) console.log(req.query);
+    if (!req.query.search) {
+      res.redirect("/")
+    }
     let pSearch = await gresSearchData.titleSearch(req.query.search);
     // if (DEBUG) console.log(pSearch);
     // Render this route with p.search.ejs with the titleSearch function.

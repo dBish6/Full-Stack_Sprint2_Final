@@ -8,7 +8,7 @@
     <% if (pSearch.length > 0) { %>
     <div class="searchGridContainer">
       <% pSearch.forEach(film => { %>
-      <div class="movieBox">
+      <div class="filmBox">
         <img src="/no-image.webp" alt="no-image.webp" width="280" height="280">
         <a href="/search/postgres/<%= film.fid %>">
           <p><b><%= film.title %></b> (<%= film.release_year %>)</p>

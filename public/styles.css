@@ -23,6 +23,16 @@ body {
   overflow-x: hidden;
 }
 
+/* .mainFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  color: rgba(174, 174, 174);;
+  padding: 0.8rem;
+} */
+
 .mainFooter {
   display: flex;
   flex-direction: column;
@@ -31,16 +41,14 @@ body {
 
   color: rgba(174, 174, 174);
   background-color: rgb(25, 22, 84);
-  /* background-color: rgba(121, 118, 118, 0.19); */
-  /* background-image: linear-gradient(rgb(37, 37, 37, 0.7) 10%, rgb(255, 255, 255, 0.7)); */
+  /* background-color: rgb(196, 255, 244);
+  background-image: linear-gradient(rgb(37, 37, 37, 0.7) 5%, rgb(255, 255, 255, 0.7)); */
+  /* background-color: rgb(67, 198, 172);
+  background-image: linear-gradient(rgb(37, 37, 37, 0.7) 5%, rgb(255, 255, 255, 0.7)); */
   border-top: 2px solid rgb(255, 255, 255, 0.7);
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.35);
   padding: 0.8rem;
 }
-
-/* .shader {
-  background-color: rgb(67, 198, 172);
-} */
 
 .altFooter {
   position: absolute;
@@ -329,7 +337,6 @@ footer p {
 .homeContainer .gresSearch {
   display: flex;
   justify-content: center;
-  margin-bottom: 1.5rem;
 }
 
 .homeContainer .gresSearch input {
@@ -401,6 +408,7 @@ footer p {
   grid-row-gap: 1.5rem;
   position: relative;
   left: 10%;
+  margin-top: 1.5rem;
 }
 
 .filmsContainer .film {
@@ -432,6 +440,11 @@ footer p {
   /* transform: translateY(-2rem); */
   box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.35);
   /* margin-top: 3.5rem; */
+}
+
+.filmsContainer .film a:active,
+.filmsContainer .film a:visited {
+  background-color: rgb(54, 141, 206);
 }
 
 /* MongoDb Details Page */
@@ -588,7 +601,7 @@ footer p {
 
 .monSearchContainer .searchGridContainer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 1.5rem;
 }
 
@@ -632,12 +645,7 @@ footer p {
   color: rgb(39, 167, 112);
 }
 
-/* Login/Register pages */
-
-.required {
-  font-size: 1.4rem;
-  color: #ff0000;
-}
+/* Login page */
 
 .loginContainer,
 .registerContainer {
