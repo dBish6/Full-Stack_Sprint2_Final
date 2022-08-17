@@ -1,17 +1,20 @@
-/*
-    m.auth.dal.js
+/*  m.auth.dal.js
 
-    List of functions to create, delete and search for users
+    List of functions to create, delete and search for users.
+    Basically everything that has to deal with users.
+
+    http://localhost:${PORT}/auth
 
     Author: Chris Doucette
     Creaton Date: Monday August 8, 2022
     Updates:
     Date, Author, Description
-    Aug 9 2022, Chris Doucette, Updated the findUser & createUser functions to work with MongoDB
-    Aug 10 2022, Chris Doucette, Updated the deleteUser to work with MongoDB
-    Aug 11 2022, Dominic Whelan, Function additions and edits
-    Aug 13 2022, Dominic Whelan, Fixed getUserById() by requiring "ObjectId" from mongodb
-    Aug 14 2022, Dominic Whelan, cleaned up code
+    Aug 9 2022, Chris Doucette; Updated the findUser & createUser functions to work with MongoDB.
+    Aug 10 2022, Chris Doucette; Updated the deleteUser to work with MongoDB.
+    Aug 11 2022, Dominic Whelan; Function additions and edits.
+    Aug 13 2022, Dominic Whelan; Fixed getUserById() by requiring "ObjectId" from mongodb.
+    Aug 14 2022, Dominic Whelan; cleaned up code.
+    Aug 17 2022, David; added the addReview function.
 */
 
 const dal = require("../mongo.db.config");
@@ -112,6 +115,16 @@ async function addGenre(text) {
     console.log(err);
   }
 }
+
+// To add a review to the collection.
+const addReview = async (userReview) => {
+  try {
+    return await commentCollection.insertOne(userReview);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // Middleware functions to allow/block access to routes
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
@@ -135,6 +148,7 @@ module.exports = {
   addProfileImage,
   addPhone,
   addGenre,
+  addReview,
   checkAuthenticated,
   checkNotAuthenticated,
 };

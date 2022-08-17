@@ -30,7 +30,6 @@ const displayAllMongoMovies = async () => {
 const getMongoMovieDetails = async (_id) => {
   try {
     return await movieCollection.find({ _id: ObjectId(`${_id}`) }).toArray();
-    // return await collection.find(`${_id}`);
   } catch (error) {
     console.error(error);
   }

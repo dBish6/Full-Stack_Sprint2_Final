@@ -8,26 +8,31 @@
    Creation Date: August 8, 2022
    Updates:
    Date, Author, Description
-   August 8, 2022, David; set up databases configs and everything, impemented modules for server, imports and necessary middleware,
+   August 8, 2022, David; set up databases configs and everything, implemented modules for server, imports and necessary middleware,
    set up the views and made the home routes for searching.
-   August 9, 2022, David; impemented a mongoDb connection in app.listen.
-   August 10, 2022, David; impemented working details views and routes when in home page.
+   August 9, 2022, David; implemented a mongoDb connection in app.listen.
+   August 10, 2022, David; implemented working details views and routes when in home page.
    August 11, 2022, Dominic; Authentication middleware added
    August 11, 2022, David; Styled home page and partials.
    August 12, 2022, David; We all fixed bugs when Dominic added authentication into the main project.
    August 13, 2022, David; Styling.
    August 13, 2022, Dominic; Comments added, cleanup
    August 13, 2022, David; Stylied mongo details page and search results.
-*/
+   August 15, 2022, David; expaned button was implemented.
+   August 17, 2022, David; added the /id/post-review POST route and success route.
+ */
 
 // Module Imports
 const express = require("express");
 const app = express();
+
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
+const moment = require("moment");
+const { ObjectId, ObjectID } = require("mongodb");
 require("dotenv").config();
 
 // Declare function to initialize Passport
@@ -79,6 +84,7 @@ const pMovieData = require("./model/controllers/p.films.dal");
 
 // *Mongo Imports*
 const mMovieData = require("./model/controllers/m.movies.dal");
+const { addReview } = require("./model/controllers/m.auth.dal");
 const searchRouter = require("./routes/search");
 const authRouter = require("./routes/auth");
 
@@ -96,6 +102,7 @@ app.listen(PORT, "localhost", async () => {
     // You actually don't need global here, it works somehow without it, but it makes sense having it there.
     global.movieCollection = dal.db("sample_mflix").collection("movies");
     global.userCollection = dal.db("sample_mflix").collection("users");
+    global.commentCollection = dal.db("sample_mflix").collection("comments");
     global.profileIcon = null;
 
     console.log(
@@ -128,6 +135,17 @@ app.get("/", checkAuthenticated, async (req, res) => {
   } catch (error) {
     console.error(error);
     // Send the 503 status code and render 503.ejs to the user.
+    res.status(503).render("503");
+  }
+});
+
+// Displays success page.
+app.get("/success", checkAuthenticated, async (req, res) => {
+  try {
+    // Render this route with success.ejs with just the title for the title in head tag.
+    res.render("success", { title: "Review Submitted" });
+  } catch (error) {
+    console.error(error);
     res.status(503).render("503");
   }
 });
@@ -166,7 +184,33 @@ app.get("/:id", checkAuthenticated, async (req, res) => {
   }
 });
 
-// // Renders the 404.ejs when there is no GET found; middleware.
+// Posts the review to the database.
+app.post("/:id/post-review", checkAuthenticated, async (req, res) => {
+  try {
+    if (DEBUG) console.log(req.params);
+    if (DEBUG) console.log(req.body);
+
+    // user is from global varible in m.auth.dal.js.
+    // Stucture of the document in comments collection, but stuctured by object for sending.
+    const userReview = {
+      name: user.name,
+      email: user.email,
+      movie_id: ObjectId(req.params.id),
+      text: req.body.paragraph_text,
+      date: moment().format(),
+    };
+    if (DEBUG) console.log(userReview);
+    await addReview(userReview);
+
+    // Redirect when successful.
+    res.redirect("/success");
+  } catch (error) {
+    console.error(error);
+    res.status(503).render("503");
+  }
+});
+
+// Renders the 404.ejs when there is no GET found; middleware.
 app.use((req, res) => {
   res.status(404).render("404");
 });
