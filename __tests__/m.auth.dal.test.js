@@ -28,7 +28,7 @@ describe("Testing on some functions", () => {
       // const app = require("../server");
       await dal.connect();
       global.userCollection = dal.db("sample_mflix").collection("users");
-      global.DEBUG = true;
+      global.DEBUG = false;
     } catch (error) {
       console.error(error);
     }
@@ -49,7 +49,7 @@ describe("Testing on some functions", () => {
     };
     await addUser(userInfo);
     let user = await getUserByEmail(userInfo.email);
-    console.log(user);
+    // console.log(user);
     expect(user.email).toEqual(expect.stringMatching(userInfo.email));
 
     //Test Criteria 2
