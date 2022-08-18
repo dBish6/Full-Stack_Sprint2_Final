@@ -193,15 +193,25 @@ app.post("/:id/post-review", checkAuthenticated, async (req, res) => {
 
     // user is from global varible in m.auth.dal.js.
     // Stucture of the document in comments collection, but stuctured by object for sending.
-    const userReview = {
-      name: user.name,
-      email: user.email,
-      movie_id: ObjectId(req.params.id),
-      text: req.body.paragraph_text,
-      date: moment().format(),
-    };
-    if (DEBUG) console.log(userReview);
-    await addReview(userReview);
+    if (req.url.includes("a")) {
+      const userReview = {
+        name: user.name,
+        email: user.email,
+        movie_id: ObjectId(req.params.id),
+        text: req.body.paragraph_text,
+        date: moment().format(),
+      };
+      if (DEBUG) console.log(userReview);
+      await addReview(userReview);
+    } else {
+      // For Postgres
+      await pMovieData.addPostgresFilmReview(
+        user.name,
+        user.email,
+        req.params.id,
+        req.body.paragraph_text
+      );
+    }
     req.flash("success", "Your review was successfully created");
 
     // Redirect back to the same page when successful.

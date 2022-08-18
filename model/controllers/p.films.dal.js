@@ -7,7 +7,8 @@
    Creation Date: July 13, 2022
    Updates:
    Date, Author, Description
-   August 8, 2022, David; impemented displayAllPostgresFilms() and getPostgresFilmDetails().
+   August 8, 2022, David; implemented displayAllPostgresFilms() and getPostgresFilmDetails().
+   August 18, 2022, David; imlemented addPostgresFilmReview function.
 
 */
 
@@ -36,4 +37,21 @@ const getPostgresFilmDetails = async (id) => {
   }
 };
 
-module.exports = { displayAllPostgresFilms, getPostgresFilmDetails };
+const addPostgresFilmReview = async (fname, email, film_id, review) => {
+  let response;
+  try {
+    const sql =
+      "INSERT INTO review( full_name, email, film_id, review_text) \
+    VALUES($1, $2, $3, $4)";
+    response = await dal.query(sql, [fname, email, film_id, review]);
+    return response.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = {
+  displayAllPostgresFilms,
+  getPostgresFilmDetails,
+  addPostgresFilmReview,
+};

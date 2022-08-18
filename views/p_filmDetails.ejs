@@ -20,17 +20,18 @@
       </div>
     </div>
 
-    <form class="monTextArea" action="/<%= pMovies[0].fid %>/post-review" method="POST">
-      <textarea placeholder="Write a review, it will be saved in your account." name="paragraph_text" cols="50" rows="5"></textarea>
+    <form class="TextArea" action="/<%= pMovies[0].fid %>/post-review" method="POST">
+      <textarea placeholder="Write a review, it will be saved to your account." name="paragraph_text" cols="50" rows="5"></textarea>
       <div>
         <button type="submit">Submit</button>
+        <% if(messages.success) { %> <small><%- messages.success %></small> <% } %>
       </div>
     </form>
 
   </div>
   <div class="gresDescription">
     <h3>Description:</h3>
-    <p><%= pMovies[0].description %></p>
+    <p><%= pMovies[0].description %>.</p>
   </div>
 </body>
 <%- include('./partials/footer.ejs') %>
