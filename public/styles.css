@@ -980,14 +980,35 @@ footer .ital {
   margin: 2% 0;
 }
 
+.profileDetailsTable .profHeader {
+  color: rgb(37, 37, 37, 0.8);
+}
+
 .profileDetailsTable tr {
-  color: rgb(25, 22, 84);
+  color: rgb(115, 115, 115);
   height: 1.6rem;
   font-weight: 700;
 }
 
+.profileDetailsTable b {
+  color: rgb(37, 37, 37, 0.8);
+}
+
 .profileDetailsTable td {
   width: max-content;
+}
+
+.profileDetailsTable form {
+  margin-left: 0.5rem;
+}
+
+.profileDetailsTable form input {
+  padding: 3px;
+}
+
+/* Not working was just testing it with red. */
+.profileDetailsTable tr td form input::placeholder {
+  color: red;
 }
 
 .profileButtons {
@@ -996,7 +1017,6 @@ footer .ital {
 }
 
 .profileButtons form {
-  margin-right: 2%;
   padding: 2%;
 }
 
@@ -1013,6 +1033,14 @@ footer .ital {
   background-color: rgb(25, 22, 84);
   color: white;
   padding: 0.2rem 0.5rem;
+}
+
+.profileFunctionsContainer label {
+  color: rgb(37, 37, 37, 0.8);
+}
+
+.profileFunctionsContainer h4 {
+  color: rgb(37, 37, 37, 0.8);
 }
 
 .profileButtons form button:hover,

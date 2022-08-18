@@ -10,20 +10,20 @@
       <div class="profileDetails">
         <table class="profileDetailsTable">
           <tr>
-            <th>Account details</th>
+            <th class="profHeader">Account details</th>
           </tr>
           <tr>
-            <td>Full Name:</td>
+            <td><b>Full Name:</b></td>
             <td><%= user.name %></td>
           </tr>
           <tr>
-            <td>Email:</td>
+            <td><b>Email:</b></td>
             <td><%= user.email %></td>
           </tr>
           <tr>
-            <td>Phone:</td>
+            <td><b>Phone:</b></td>
             <td>
-              <% if(user.phone != null){ %> <%= user.phone %>
+              <% if(user.phone != null){ %> <b><%= user.phone %></b>
               <form action="/auth/profile/phone/?_method=PUT" method="POST">
                 <input type="text" name="phone" value="Edit Phone" required />
                 &nbsp;
@@ -40,7 +40,7 @@
           </tr>
 
           <tr>
-            <td>Favorite Genre:</td>
+            <td><b>Favorite Genre:</b></td>
             <td>
               <% if(user.favorite_genre != null){ %> <%= user.favorite_genre %>
               <form action="/auth/profile/genre/?_method=PUT" method="POST">
