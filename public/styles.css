@@ -327,13 +327,6 @@ footer .ital {
   background-color: rgb(31, 119, 81);
 }
 
-.homeContainer hr {
-  /* width: 100px;
-  height: 100px;
-  border-radius: 50%; */
-  border-top: 3px double rgb(25, 22, 84);
-}
-
 .movieExpand {
   margin: 0.5rem auto 2rem 15%;
 }
@@ -360,6 +353,22 @@ footer .ital {
   border-width: 2px;
   position: relative;
   top: 2px;
+}
+
+.homeContainer hr {
+  margin: auto 2rem auto 2rem;
+
+  /* border: 2px solid;
+  border-image: linear-gradient(145deg, rgb(17, 95, 154), rgb(39, 167, 112));
+  border-image-slice: 1; */
+
+  height: 0px;
+  border: double 3px transparent;
+  border-radius: 16px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(145deg, rgb(17, 95, 154), rgb(39, 167, 112));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
 
 /* Postgres Home Start */
@@ -403,7 +412,7 @@ footer .ital {
   border-width: 3px;
   outline: none;
   transition: all 0.3s ease 0s;
-  border-image: linear-gradient(135deg, #d3d3d3, rgb(17, 95, 154));
+  border-image: linear-gradient(135deg, rgb(211, 211, 211), rgb(17, 95, 154));
   border-image-slice: 1;
 }
 
@@ -641,12 +650,7 @@ footer .ital {
   color: rgb(115, 115, 115);
 }
 
-/* .moviesDetailsContainer .monTextArea {
-  display: flex;
-  flex-direction: column;
-} */
-
-.moviesDetailsContainer .monTextArea textarea {
+.moviesDetailsContainer .TextArea textarea {
   margin: 2rem auto auto 1.5rem;
   padding: 0.5rem;
   resize: none;
@@ -656,7 +660,7 @@ footer .ital {
   background: transparent;
 }
 
-.moviesDetailsContainer .monTextArea button {
+.moviesDetailsContainer .TextArea button {
   padding: 0.1rem;
   margin: 0.5rem 0.5rem auto 1.5rem;
   width: 4rem;
@@ -667,13 +671,13 @@ footer .ital {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.35);
 }
 
-.moviesDetailsContainer .monTextArea button:hover {
+.moviesDetailsContainer .TextArea button:hover {
   color: rgb(37, 37, 37, 0.88);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease 0s;
 }
 
-.moviesDetailsContainer .monTextArea small {
+.moviesDetailsContainer .TextArea small {
   color: rgb(39, 167, 112);
 }
 
@@ -740,6 +744,7 @@ footer .ital {
 .filmDetailsContainer .filmDetails {
   display: flex;
   flex-direction: column;
+  row-gap: 0.5rem;
 }
 
 .filmDetailsContainer .filmDetails h3 {
@@ -776,7 +781,7 @@ footer .ital {
   font-size: 16px;
 }
 
-.filmDetailsContainer .monTextArea textarea {
+.filmDetailsContainer .TextArea textarea {
   margin: 2rem auto auto 1.5rem;
   padding: 0.5rem;
   resize: none;
@@ -786,9 +791,9 @@ footer .ital {
   background: transparent;
 }
 
-.filmDetailsContainer .monTextArea button {
+.filmDetailsContainer .TextArea button {
   padding: 0.1rem;
-  margin: 0.5rem auto auto 1.5rem;
+  margin: 0.5rem 0.5rem auto 1.5rem;
   width: 4rem;
   color: rgb(37, 37, 37, 0.7);
   border: 1px solid rgb(37, 37, 37, 0.7);
@@ -797,10 +802,14 @@ footer .ital {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.35);
 }
 
-.filmDetailsContainer .monTextArea button:hover {
+.filmDetailsContainer .TextArea button:hover {
   color: rgb(37, 37, 37, 0.88);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
-  transition: 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.filmDetailsContainer .TextArea small {
+  color: rgb(39, 167, 112);
 }
 
 .gresDescription {
