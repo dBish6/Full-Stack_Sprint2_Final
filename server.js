@@ -55,7 +55,7 @@ if (DEBUG) app.use(morgan("dev"));
 // So express can use your static files, which is my public folder; css, images, HTML, etc.
 app.use(express.static("public"));
 // So express can read the new perameters off the url and encoding them corrently.
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // For error messaging
 app.use(flash());
@@ -66,6 +66,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 );
 
@@ -87,6 +88,7 @@ const mMovieData = require("./model/controllers/m.movies.dal");
 const { addReview } = require("./model/controllers/m.auth.dal");
 const searchRouter = require("./routes/search");
 const authRouter = require("./routes/auth");
+const { Cookie } = require("express-session");
 
 // *Routers*
 // Mongo/postgres Search Router
