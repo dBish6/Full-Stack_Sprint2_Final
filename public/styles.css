@@ -157,6 +157,18 @@ footer .ital {
   background-color: white;
 }
 
+@media only screen and (max-width: 845px) {
+  .homeContainer .mongoHeader h2,
+  .homeContainer .mongoHeader img {
+    margin-bottom: 1rem;
+  }
+
+  .homeContainer .postgresHeader h2,
+  .homeContainer .postgresHeader img {
+    margin-bottom: 1rem;
+  }
+}
+
 /* Error Pages */
 
 .errTxt {
@@ -505,6 +517,30 @@ footer .ital {
   border-width: 2px;
   position: relative;
   top: 2px;
+}
+
+@media only screen and (max-width: 845px) {
+  .homeContainer .mongoHeader h2,
+  .homeContainer .mongoHeader img {
+    margin-bottom: 1rem;
+  }
+
+  .homeContainer .postgresHeader h2,
+  .homeContainer .postgresHeader img {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 784px) {
+  .moviesContainer {
+    grid-template-columns: repeat(1, 1fr);
+    left: 0;
+  }
+
+  .filmsContainer {
+    grid-template-columns: repeat(1, 1fr);
+    left: 0;
+  }
 }
 
 /* MongoDb Details Page */
