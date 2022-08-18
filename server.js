@@ -32,7 +32,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const moment = require("moment");
-const { ObjectId, ObjectID } = require("mongodb");
+const { ObjectId } = require("mongodb");
 require("dotenv").config();
 
 // Declare function to initialize Passport
@@ -88,7 +88,6 @@ const mMovieData = require("./model/controllers/m.movies.dal");
 const { addReview } = require("./model/controllers/m.auth.dal");
 const searchRouter = require("./routes/search");
 const authRouter = require("./routes/auth");
-const { Cookie } = require("express-session");
 
 // *Routers*
 // Mongo/postgres Search Router
