@@ -1,12 +1,12 @@
 <html lang="en">
   <%- include("../partials/header.ejs") %>
 
-  <body>
+  <body class="profileBody">
     <%- include("../partials/nav.ejs") %>
+    <h1 class="authHeader">My Account</h1>
+    <hr />
 
     <div class="profileContainer">
-      <h1 class="authHeader">My Account</h1>
-      <hr />
       <div class="profileDetails">
         <table class="profileDetailsTable">
           <tr>
@@ -64,6 +64,7 @@
           <% } %>
         </div>
       </div>
+      <hr />
       <div class="profileFunctionsContainer">
         <div class="profileAdditions">
           <form action="/auth/profile/image/?_method=PUT" method="POST">
@@ -72,26 +73,31 @@
             <input type="text" name="imageLink" id="imageLink" required />
             <button type="submit">Set Image</button>
           </form>
+
           <h4>
             Check out your reviews....
-            <form action="/auth/profile/reviews" method="GET">
-              <button type="submit">See Reveiws</button>
-            </form>
-            <h4 class="authMessage">
-              <% if(messages.error) { %> <%- messages.error %> <% } %>
-            </h4>
+            <!-- <form action="/auth/profile/reviews" method="GET">
+                <button type="submit">See Reveiws</button>
+              </form> -->
           </h4>
-        </div>
-        <div class="profileButtons">
-          <form action="/auth/logout/?_method=DELETE" method="POST">
-            <button type="submit">Log Out</button>
-          </form>
 
-          <form action="/auth/profile" method="POST">
-            <button type="submit">UnSubscribe</button>
-          </form>
+          <a href="/auth/profile/reviews" class="getReviewsLink">Get Reviews</a>
+          <br />
+          <br />
+          <% if(messages.error) { %>
+          <small class="reviewsMessage"> <%- messages.error %> </small>
+          <% } %>
         </div>
       </div>
+    </div>
+    <div class="profileButtons">
+      <form action="/auth/logout/?_method=DELETE" method="POST">
+        <button type="submit">Log Out</button>
+      </form>
+
+      <form action="/auth/profile" method="POST">
+        <button type="submit">UnSubscribe</button>
+      </form>
     </div>
   </body>
   <%- include("../partials/footer.ejs") %>

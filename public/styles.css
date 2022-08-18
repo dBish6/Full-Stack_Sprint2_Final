@@ -970,8 +970,15 @@ footer .ital {
 .loginContainer,
 .registerContainer {
   position: relative;
-  top: 140;
   padding: 10px;
+}
+
+.loginContainer {
+  top: 14%;
+}
+
+.registerContainer {
+  top: 8%;
 }
 
 .signUpInHeader {
@@ -982,7 +989,7 @@ footer .ital {
 
 .loginContainer form,
 .registerContainer form {
-  width: 520px;
+  width: 40vw;
   font-size: 1.2rem;
   font-weight: 700;
   color: rgb(37, 37, 37, 0.88);
@@ -1007,6 +1014,7 @@ footer .ital {
 .loginContainer input,
 .registerContainer input {
   background-color: rgb(227, 227, 227);
+  width: 100%;
 }
 
 .registerExtras {
@@ -1057,6 +1065,7 @@ footer .ital {
 }
 
 .authHeader {
+  margin: 2%;
 }
 
 /* Account Page */
@@ -1066,11 +1075,14 @@ footer .ital {
   margin: 1rem 2rem;
   padding: 2%;
 }
+.profileContainer {
+  display: flex;
+}
 
 .profileDetails {
   display: flex;
   justify-content: center;
-  margin: 2% 0;
+  margin: 2% 8% 0 2%;
 }
 
 .profileDetailsTable .profHeader {
@@ -1115,16 +1127,28 @@ footer .ital {
 
 .profileButtons form button {
   background-color: rgb(25, 22, 84);
-  color: white;
+  color: rgb(255, 255, 255, 0.8);
   width: 10rem;
   padding: 2%;
 }
 
+.profileFunctionsContainer {
+  margin: 3% 0 0 6%;
+}
+
+.profileAdditions form,
+.profileAdditions h4,
+.profileAdditions {
+  margin: 4% 0;
+  text-align: left;
+}
+
 .profileFunctionsContainer button,
 .editAddBtn,
-.genreAddBtn {
+.genreAddBtn,
+.getReviewsLink {
   background-color: rgb(25, 22, 84);
-  color: white;
+  color: rgb(255, 255, 255, 0.8);
   padding: 0.2rem 0.5rem;
 }
 
@@ -1139,8 +1163,10 @@ footer .ital {
 .profileButtons form button:hover,
 .profileFunctionsContainer button:hover,
 .editAddBtn:hover,
-.genreAddBtn:hover {
+.genreAddBtn:hover,
+.getReviewsLink:hover {
   background-color: rgb(39, 32, 172);
+  color: rgb(255, 255, 255, 0.89);
   transition: all 0.3s ease 0s;
   cursor: pointer;
 }
@@ -1148,8 +1174,8 @@ footer .ital {
 .profileImage img {
   border: 2px solid rgb(39, 32, 172);
   border-radius: 2rem;
-  height: 10rem;
-  margin: 0 20px;
+  height: 15vw;
+  margin-left: 10%;
 }
 .navProfileImage {
   border-radius: 50%;
@@ -1160,7 +1186,19 @@ footer .ital {
   text-align: center;
 }
 
+@media only screen and (max-width: 640px) {
+  .profileContainer {
+    flex-direction: column;
+  }
+}
+
 /* My Reviews Page */
+
+.reviewsCaontainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2%;
+}
 
 .singleReview {
   margin-top: 1rem;
@@ -1176,4 +1214,16 @@ footer .ital {
 }
 .singleReview p {
   margin: 1rem 0;
+}
+
+.getReviewsLink {
+  font-size: 0.8rem;
+  margin-bottom: 2%;
+  text-decoration: none;
+  border: 1.6px gray outset;
+}
+
+.reviewsMessage {
+  margin-top: 2%;
+  color: #ff0000;
 }
