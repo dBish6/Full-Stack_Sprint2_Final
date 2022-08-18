@@ -38,7 +38,6 @@ body {
   row-gap: 3px;
   position: fixed;
   bottom: 10;
-
 }
 
 /* .altFooter {
@@ -180,6 +179,17 @@ footer .ital {
   font-size: 19px;
 }
 
+/* Success page */
+
+.success {
+  margin: 2rem 1rem auto 1rem;
+}
+
+.success p {
+  color: rgb(37, 37, 37);
+  font-size: 21px;
+}
+
 /* Home Page */
 
 .homeContainer {
@@ -315,7 +325,6 @@ footer .ital {
 .moviesContainer .movie a:visited {
   background-color: rgb(31, 119, 81);
 }
-
 
 .homeContainer hr {
   margin-top: 2rem;
@@ -467,7 +476,7 @@ footer .ital {
 
 .moviesDetailsContainer {
   margin: auto 1rem auto 1rem;
-  height: 28.95rem
+  height: 28.95rem;
 }
 
 .moviesDetailsContainer h2 {
@@ -584,7 +593,7 @@ footer .ital {
 
 .moviesDetailsContainer .monTextArea button:hover {
   /* padding: 0.2rem; */
-  color: rgb(37, 37, 37, 0.);
+  color: rgb(37, 37, 37, 0);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
   transition: 0.3s;
 }
@@ -628,7 +637,7 @@ footer .ital {
 
 .filmDetailsContainer {
   margin: auto 1rem auto 1rem;
-  height: 28.95rem
+  height: 28.95rem;
 }
 
 .filmDetailsContainer h2 {
@@ -655,7 +664,7 @@ footer .ital {
 }
 
 .filmDetailsContainer .filmDetails h3 {
-  color: rgb(54, 141, 206);;
+  color: rgb(54, 141, 206);
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
 }
@@ -688,7 +697,6 @@ footer .ital {
   font-size: 16px;
 }
 
-
 .filmDetailsContainer .monTextArea textarea {
   margin: 2rem auto auto 1.5rem;
   padding: 0.5rem;
@@ -712,7 +720,7 @@ footer .ital {
 
 .filmDetailsContainer .monTextArea button:hover {
   /* padding: 0.2rem; */
-  color: rgb(37, 37, 37, 0.);
+  color: rgb(37, 37, 37, 0);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
   transition: 0.3s;
 }
@@ -725,7 +733,7 @@ footer .ital {
 }
 
 .gresDescription h3 {
-  color: rgb(54, 141, 206);;
+  color: rgb(54, 141, 206);
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   margin-bottom: 8px;
