@@ -79,8 +79,9 @@
       </div>
     </div>
 
+    <% if(messages.success) { %> <%- messages.success %> <% } %>
     <form class="monTextArea" action="/<%= result._id %>/post-review" method="POST">
-      <textarea placeholder="Write a review, it will be saved in your account." name="paragraph_text" cols="50" rows="5"></textarea>
+      <textarea placeholder="Write a review, it will be saved in your account." name="paragraph_text" cols="50" rows="5" maxlength="1250" required ></textarea>
       <div>
         <button type="submit">Submit</button>
       </div>

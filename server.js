@@ -203,9 +203,10 @@ app.post("/:id/post-review", checkAuthenticated, async (req, res) => {
     };
     if (DEBUG) console.log(userReview);
     await addReview(userReview);
+    req.flash("success", "Your review was successfully created");
 
-    // Redirect when successful.
-    res.redirect("/success");
+    // Redirect back to the same page when successful.
+    res.redirect(`/${req.params}`);
   } catch (error) {
     console.error(error);
     res.status(503).render("503");

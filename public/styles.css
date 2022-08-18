@@ -234,7 +234,7 @@ footer .ital {
   font-weight: 600;
   border-width: 3px;
   outline: none;
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
   border-image: linear-gradient(135deg, #d3d3d3, rgb(39, 167, 112));
   border-image-slice: 1;
 }
@@ -279,7 +279,7 @@ footer .ital {
   );
   border-image-slice: 1;
   box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
 }
 
 .moviesContainer {
@@ -315,7 +315,7 @@ footer .ital {
   background-color: rgb(31, 119, 81);
   color: rgb(255, 255, 255, 0.89);
   border-color: rgb(255, 255, 255, 0.7);
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
   /* transform: translateY(-2rem); */
   box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.35);
   /* margin-top: 3.5rem; */
@@ -374,7 +374,7 @@ footer .ital {
   font-weight: 600;
   border-width: 3px;
   outline: none;
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
   border-image: linear-gradient(135deg, #d3d3d3, rgb(17, 95, 154));
   border-image-slice: 1;
 }
@@ -419,7 +419,7 @@ footer .ital {
   );
   border-image-slice: 1;
   box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
 }
 
 .filmsContainer {
@@ -456,7 +456,7 @@ footer .ital {
   color: rgb(255, 255, 255, 0.89);
   text-decoration: none;
   border-color: rgb(255, 255, 255, 0.7);
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
   /* transform: translateY(-2rem); */
   box-shadow: 0px 5px 40px 0px rgba(0, 0, 0, 0.35);
   /* margin-top: 3.5rem; */
@@ -592,10 +592,9 @@ footer .ital {
 }
 
 .moviesDetailsContainer .monTextArea button:hover {
-  /* padding: 0.2rem; */
-  color: rgb(37, 37, 37, 0);
+  color: rgb(37, 37, 37, 0.88);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
 }
 
 .monDescription {
@@ -719,10 +718,9 @@ footer .ital {
 }
 
 .filmDetailsContainer .monTextArea button:hover {
-  /* padding: 0.2rem; */
-  color: rgb(37, 37, 37, 0);
+  color: rgb(37, 37, 37, 0.88);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
-  transition: 0.3s;
+  transition: 0.3s ease 0s;
 }
 
 .gresDescription {
@@ -764,7 +762,7 @@ footer .ital {
 }
 
 .monSearchContainer {
-  margin: auto 1rem auto 1rem;
+  margin: auto 1rem 1rem 1rem;
 }
 
 .monSearchContainer h2,
@@ -834,7 +832,7 @@ footer .ital {
 }
 
 .gresSearchContainer {
-  margin: auto 1rem auto 1rem;
+  margin: auto 1rem 1rem 1rem;
 }
 
 .gresSearchContainer h2 {
@@ -882,7 +880,7 @@ footer .ital {
   color: rgb(54, 141, 206);
 }
 
-/* Login page */
+/* Login page/Register Page */
 
 .required {
   color: #ff0000;
@@ -891,8 +889,8 @@ footer .ital {
 
 .loginContainer,
 .registerContainer {
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  top: 140;
   padding: 10px;
 }
 
@@ -926,8 +924,20 @@ footer .ital {
   columns: 2;
 }
 
+.loginContainer input,
+.registerContainer input {
+  background-color: rgb(227, 227, 227);
+}
+
 .registerExtras {
   padding: 2% 0 0 0;
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+}
+
+.registerExtras label {
+  font-size: 1rem;
 }
 
 .loginContainer h3,
@@ -944,7 +954,7 @@ footer .ital {
 .loginContainer button,
 .registerContainer button {
   margin: auto;
-  color: white;
+  color: rgb(255, 255, 255, 0.8);
   background-color: rgb(25, 22, 84);
   border-radius: 2rem;
   font-size: 1.6rem;
@@ -955,6 +965,9 @@ footer .ital {
 .loginContainer button:hover,
 .registerContainer button:hover {
   background-color: rgb(39, 32, 172);
+  color: rgb(255, 255, 255, 0.89);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
 }
 
 .authMessage {
@@ -1048,7 +1061,7 @@ footer .ital {
 .editAddBtn:hover,
 .genreAddBtn:hover {
   background-color: rgb(39, 32, 172);
-  transition: 0.3s;
+  transition: all 0.3s ease 0s;
   cursor: pointer;
 }
 
