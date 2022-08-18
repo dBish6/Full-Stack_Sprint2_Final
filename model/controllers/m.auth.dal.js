@@ -23,8 +23,8 @@ const { ObjectId } = require("mongodb");
 async function addUser(user) {
   try {
     await userCollection.insertOne(user);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -32,8 +32,8 @@ async function deleteUser(email) {
   try {
     DEBUG && console.log("Deleting..." + email);
     await userCollection.deleteOne({ email: `${email}` });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -51,8 +51,8 @@ async function getUserByEmail(email) {
       console.log("User Found");
       return user;
     }
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -70,8 +70,8 @@ async function getUserById(id) {
       console.log("User Found");
       return user;
     }
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -83,8 +83,9 @@ async function addProfileImage(link) {
       { $set: { image: `${link}` } }
     );
     DEBUG && console.log("Profile Image added to UserId: " + user._id);
-  } catch (err) {
-    console.log(err);
+    user.image = link;
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -96,8 +97,8 @@ async function addPhone(text) {
     );
     DEBUG &&
       console.log("Phone number: " + text + " added to UserId: " + user._id);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -111,8 +112,8 @@ async function addGenre(text) {
       console.log(
         "Favorite genre: " + text + " updated for UserId: " + user._id
       );
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 }
 
@@ -123,6 +124,15 @@ const addReview = async (userReview) => {
   } catch (error) {
     console.error(error);
   }
+};
+
+const getReviews = async (email) => {
+  try {
+    result = await commentCollection.find({ email: email }).toArray();
+  } catch (error) {
+    console.log(error);
+  }
+  return result;
 };
 
 // Middleware functions to allow/block access to routes
@@ -149,6 +159,7 @@ module.exports = {
   addPhone,
   addGenre,
   addReview,
+  getReviews,
   checkAuthenticated,
   checkNotAuthenticated,
 };

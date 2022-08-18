@@ -1,0 +1,21 @@
+<html lang="en">
+  <%- include("../partials/header.ejs") %>
+  <body>
+    <%- include("../partials/nav.ejs") %>
+    <main class="reviewsContainer">
+      <h2>My Reviews</h2>
+      <hr />
+      <% reviews.forEach((review) => { %>
+      <div class="singleReview">
+        <p>
+          Movie ID#: &nbsp; <%= review.movie_id %> &nbsp; Date: &nbsp; <%=
+          review.date %> &nbsp;
+        </p>
+        <p>Review: &nbsp; <%= review.text %></p>
+      </div>
+
+      <% }) %>
+    </main>
+  </body>
+  <%- include("../partials/footer.ejs") %>
+</html>
