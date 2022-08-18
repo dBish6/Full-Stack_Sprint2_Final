@@ -22,8 +22,6 @@ const request = require("supertest");
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
-// const PORT = process.env.PORT || 4000;
-
 app.use("/search", router);
 app.use("/auth", router2);
 
@@ -36,12 +34,14 @@ describe("Testing various routes", () => {
   beforeAll(async () => {
     try {
       await dal.connect();
-      // You actually don't need global here, it works somehow without it, but it makes sense having it there.
+      // Global variables needed for testing
       global.movieCollection = dal.db("sample_mflix").collection("movies");
       global.userCollection = dal.db("sample_mflix").collection("users");
       global.commentCollection = dal.db("sample_mflix").collection("comments");
       global.profileIcon = null;
       global.DEBUG = false;
+
+      // Will need to update this user to a user in tester's DB
       global.user = await getUserById("62fa3dbdc2d1679af2242785");
     } catch (error) {
       console.error(error);
