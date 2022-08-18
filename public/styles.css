@@ -179,17 +179,6 @@ footer .ital {
   font-size: 19px;
 }
 
-/* Success page */
-
-.success {
-  margin: 2rem 1rem auto 1rem;
-}
-
-.success p {
-  color: rgb(37, 37, 37);
-  font-size: 21px;
-}
-
 /* Home Page */
 
 .homeContainer {
@@ -260,6 +249,7 @@ footer .ital {
   background-color: rgb(39, 167, 112);
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease 0s;
 }
 
 .homeContainer .monSearch button:hover {
@@ -279,7 +269,6 @@ footer .ital {
   );
   border-image-slice: 1;
   box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease 0s;
 }
 
 .moviesContainer {
@@ -327,11 +316,38 @@ footer .ital {
 }
 
 .homeContainer hr {
-  margin-top: 2rem;
   /* width: 100px;
   height: 100px;
   border-radius: 50%; */
   border-top: 3px double rgb(25, 22, 84);
+}
+
+.movieExpand {
+  margin: 0.5rem auto 2rem 15%;
+}
+
+.movieExpand #monBtn {
+  text-decoration: none;
+  background-color: rgb(39, 167, 112);
+  color: rgb(255, 255, 255, 0.75);
+  font-size: 16px;
+  padding: 8px 18px;
+  border-bottom: 4.5px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 250ms ease-out;
+}
+
+.movieExpand #monBtn:hover {
+  background-color: rgb(31, 119, 81);
+  color: rgb(255, 255, 255, 0.89);
+}
+
+.movieExpand #monBtn:active {
+  background-color: rgb(31, 119, 81);
+  border-width: 2px;
+  position: relative;
+  top: 2px;
 }
 
 /* Postgres Home Start */
@@ -400,6 +416,7 @@ footer .ital {
   background-color: rgb(17, 95, 154);
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease 0s;
 }
 
 .homeContainer .gresSearch button:hover {
@@ -419,7 +436,6 @@ footer .ital {
   );
   border-image-slice: 1;
   box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease 0s;
 }
 
 .filmsContainer {
@@ -465,6 +481,30 @@ footer .ital {
 .filmsContainer .film a:active,
 .filmsContainer .film a:visited {
   background-color: rgb(54, 141, 206);
+}
+
+.movieExpand #gresBtn {
+  text-decoration: none;
+  background-color: rgb(17, 95, 154);
+  color: rgb(255, 255, 255, 0.75);
+  font-size: 16px;
+  padding: 8px 18px;
+  border-bottom: 4.5px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 250ms ease-out;
+}
+
+.movieExpand #gresBtn:hover {
+  background-color: rgb(17, 95, 154);
+  color: rgb(255, 255, 255, 0.89);
+}
+
+.movieExpand #gresBtn:active {
+  background-color: rgb(17, 95, 154);
+  border-width: 2px;
+  position: relative;
+  top: 2px;
 }
 
 /* MongoDb Details Page */
@@ -582,7 +622,7 @@ footer .ital {
 
 .moviesDetailsContainer .monTextArea button {
   padding: 0.1rem;
-  margin: 0.5rem auto auto 1.5rem;
+  margin: 0.5rem 0.5rem auto 1.5rem;
   width: 4rem;
   color: rgb(37, 37, 37, 0.7);
   border: 1px solid rgb(37, 37, 37, 0.7);
@@ -595,6 +635,10 @@ footer .ital {
   color: rgb(37, 37, 37, 0.88);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease 0s;
+}
+
+.moviesDetailsContainer .monTextArea small {
+  color: rgb(39, 167, 112);
 }
 
 .monDescription {
