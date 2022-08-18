@@ -891,8 +891,8 @@ footer .ital {
 
 .loginContainer,
 .registerContainer {
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  top: 140;
   padding: 10px;
 }
 
