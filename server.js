@@ -42,7 +42,7 @@ initializePassport(passport);
 // Middleware Function that verifies user authentication
 const { checkAuthenticated } = require("./model/controllers/m.auth.dal");
 
-global.DEBUG = true;
+global.DEBUG = false;
 
 const PORT = process.env.PORT || 4000;
 

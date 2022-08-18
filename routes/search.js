@@ -81,6 +81,7 @@ router.get("/mongo", async (req, res) => {
     // Render this route with m.search.ejs with the autocomplete.
     res.render("searchResults/m_search", { mSearch, title: "Mongo Search" });
     // Event emitter when user searches.
+
     myEmitter.emit(
       "log",
       `UserID: ${user._id}\tSearched: ${req.query.search}\tSTATUS: ${res.statusCode}`,
