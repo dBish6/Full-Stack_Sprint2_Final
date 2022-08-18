@@ -48,22 +48,16 @@ describe("Testing various routes", () => {
     }
   });
 
-  afterAll(async () => {
-    // Close Database here
-    await dal.close();
-  });
+// test("index router works", (done) => {
+//   request(app)
+//     .get("/")
+//     .expect("Content-Type", "text/html; charset=utf-8")
+//     .expect(200, done);
+// });
 
-  test("responds to /search/mongo", async () => {
-    const res = await request(app).get("/search/mongo?search=Walk");
-    expect(res.header["content-type"]).toMatch(/html/);
-    expect(res.statusCode).toBe(200);
-  });
-
-  test("responds to /search/mongo/:_id", async () => {
-    const res = await request(app).get(
-      "/search/mongo/573a1395f29313caabce1282"
-    );
-    expect(res.header["content-type"]).toMatch(/html/);
-    expect(res.statusCode).toBe(200);
-  });
+test("responds to /search/mongo", async () => {
+  const res = await request(app).get("/search/mongo/");
+  console.log(res.header);
+  expect(res.header["content-type"]).toMatch(/html/);
+  expect(res.statusCode).toBe(200);
 });
