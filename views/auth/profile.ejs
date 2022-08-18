@@ -5,44 +5,56 @@
     <%- include("../partials/nav.ejs") %>
 
     <div class="profileContainer">
-      <h2>My Account</h2>
+      <h1 class="authHeader">My Account</h1>
       <hr />
       <div class="profileDetails">
         <table class="profileDetailsTable">
           <tr>
-            <th>Account details</th>
+            <th class="profHeader">Account details</th>
           </tr>
           <tr>
-            <td>Full Name:</td>
+            <td><b>Full Name:</b></td>
             <td><%= user.name %></td>
           </tr>
           <tr>
-            <td>Email:</td>
+            <td><b>Email:</b></td>
             <td><%= user.email %></td>
           </tr>
           <tr>
-            <td>Phone:</td>
+            <td><b>Phone:</b></td>
             <td>
-              <% if(user.phone != null){ %> 
-                <%= user.phone %>
-                 <form action="/auth/profile/phone/?_method=PUT" method="POST"> 
-                   <input type="text" name="phone" value="Edit Phone" required> <button type="submit">edit</button> </form>
-                <% } else { %> 
-                   <form action="/auth/profile/phone/?_method=PUT" method="POST"><input type="text" name="phone" value="Add Phone" required> <button type="submit" class="phoneAddBtn">add</button> </form>
-                  <% } %> 
+              <% if(user.phone != null){ %> <b><%= user.phone %></b>
+              <form action="/auth/profile/phone/?_method=PUT" method="POST">
+                <input type="text" name="phone" value="Edit Phone" required />
+                &nbsp;
+                <button type="submit" class="editAddBtn">edit</button>
+              </form>
+              <% } else { %>
+              <form action="/auth/profile/phone/?_method=PUT" method="POST">
+                <input type="text" name="phone" value="Add Phone" required />
+                &nbsp;
+                <button type="submit" class="editAddBtn">add</button>
+              </form>
+              <% } %>
             </td>
           </tr>
-          
+
           <tr>
-            <td>Favorite Genre:</td>
+            <td><b>Favorite Genre:</b></td>
             <td>
-              <% if(user.favorite_genre != null){ %> 
-                <%= user.favorite_genre %>
-                <form action="/auth/profile/genre/?_method=PUT" method="POST"> 
-                  <input type="text" name="genre" value="Edit Genre">> &nbsp; <button type="submit">edit</button> </form>
-               <% } else { %> 
-                  <form action="/auth/profile/genre/?_method=PUT" method="POST"> <input type="text" name="genre" value="Add Genre"> <button type="submit" class="phoneAddBtn">add</button> </form>
-                 <% } %>
+              <% if(user.favorite_genre != null){ %> <%= user.favorite_genre %>
+              <form action="/auth/profile/genre/?_method=PUT" method="POST">
+                <input type="text" name="genre" value="Edit Genre" required />
+                &nbsp;
+                <button type="submit" class="editAddBtn">edit</button>
+              </form>
+              <% } else { %>
+              <form action="/auth/profile/genre/?_method=PUT" method="POST">
+                <input type="text" name="genre" value="Add Genre" required />
+                &nbsp;
+                <button type="submit" class="editAddBtn">add</button>
+              </form>
+              <% } %>
             </td>
           </tr>
         </table>
@@ -60,6 +72,15 @@
             <input type="text" name="imageLink" id="imageLink" required />
             <button type="submit">Set Image</button>
           </form>
+          <h4>
+            Check out your reviews....
+            <form action="/auth/profile/reviews" method="GET">
+              <button type="submit">See Reveiws</button>
+            </form>
+            <h4 class="authMessage">
+              <% if(messages.error) { %> <%- messages.error %> <% } %>
+            </h4>
+          </h4>
         </div>
         <div class="profileButtons">
           <form action="/auth/logout/?_method=DELETE" method="POST">

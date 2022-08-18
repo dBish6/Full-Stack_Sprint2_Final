@@ -767,7 +767,8 @@ footer .ital {
   margin: auto 1rem auto 1rem;
 }
 
-.monSearchContainer h2 {
+.monSearchContainer h2,
+.authHeader {
   font-family: "Montserrat", sans-serif;
   font-size: 28px;
   margin-bottom: 1rem;
@@ -895,6 +896,12 @@ footer .ital {
   padding: 10px;
 }
 
+.signUpInHeader {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
+
 .loginContainer form,
 .registerContainer form {
   width: 520px;
@@ -956,9 +963,13 @@ footer .ital {
   color: #c20808;
 }
 
+.authHeader {
+}
+
 /* Account Page */
 
-.profileContainer {
+.profileContainer,
+.reviewsContainer {
   margin: 1rem 2rem;
   padding: 2%;
 }
@@ -969,14 +980,35 @@ footer .ital {
   margin: 2% 0;
 }
 
+.profileDetailsTable .profHeader {
+  color: rgb(37, 37, 37, 0.8);
+}
+
 .profileDetailsTable tr {
-  color: rgb(25, 22, 84);
+  color: rgb(115, 115, 115);
   height: 1.6rem;
   font-weight: 700;
 }
 
+.profileDetailsTable b {
+  color: rgb(37, 37, 37, 0.8);
+}
+
 .profileDetailsTable td {
   width: max-content;
+}
+
+.profileDetailsTable form {
+  margin-left: 0.5rem;
+}
+
+.profileDetailsTable form input {
+  padding: 3px;
+}
+
+/* Not working was just testing it with red. */
+.profileDetailsTable tr td form input::placeholder {
+  color: red;
 }
 
 .profileButtons {
@@ -985,7 +1017,6 @@ footer .ital {
 }
 
 .profileButtons form {
-  margin-right: 2%;
   padding: 2%;
 }
 
@@ -997,16 +1028,24 @@ footer .ital {
 }
 
 .profileFunctionsContainer button,
-.phoneAddBtn,
+.editAddBtn,
 .genreAddBtn {
   background-color: rgb(25, 22, 84);
   color: white;
   padding: 0.2rem 0.5rem;
 }
 
+.profileFunctionsContainer label {
+  color: rgb(37, 37, 37, 0.8);
+}
+
+.profileFunctionsContainer h4 {
+  color: rgb(37, 37, 37, 0.8);
+}
+
 .profileButtons form button:hover,
 .profileFunctionsContainer button:hover,
-.phoneAddBtn:hover,
+.editAddBtn:hover,
 .genreAddBtn:hover {
   background-color: rgb(39, 32, 172);
   transition: 0.3s;
@@ -1026,4 +1065,22 @@ footer .ital {
 .profileFunctionsContainer {
   display: block;
   text-align: center;
+}
+
+/* My Reviews Page */
+
+.singleReview {
+  margin-top: 1rem;
+  padding: 1%;
+  color: white;
+  background-image: linear-gradient(
+    170deg,
+    rgb(1, 16, 92),
+    rgb(162, 237, 204) 130%
+  );
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.35);
+  border-radius: 2rem;
+}
+.singleReview p {
+  margin: 1rem 0;
 }

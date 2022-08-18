@@ -26,6 +26,7 @@ const {
   addPhone,
   addGenre,
   deleteUser,
+  getReviews,
 } = require("../model/controllers/m.auth.dal");
 
 router.use(express.static("public"));
@@ -81,11 +82,13 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
     const userCheck = await getUserByEmail(user.email);
     if (userCheck != null) {
       console.log("User already exists");
+      req.flash("error", "User with this email already exists");
       res.redirect("/auth/register");
     } else {
       DEBUG && console.log("Registering User: " + user.name);
       addUser(user);
       DEBUG && console.log("Registered User: " + user.name);
+      req.flash("success", "User succesfully created");
       res.redirect("/auth/login");
     }
   } catch (err) {
@@ -119,7 +122,7 @@ router.put("/profile/image", checkAuthenticated, async (req, res, next) => {
   console.log("Adding Profile Image");
   try {
     await addProfileImage(req.body.imageLink);
-    user.image = req.body.imageLink;
+    profileIcon = req.body.imageLink;
     res.redirect("/auth/profile");
   } catch (error) {
     next(error);
@@ -145,6 +148,19 @@ router.put("/profile/genre", checkAuthenticated, async (req, res, next) => {
     res.redirect("/auth/profile");
   } catch (error) {
     next(error);
+  }
+});
+
+router.get("/profile/reviews", checkAuthenticated, async (req, res) => {
+  try {
+    const reviews = await getReviews(user.email);
+    if (reviews.length < 1) {
+      req.flash("error", "Sorry, you have no reviews");
+      res.redirect("/auth/profile");
+    }
+    res.render("auth/reviews", { title: "My Reviews", reviews });
+  } catch (error) {
+    console.log(error);
   }
 });
 
