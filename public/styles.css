@@ -64,7 +64,12 @@ body {
   text-align: center;
 
   color: rgba(174, 174, 174);
-  background-color: rgb(25, 22, 84);
+  /* background-color: rgb(25, 22, 84); */
+  background-image: linear-gradient(
+    170deg,
+    rgb(25, 22, 84) 30%,
+    rgb(67, 198, 172)
+  );
   border-top: 2px solid rgb(255, 255, 255, 0.7);
   box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.35);
   padding: 0.8rem;
@@ -157,6 +162,18 @@ footer .ital {
   background-color: white;
 }
 
+@media only screen and (max-width: 845px) {
+  .homeContainer .mongoHeader h2,
+  .homeContainer .mongoHeader img {
+    margin-bottom: 1rem;
+  }
+
+  .homeContainer .postgresHeader h2,
+  .homeContainer .postgresHeader img {
+    margin-bottom: 1rem;
+  }
+}
+
 /* Error Pages */
 
 .errTxt {
@@ -177,17 +194,6 @@ footer .ital {
   color: rgb(37, 37, 37);
   margin-top: 1rem;
   font-size: 19px;
-}
-
-/* Success page */
-
-.success {
-  margin: 2rem 1rem auto 1rem;
-}
-
-.success p {
-  color: rgb(37, 37, 37);
-  font-size: 21px;
 }
 
 /* Home Page */
@@ -260,6 +266,7 @@ footer .ital {
   background-color: rgb(39, 167, 112);
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease 0s;
 }
 
 .homeContainer .monSearch button:hover {
@@ -279,7 +286,6 @@ footer .ital {
   );
   border-image-slice: 1;
   box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease 0s;
 }
 
 .moviesContainer {
@@ -326,12 +332,48 @@ footer .ital {
   background-color: rgb(31, 119, 81);
 }
 
+.movieExpand {
+  margin: 0.5rem auto 2rem 15%;
+}
+
+.movieExpand #monBtn {
+  text-decoration: none;
+  background-color: rgb(39, 167, 112);
+  color: rgb(255, 255, 255, 0.75);
+  font-size: 16px;
+  padding: 8px 18px;
+  border-bottom: 4.5px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 250ms ease-out;
+}
+
+.movieExpand #monBtn:hover {
+  background-color: rgb(31, 119, 81);
+  color: rgb(255, 255, 255, 0.89);
+}
+
+.movieExpand #monBtn:active {
+  background-color: rgb(31, 119, 81);
+  border-width: 2px;
+  position: relative;
+  top: 2px;
+}
+
 .homeContainer hr {
-  margin-top: 2rem;
-  /* width: 100px;
-  height: 100px;
-  border-radius: 50%; */
-  border-top: 3px double rgb(25, 22, 84);
+  margin: auto 2rem auto 2rem;
+
+  /* border: 2px solid;
+  border-image: linear-gradient(145deg, rgb(17, 95, 154), rgb(39, 167, 112));
+  border-image-slice: 1; */
+
+  height: 0px;
+  border: double 3px transparent;
+  border-radius: 16px;
+  background-image: linear-gradient(white, white),
+    linear-gradient(145deg, rgb(17, 95, 154), rgb(39, 167, 112));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
 
 /* Postgres Home Start */
@@ -375,7 +417,7 @@ footer .ital {
   border-width: 3px;
   outline: none;
   transition: all 0.3s ease 0s;
-  border-image: linear-gradient(135deg, #d3d3d3, rgb(17, 95, 154));
+  border-image: linear-gradient(135deg, rgb(211, 211, 211), rgb(17, 95, 154));
   border-image-slice: 1;
 }
 
@@ -400,6 +442,7 @@ footer .ital {
   background-color: rgb(17, 95, 154);
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease 0s;
 }
 
 .homeContainer .gresSearch button:hover {
@@ -419,7 +462,6 @@ footer .ital {
   );
   border-image-slice: 1;
   box-shadow: 0px 5px 28px 0px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s ease 0s;
 }
 
 .filmsContainer {
@@ -465,6 +507,54 @@ footer .ital {
 .filmsContainer .film a:active,
 .filmsContainer .film a:visited {
   background-color: rgb(54, 141, 206);
+}
+
+.movieExpand #gresBtn {
+  text-decoration: none;
+  background-color: rgb(17, 95, 154);
+  color: rgb(255, 255, 255, 0.75);
+  font-size: 16px;
+  padding: 8px 18px;
+  border-bottom: 4.5px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
+  transition: all 250ms ease-out;
+}
+
+.movieExpand #gresBtn:hover {
+  background-color: rgb(17, 95, 154);
+  color: rgb(255, 255, 255, 0.89);
+}
+
+.movieExpand #gresBtn:active {
+  background-color: rgb(17, 95, 154);
+  border-width: 2px;
+  position: relative;
+  top: 2px;
+}
+
+@media only screen and (max-width: 845px) {
+  .homeContainer .mongoHeader h2,
+  .homeContainer .mongoHeader img {
+    margin-bottom: 1rem;
+  }
+
+  .homeContainer .postgresHeader h2,
+  .homeContainer .postgresHeader img {
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (max-width: 784px) {
+  .moviesContainer {
+    grid-template-columns: repeat(1, 1fr);
+    left: 0;
+  }
+
+  .filmsContainer {
+    grid-template-columns: repeat(1, 1fr);
+    left: 0;
+  }
 }
 
 /* MongoDb Details Page */
@@ -565,12 +655,7 @@ footer .ital {
   color: rgb(115, 115, 115);
 }
 
-/* .moviesDetailsContainer .monTextArea {
-  display: flex;
-  flex-direction: column;
-} */
-
-.moviesDetailsContainer .monTextArea textarea {
+.moviesDetailsContainer .TextArea textarea {
   margin: 2rem auto auto 1.5rem;
   padding: 0.5rem;
   resize: none;
@@ -580,9 +665,9 @@ footer .ital {
   background: transparent;
 }
 
-.moviesDetailsContainer .monTextArea button {
+.moviesDetailsContainer .TextArea button {
   padding: 0.1rem;
-  margin: 0.5rem auto auto 1.5rem;
+  margin: 0.5rem 0.5rem auto 1.5rem;
   width: 4rem;
   color: rgb(37, 37, 37, 0.7);
   border: 1px solid rgb(37, 37, 37, 0.7);
@@ -591,10 +676,14 @@ footer .ital {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.35);
 }
 
-.moviesDetailsContainer .monTextArea button:hover {
+.moviesDetailsContainer .TextArea button:hover {
   color: rgb(37, 37, 37, 0.88);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
   transition: all 0.3s ease 0s;
+}
+
+.moviesDetailsContainer .TextArea small {
+  color: rgb(39, 167, 112);
 }
 
 .monDescription {
@@ -660,6 +749,7 @@ footer .ital {
 .filmDetailsContainer .filmDetails {
   display: flex;
   flex-direction: column;
+  row-gap: 0.5rem;
 }
 
 .filmDetailsContainer .filmDetails h3 {
@@ -696,7 +786,7 @@ footer .ital {
   font-size: 16px;
 }
 
-.filmDetailsContainer .monTextArea textarea {
+.filmDetailsContainer .TextArea textarea {
   margin: 2rem auto auto 1.5rem;
   padding: 0.5rem;
   resize: none;
@@ -706,9 +796,9 @@ footer .ital {
   background: transparent;
 }
 
-.filmDetailsContainer .monTextArea button {
+.filmDetailsContainer .TextArea button {
   padding: 0.1rem;
-  margin: 0.5rem auto auto 1.5rem;
+  margin: 0.5rem 0.5rem auto 1.5rem;
   width: 4rem;
   color: rgb(37, 37, 37, 0.7);
   border: 1px solid rgb(37, 37, 37, 0.7);
@@ -717,10 +807,14 @@ footer .ital {
   box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.35);
 }
 
-.filmDetailsContainer .monTextArea button:hover {
+.filmDetailsContainer .TextArea button:hover {
   color: rgb(37, 37, 37, 0.88);
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.35);
-  transition: 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.filmDetailsContainer .TextArea small {
+  color: rgb(39, 167, 112);
 }
 
 .gresDescription {
@@ -889,9 +983,10 @@ footer .ital {
 
 .loginContainer,
 .registerContainer {
-  position: relative;
-  top: 140;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
 }
 
 .signUpInHeader {
@@ -902,11 +997,11 @@ footer .ital {
 
 .loginContainer form,
 .registerContainer form {
-  width: 520px;
+  width: 360px;
   font-size: 1.2rem;
   font-weight: 700;
   color: rgb(37, 37, 37, 0.88);
-  padding: 6px 12px;
+  padding: 24px 40px;
   border: 2px solid black;
   border-radius: 1rem;
   row-gap: 12px;
@@ -918,15 +1013,23 @@ footer .ital {
   );
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
   margin: auto;
-  margin-top: 2%;
+  margin-top: 8vh;
   margin-bottom: 2%;
   display: grid;
   columns: 2;
 }
 
+.registerContainer form {
+  row-gap: 8px;
+}
+
 .loginContainer input,
-.registerContainer input {
+.registerContainer input,
+.registerExtras input {
   background-color: rgb(227, 227, 227);
+  width: 100%;
+  height: 25px;
+  padding: 4px;
 }
 
 .registerExtras {
@@ -940,15 +1043,10 @@ footer .ital {
   font-size: 1rem;
 }
 
-.loginContainer h3,
-.registerContainer h3 {
+.loginContainer h5,
+.registerContainer h5 {
   text-align: center;
-  margin: 6px 0px;
-}
-
-.loginContainer form input,
-.registerContainer form input {
-  padding: 4px;
+  font-size: 1rem;
 }
 
 .loginContainer button,
@@ -957,7 +1055,7 @@ footer .ital {
   color: rgb(255, 255, 255, 0.8);
   background-color: rgb(25, 22, 84);
   border-radius: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   width: fit-content;
   padding: 8px 16px;
 }
@@ -977,8 +1075,42 @@ footer .ital {
 }
 
 .authHeader {
+  margin: 2%;
 }
 
+@media only screen and (max-width: 700px) {
+  .loginContainer form,
+  .registerContainer form {
+    width: 36vw;
+    row-gap: 4px;
+    padding: 8px;
+  }
+  .signUpInHeader {
+    font-size: 1.2rem;
+  }
+  .loginContainer input,
+  .registerContainer input {
+    width: 100%;
+  }
+  .registerExtras {
+    flex-direction: column;
+  }
+  .registerContainer label,
+  .loginContainer label {
+    font-size: 0.8rem;
+  }
+  .registerContainer input {
+    height: 20px;
+  }
+  .loginContainer button,
+  .registerContainer button {
+    font-size: 0.8rem;
+  }
+  .loginContainer h3,
+  .registerContainer h3 {
+    margin: 2px 0;
+  }
+}
 /* Account Page */
 
 .profileContainer,
@@ -986,11 +1118,14 @@ footer .ital {
   margin: 1rem 2rem;
   padding: 2%;
 }
+.profileContainer {
+  display: flex;
+}
 
 .profileDetails {
   display: flex;
   justify-content: center;
-  margin: 2% 0;
+  margin: 2% 8% 0 2%;
 }
 
 .profileDetailsTable .profHeader {
@@ -1035,16 +1170,28 @@ footer .ital {
 
 .profileButtons form button {
   background-color: rgb(25, 22, 84);
-  color: white;
+  color: rgb(255, 255, 255, 0.8);
   width: 10rem;
   padding: 2%;
 }
 
+.profileFunctionsContainer {
+  margin: 3% 0 0 6%;
+}
+
+.profileAdditions form,
+.profileAdditions h4,
+.profileAdditions {
+  margin: 4% 0;
+  text-align: left;
+}
+
 .profileFunctionsContainer button,
 .editAddBtn,
-.genreAddBtn {
+.genreAddBtn,
+.getReviewsLink {
   background-color: rgb(25, 22, 84);
-  color: white;
+  color: rgb(255, 255, 255, 0.8);
   padding: 0.2rem 0.5rem;
 }
 
@@ -1059,8 +1206,10 @@ footer .ital {
 .profileButtons form button:hover,
 .profileFunctionsContainer button:hover,
 .editAddBtn:hover,
-.genreAddBtn:hover {
+.genreAddBtn:hover,
+.getReviewsLink:hover {
   background-color: rgb(39, 32, 172);
+  color: rgb(255, 255, 255, 0.89);
   transition: all 0.3s ease 0s;
   cursor: pointer;
 }
@@ -1068,8 +1217,8 @@ footer .ital {
 .profileImage img {
   border: 2px solid rgb(39, 32, 172);
   border-radius: 2rem;
-  height: 10rem;
-  margin: 0 20px;
+  height: 15vw;
+  margin-left: 10%;
 }
 .navProfileImage {
   border-radius: 50%;
@@ -1080,7 +1229,19 @@ footer .ital {
   text-align: center;
 }
 
+@media only screen and (max-width: 640px) {
+  .profileContainer {
+    flex-direction: column;
+  }
+}
+
 /* My Reviews Page */
+
+.reviewsCaontainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2%;
+}
 
 .singleReview {
   margin-top: 1rem;
@@ -1096,4 +1257,16 @@ footer .ital {
 }
 .singleReview p {
   margin: 1rem 0;
+}
+
+.getReviewsLink {
+  font-size: 0.8rem;
+  margin-bottom: 2%;
+  text-decoration: none;
+  border: 1.6px gray outset;
+}
+
+.reviewsMessage {
+  margin-top: 2%;
+  color: #ff0000;
 }

@@ -32,7 +32,7 @@ const session = require("express-session");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 const moment = require("moment");
-const { ObjectId, ObjectID } = require("mongodb");
+const { ObjectId } = require("mongodb");
 require("dotenv").config();
 
 // Declare function to initialize Passport
@@ -56,6 +56,8 @@ if (DEBUG) app.use(morgan("dev"));
 app.use(express.static("public"));
 // So express can read the new perameters off the url and encoding them corrently.
 app.use(express.urlencoded({ extended: true }));
+// For fetching data.
+app.use(express.json());
 
 // For error messaging
 app.use(flash());
@@ -88,7 +90,6 @@ const mMovieData = require("./model/controllers/m.movies.dal");
 const { addReview } = require("./model/controllers/m.auth.dal");
 const searchRouter = require("./routes/search");
 const authRouter = require("./routes/auth");
-const { Cookie } = require("express-session");
 
 // *Routers*
 // Mongo/postgres Search Router
@@ -152,6 +153,17 @@ app.get("/success", checkAuthenticated, async (req, res) => {
   }
 });
 
+// Both of these routes are for fetching the movies for the expand button.
+app.get("/allMongoMovies", async (req, res) => {
+  const movie_data = await mMovieData.displayAllMongoMovies();
+  res.json(movie_data);
+});
+
+app.get("/allPostgresMovies", async (req, res) => {
+  const movie_data = await pMovieData.displayAllPostgresFilms();
+  res.json(movie_data);
+});
+
 // Display movies details for both databases.
 app.get("/:id", checkAuthenticated, async (req, res) => {
   try {
@@ -194,19 +206,29 @@ app.post("/:id/post-review", checkAuthenticated, async (req, res) => {
 
     // user is from global varible in m.auth.dal.js.
     // Stucture of the document in comments collection, but stuctured by object for sending.
-    const userReview = {
-      name: user.name,
-      email: user.email,
-      movie_id: ObjectId(req.params.id),
-      text: req.body.paragraph_text,
-      date: moment().format(),
-    };
-    if (DEBUG) console.log(userReview);
-    await addReview(userReview);
+    if (req.url.includes("a")) {
+      const userReview = {
+        name: user.name,
+        email: user.email,
+        movie_id: ObjectId(req.params.id),
+        text: req.body.paragraph_text,
+        date: moment().format(),
+      };
+      if (DEBUG) console.log(userReview);
+      await addReview(userReview);
+    } else {
+      // For Postgres
+      await pMovieData.addPostgresFilmReview(
+        user.name,
+        user.email,
+        req.params.id,
+        req.body.paragraph_text
+      );
+    }
     req.flash("success", "Your review was successfully created");
 
     // Redirect back to the same page when successful.
-    res.redirect(`/${req.params}`);
+    res.redirect(`/${req.params.id}`);
   } catch (error) {
     console.error(error);
     res.status(503).render("503");

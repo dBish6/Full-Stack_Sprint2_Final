@@ -79,11 +79,11 @@
       </div>
     </div>
 
-    <% if(messages.success) { %> <%- messages.success %> <% } %>
-    <form class="monTextArea" action="/<%= result._id %>/post-review" method="POST">
-      <textarea placeholder="Write a review, it will be saved in your account." name="paragraph_text" cols="50" rows="5" maxlength="1250" required ></textarea>
+    <form class="TextArea" action="/<%= result._id %>/post-review" method="POST">
+      <textarea placeholder="Write a review, it will be saved to your account." name="paragraph_text" cols="50" rows="5" maxlength="1250" required ></textarea>
       <div>
         <button type="submit">Submit</button>
+        <% if(messages.success) { %> <small><%- messages.success %></small> <% } %>
       </div>
     </form>
   </div>
