@@ -21,6 +21,8 @@
    August 15, 2022, David; expaned button was implemented.
    August 17, 2022, David; added the /id/post-review POST route and success route.
    August 18, 2022, David; made clientScripts file in public instead of using the script tag in the home.ejs and fetched the data instead with a filter, and stylied.
+   August 19, 2022, David; Media queries, bug fixes.
+   
  */
 
 // Module Imports
