@@ -29,7 +29,8 @@ const {
   addPhone,
   addGenre,
   deleteUser,
-  getReviews,
+  getMongoReviews,
+  getPostgresReviews,
 } = require("../model/controllers/m.auth.dal");
 
 router.use(express.static("public"));
@@ -118,6 +119,8 @@ router.post("/profile", checkAuthenticated, async (req, res) => {
         return next(err);
       }
       req.flash("success", "Successfully Unsubscribed");
+      profileIcon = null;
+      user = null;
       res.redirect("/auth/login");
     });
   } catch (error) {
@@ -164,12 +167,17 @@ router.put("/profile/genre", checkAuthenticated, async (req, res, next) => {
 // route to display all previous reviews by the user
 router.get("/profile/reviews", checkAuthenticated, async (req, res) => {
   try {
-    const reviews = await getReviews(user.email);
-    if (reviews.length < 1) {
+    const mongoReviews = await getMongoReviews(user.email);
+    const postgresReviews = await getPostgresReviews(user.email);
+    if (mongoReviews.length < 1 && postgresReviews.length < 1) {
       req.flash("error", "Sorry, you have no reviews");
       res.redirect("/auth/profile");
     }
-    res.render("auth/reviews", { title: "My Reviews", reviews });
+    res.render("auth/reviews", {
+      title: "My Reviews",
+      mongoReviews,
+      postgresReviews,
+    });
   } catch (error) {
     console.error(error);
   }
@@ -183,7 +191,8 @@ router.delete("/logout", (req, res, next) => {
     if (error) {
       return next(error);
     }
-    global.profileIcon = null;
+    profileIcon = null;
+    user = null;
     res.redirect("/auth/login");
   });
 });

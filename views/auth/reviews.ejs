@@ -5,16 +5,26 @@
     <main class="reviewsContainer">
       <h2>My Reviews</h2>
       <hr />
-      <% reviews.forEach((review) => { %>
-      <div class="singleReview">
-        <p>
-          Movie ID#: &nbsp; <%= review.movie_id %> &nbsp; Date: &nbsp; <%=
-          review.date %> &nbsp;
-        </p>
-        <p>Review: &nbsp; <%= review.text %></p>
-      </div>
+      <div class="reviewList">
+        <% mongoReviews.forEach((review) => { %>
+        <div class="singleReview">
+          <p>Mongodb Movie Review</p>
+          <p>
+            Movie ID#: &nbsp; <%= review.movie_id %> &nbsp; Date: &nbsp; <%=
+            review.date %> &nbsp;
+          </p>
+          <p>Review: &nbsp; <%= review.text %></p>
+        </div>
 
-      <% }) %>
+        <% }) %> <% postgresReviews.forEach((review) => { %>
+        <div class="singleReview">
+          <p>Postgres Movie Review</p>
+          <p>Movie ID#: &nbsp; <%= review.film_id %> &nbsp;</p>
+          <p>Review: &nbsp; <%= review.review_text %></p>
+        </div>
+
+        <% }) %>
+      </div>
     </main>
   </body>
   <%- include("../partials/footer.ejs") %>

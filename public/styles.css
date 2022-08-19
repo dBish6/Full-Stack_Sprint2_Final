@@ -1219,6 +1219,27 @@ footer .ital {
   color: rgb(39, 167, 112);
 }
 
+@media only screen and (max-width: 1140px) {
+  .monSearchContainer .searchGridContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 850px) {
+  .monSearchContainer .searchGridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .searchMongoLogo {
+    justify-content: left;
+    margin-left: 2.5rem;
+    margin-bottom: 6px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .monSearchContainer .searchGridContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 /* Postgres Search Page */
 
 .searchPostgresLogo {
@@ -1274,6 +1295,27 @@ footer .ital {
 .gresSearchContainer .searchGridContainer .filmBox a:active,
 .gresSearchContainer .searchGridContainer .filmBox a:visited {
   color: rgb(54, 141, 206);
+}
+
+@media only screen and (max-width: 1140px) {
+  .gresSearchContainer .searchGridContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-width: 850px) {
+  .gresSearchContainer .searchGridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .searchPostgresLogo {
+    justify-content: left;
+    margin-left: 2.5rem;
+    margin-bottom: 6px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .gresSearchContainer .searchGridContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* Login page/Register Page */
@@ -1374,6 +1416,12 @@ footer .ital {
   text-align: center;
   font-size: 1.6rem;
   color: #c20808;
+}
+
+.authSuccess {
+  text-align: center;
+  font-size: 1.6rem;
+  color: rgb(39, 167, 112);
 }
 
 .authHeader {
@@ -1539,15 +1587,21 @@ footer .ital {
 
 /* My Reviews Page */
 
-.reviewsCaontainer {
+.reviewsContainer {
   display: flex;
   flex-direction: column;
   row-gap: 2%;
 }
-
+.reviewList {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-template-columns: fit-content(40%) fit-content(40%) 1fr;
+  column-gap: 16px;
+}
 .singleReview {
-  margin-top: 1rem;
-  padding: 1%;
+  width: fit-content;
+  margin: 1rem;
+  padding: 3% 4%;
   color: white;
   background-image: linear-gradient(
     170deg,

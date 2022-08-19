@@ -20,7 +20,7 @@
     Aug 19 2033, Chris; Changes the getUserByEmail so the global.profileIcon would get assigned after the check that the search found a user 
 */
 
-const dal = require("../mongo.db.config");
+const dal = require("../postgres.db.config");
 const { ObjectId } = require("mongodb");
 
 // Function used when registering new user
@@ -134,7 +134,7 @@ const addReview = async (userReview) => {
   }
 };
 
-const getReviews = async (email) => {
+const getMongoReviews = async (email) => {
   try {
     result = await commentCollection.find({ email: email }).toArray();
   } catch (error) {
@@ -143,18 +143,37 @@ const getReviews = async (email) => {
   return result;
 };
 
+const getPostgresReviews = async (email) => {
+  let response;
+  try {
+    response = await dal.query(`SELECT * FROM review WHERE email ILIKE $1;`, [
+      `%${email}%`,
+    ]);
+    return response.rows;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // Middleware functions to allow/block access to routes
+
+// Used to block unathunticated users (app content e.g. homepage)
 function checkAuthenticated(req, res, next) {
+  // If user is authenticated this will allow request
   if (req.isAuthenticated()) {
     return next();
   }
+  // If user is not authenticated re-route to login
   res.redirect("/auth/login");
 }
 
+// Used to block athunticated users (e.g. login, register)
 function checkNotAuthenticated(req, res, next) {
+  // If user is authenticated re-route to homepage
   if (req.isAuthenticated()) {
     return res.redirect("/");
   }
+  // If user is not authenticated allow request
   next();
 }
 
@@ -167,7 +186,8 @@ module.exports = {
   addPhone,
   addGenre,
   addReview,
-  getReviews,
+  getMongoReviews,
+  getPostgresReviews,
   checkAuthenticated,
   checkNotAuthenticated,
 };
