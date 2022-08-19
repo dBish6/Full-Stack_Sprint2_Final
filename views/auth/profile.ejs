@@ -97,6 +97,9 @@
 
       <form action="/auth/profile" method="POST">
         <button type="submit">UnSubscribe</button>
+        <% if(messages.error2) { %>
+        <small class="reviewsMessage"> <%- messages.error2 %> </small>
+        <% } %>
       </form>
     </div>
   </body>
