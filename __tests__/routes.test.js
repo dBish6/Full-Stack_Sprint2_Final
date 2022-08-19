@@ -29,8 +29,6 @@ app.use("/auth", router2);
 require("dotenv").config();
 const dal = require("../model/mongo.db.config");
 
-const { getUserById } = require("../model/controllers/m.auth.dal");
-
 describe("Testing various routes", () => {
   beforeAll(async () => {
     try {
@@ -61,15 +59,6 @@ describe("Testing various routes", () => {
     global.user = user;
     const res = await request(app).get("/search/mongo?search=Walk");
     console.log(res.header);
-    expect(res.header["content-type"]).toMatch(/html/);
-    expect(res.statusCode).toBe(200);
-  });
-
-  // For Dominic or David to try testing
-  test("responds to /search/mongo/:_id", async () => {
-    const res = await request(app).get(
-      "/search/mongo/573a13d7f29313caabda16ef"
-    );
     expect(res.header["content-type"]).toMatch(/html/);
     expect(res.statusCode).toBe(200);
   });
