@@ -10,6 +10,7 @@
     Aug 13 2022, Chris Doucette, Began updating testing to work with updated create, delete & search functions
     Aug 14 2022, Chris Doucette, Completed updating testing work with updated create, delete & search functions 
     Aug 15 2022, Chris Doucette, Added beforeAll to get db Connection & updated deleteUser to check for toBeUndefined()
+    Aug 19 2022, Chris; Troubleshot why the deleteUser test was failing & made changes to the m.auth.dal.js file to fix issue of when no user is found in getUserByEmail
 */
 
 const {
