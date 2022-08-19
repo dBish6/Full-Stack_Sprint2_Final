@@ -56,6 +56,8 @@ if (DEBUG) app.use(morgan("dev"));
 app.use(express.static("public"));
 // So express can read the new perameters off the url and encoding them corrently.
 app.use(express.urlencoded({ extended: true }));
+// For fetching data.
+app.use(express.json());
 
 // For error messaging
 app.use(flash());
@@ -149,6 +151,17 @@ app.get("/success", checkAuthenticated, async (req, res) => {
     console.error(error);
     res.status(503).render("503");
   }
+});
+
+// Both of these routes are for fetching the movies for the expand button.
+app.get("/allMongoMovies", async (req, res) => {
+  const movie_data = await mMovieData.displayAllMongoMovies();
+  res.json(movie_data);
+});
+
+app.get("/allPostgresMovies", async (req, res) => {
+  const movie_data = await pMovieData.displayAllPostgresFilms();
+  res.json(movie_data);
 });
 
 // Display movies details for both databases.
