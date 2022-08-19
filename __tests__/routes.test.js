@@ -6,9 +6,10 @@
     Author: Chris Doucette
     Creaton Date: Wednesday August 17, 2022
     Updates:
-    Date,         Author,           Description
-    Aug 18 2022,  Chris Doucette,   Troubleshooting 503 error on /search/mongo & got /search/mongo/:_id working
-    Aug 18 2022,  Chris Doucette,   Added global user so to get the /search/mongo to pass
+    Date,         Author, Description
+    Aug 18 2022,  Chris;  Troubleshooting 503 error on /search/mongo & got /search/mongo/:_id working
+    Aug 18 2022,  Chris;  Added global user so to get the /search/mongo to pass
+    Aug 19 2022,  Chris;  Added user object to the /search/mongo route test instead of searching for user from DB
     
 */
 
@@ -34,30 +35,42 @@ describe("Testing various routes", () => {
   beforeAll(async () => {
     try {
       await dal.connect();
-      // Global variables needed for testing
+      // You actually don't need global here, it works somehow without it, but it makes sense having it there.
       global.movieCollection = dal.db("sample_mflix").collection("movies");
       global.userCollection = dal.db("sample_mflix").collection("users");
       global.commentCollection = dal.db("sample_mflix").collection("comments");
       global.profileIcon = null;
-      global.DEBUG = false;
-
-      // Will need to update this user to a user in tester's DB
-      global.user = await getUserById("62fa3dbdc2d1679af2242785");
+      global.DEBUG = true;
     } catch (error) {
       console.error(error);
     }
   });
 
-// test("index router works", (done) => {
-//   request(app)
-//     .get("/")
-//     .expect("Content-Type", "text/html; charset=utf-8")
-//     .expect(200, done);
-// });
+  afterAll(async () => {
+    // Close Database here
+    await dal.close();
+  });
 
-test("responds to /search/mongo", async () => {
-  const res = await request(app).get("/search/mongo/");
-  console.log(res.header);
-  expect(res.header["content-type"]).toMatch(/html/);
-  expect(res.statusCode).toBe(200);
+  test("responds to /search/mongo", async () => {
+    let user = {
+      name: "Tester Tester",
+      email: "test@testing.com",
+      password: "123456789",
+    };
+    // User is one of the default users in the sample_mflix users
+    global.user = user;
+    const res = await request(app).get("/search/mongo?search=Walk");
+    console.log(res.header);
+    expect(res.header["content-type"]).toMatch(/html/);
+    expect(res.statusCode).toBe(200);
+  });
+
+  // For Dominic or David to try testing
+  test("responds to /search/mongo/:_id", async () => {
+    const res = await request(app).get(
+      "/search/mongo/573a13d7f29313caabda16ef"
+    );
+    expect(res.header["content-type"]).toMatch(/html/);
+    expect(res.statusCode).toBe(200);
+  });
 });

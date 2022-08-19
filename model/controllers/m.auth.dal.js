@@ -17,6 +17,7 @@
     Aug 17 2022, David; added the addReview function.
     Aug 17 2022, Dominic; getReviews() function added
     Aug 18 2022, Dominic; Edited error messages, comments, minor edits
+    Aug 19 2033, Chris; Changes the getUserByEmail so the global.profileIcon would get assigned after the check that the search found a user 
 */
 
 const dal = require("../postgres.db.config");
@@ -47,11 +48,11 @@ async function getUserByEmail(email) {
   try {
     const user = await userCollection.findOne({ email: email });
     global.user = user;
-    global.profileIcon = user.image;
 
     if (user === null) {
       console.log("getUserByEmail() FAILED: Could not get User");
     } else {
+      global.profileIcon = user.image;
       DEBUG && console.log("getUserByEmail() SUCCESS: User Found");
       return user;
     }
