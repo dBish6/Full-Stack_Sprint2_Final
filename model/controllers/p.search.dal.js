@@ -17,7 +17,7 @@ const titleSearch = async (title) => {
   try {
     // ILIKE is simliar to LIKE but ILIKE makes it not case sensitive; better for searching.
     response = await dal.query(
-      `SELECT * FROM film_list WHERE title ILIKE $1;`,
+      `SELECT * FROM film_list WHERE title ILIKE $1 LIMIT 35;`,
       [`%${title}%`]
     );
     return response.rows;

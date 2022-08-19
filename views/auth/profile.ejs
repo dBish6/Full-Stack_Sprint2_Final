@@ -1,107 +1,108 @@
 <html lang="en">
-  <%- include("../partials/header.ejs") %>
+<%- include("../partials/header.ejs") %>
 
-  <body class="profileBody">
-    <%- include("../partials/nav.ejs") %>
-    <h1 class="authHeader">My Account</h1>
-    <hr />
+<body class="profileBody">
+  <%- include("../partials/nav.ejs") %>
+  <h1 class="authHeader">My Account</h1>
+  <hr class="topDivider"/>
 
-    <div class="profileContainer">
-      <div class="profileDetails">
-        <table class="profileDetailsTable">
-          <tr>
-            <th class="profHeader">Account details</th>
-          </tr>
-          <tr>
-            <td><b>Full Name:</b></td>
-            <td><%= user.name %></td>
-          </tr>
-          <tr>
-            <td><b>Email:</b></td>
-            <td><%= user.email %></td>
-          </tr>
-          <tr>
-            <td><b>Phone:</b></td>
-            <td>
-              <% if(user.phone != null){ %> <b><%= user.phone %></b>
-              <form action="/auth/profile/phone/?_method=PUT" method="POST">
-                <input type="text" name="phone" value="Edit Phone" required />
-                &nbsp;
-                <button type="submit" class="editAddBtn">edit</button>
-              </form>
-              <% } else { %>
-              <form action="/auth/profile/phone/?_method=PUT" method="POST">
-                <input type="text" name="phone" value="Add Phone" required />
-                &nbsp;
-                <button type="submit" class="editAddBtn">add</button>
-              </form>
-              <% } %>
-            </td>
-          </tr>
+  <div class="profileContainer">
+    <div class="profileDetails">
+      <table class="profileDetailsTable">
+        <tr>
+          <th class="profHeader">Account details</th>
+        </tr>
+        <tr>
+          <td><b>Full Name:</b></td>
+          <td><%= user.name %></td>
+        </tr>
+        <tr>
+          <td><b>Email:</b></td>
+          <td><%= user.email %></td>
+        </tr>
+        <tr>
+          <td><b>Phone:</b></td>
+          <td>
+            <% if(user.phone != null){ %> <b><%= user.phone %></b>
+            <form action="/auth/profile/phone/?_method=PUT" method="POST">
+              <input type="text" name="phone" value="Edit Phone" required />
+              &nbsp;
+              <button type="submit" class="editAddBtn">edit</button>
+            </form>
+            <% } else { %>
+            <form action="/auth/profile/phone/?_method=PUT" method="POST">
+              <input type="text" name="phone" value="Add Phone" required />
+              &nbsp;
+              <button type="submit" class="editAddBtn">add</button>
+            </form>
+            <% } %>
+          </td>
+        </tr>
 
-          <tr>
-            <td><b>Favorite Genre:</b></td>
-            <td>
-              <% if(user.favorite_genre != null){ %> <%= user.favorite_genre %>
-              <form action="/auth/profile/genre/?_method=PUT" method="POST">
-                <input type="text" name="genre" value="Edit Genre" required />
-                &nbsp;
-                <button type="submit" class="editAddBtn">edit</button>
-              </form>
-              <% } else { %>
-              <form action="/auth/profile/genre/?_method=PUT" method="POST">
-                <input type="text" name="genre" value="Add Genre" required />
-                &nbsp;
-                <button type="submit" class="editAddBtn">add</button>
-              </form>
-              <% } %>
-            </td>
-          </tr>
-        </table>
-        <div class="profileImage">
-          <% if(user.image != null){ %>
-          <img src="<%= user.image %>" alt="profile picture" />
-          <% } %>
-        </div>
+        <tr>
+          <td><b>Favorite Genre:</b></td>
+          <td>
+            <% if(user.favorite_genre != null){ %> <%= user.favorite_genre %>
+            <form action="/auth/profile/genre/?_method=PUT" method="POST">
+              <input type="text" name="genre" value="Edit Genre" required />
+              &nbsp;
+              <button type="submit" class="editAddBtn">edit</button>
+            </form>
+            <% } else { %>
+            <form action="/auth/profile/genre/?_method=PUT" method="POST">
+              <input type="text" name="genre" value="Add Genre" required />
+              &nbsp;
+              <button type="submit" class="editAddBtn">add</button>
+            </form>
+            <% } %>
+          </td>
+        </tr>
+      </table>
+      <div class="profileImage">
+        <% if(user.image != null){ %>
+        <img src="<%= user.image %>" alt="profile picture" />
+        <% } %>
       </div>
-      <hr />
-      <div class="profileFunctionsContainer">
-        <div class="profileAdditions">
-          <form action="/auth/profile/image/?_method=PUT" method="POST">
-            <h4>Submit a link to your profile image</h4>
-            <label for="imageLink">Paste link here</label>
-            <input type="text" name="imageLink" id="imageLink" required />
-            <button type="submit">Set Image</button>
-          </form>
+    </div>
+    <hr />
+    <div class="profileFunctionsContainer">
+      <div class="profileAdditions">
+        <form action="/auth/profile/image/?_method=PUT" method="POST">
+          <h4>Submit a link to your profile image</h4>
+          <label for="imageLink">Paste link here</label>
+          <input type="text" name="imageLink" id="imageLink" required />
+          <button type="submit">Set Image</button>
+        </form>
 
-          <h4>
-            Check out your reviews....
-            <!-- <form action="/auth/profile/reviews" method="GET">
+        <h4>
+          Check out your reviews....
+          <!-- <form action="/auth/profile/reviews" method="GET">
                 <button type="submit">See Reveiws</button>
               </form> -->
-          </h4>
+        </h4>
 
-          <a href="/auth/profile/reviews" class="getReviewsLink">Get Reviews</a>
-          <br />
-          <br />
-          <% if(messages.error) { %>
-          <small class="reviewsMessage"> <%- messages.error %> </small>
-          <% } %>
-        </div>
+        <a href="/auth/profile/reviews" class="getReviewsLink">View Reviews</a>
+        <br />
+        <br />
+        <% if(messages.error) { %>
+        <small class="reviewsMessage"> <%- messages.error %> </small>
+        <% } %>
       </div>
     </div>
-    <div class="profileButtons">
-      <form action="/auth/logout/?_method=DELETE" method="POST">
-        <button type="submit">Log Out</button>
-      </form>
+  </div>
+  <div class="profileButtons">
+    <form action="/auth/logout/?_method=DELETE" method="POST">
+      <button type="submit">Log Out</button>
+    </form>
 
-      <form action="/auth/profile" method="POST">
-        <button type="submit">UnSubscribe</button>
-        <% if(messages.error2) { %>
-        <small class="reviewsMessage"> <%- messages.error2 %> </small>
-        <% } %>
-      </form>
-    </div>
-  </body>
-  <%- include("../partials/footer.ejs") %>
+    <form action="/auth/profile" method="POST">
+      <button type="submit">UnSubscribe</button>
+      <% if(messages.error2) { %>
+      <small class="reviewsMessage"> <%- messages.error2 %> </small>
+      <% } %>
+    </form>
+  </div>
+</body>
+<%- include("../partials/footer.ejs") %>
+
 </html>
