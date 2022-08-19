@@ -28,6 +28,8 @@ describe("Testing on some functions", () => {
       // const app = require("../server");
       await dal.connect();
       global.userCollection = dal.db("sample_mflix").collection("users");
+      global.profileIcon = null;
+      // global.user = user;
       global.DEBUG = false;
     } catch (error) {
       console.error(error);
@@ -75,7 +77,10 @@ describe("Testing on some functions", () => {
 
   test("deleteUser function testing", async () => {
     // Deleting users created in addUser Test function
+    // Test Criteria 1
     const userEmail1 = "test.test@testing.com";
+
+    //Test Criteria 2
     const userEmail2 = "test2.test2@testing.com";
 
     // Searches for user by Email

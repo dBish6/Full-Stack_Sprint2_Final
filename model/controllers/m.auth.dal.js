@@ -47,11 +47,11 @@ async function getUserByEmail(email) {
   try {
     const user = await userCollection.findOne({ email: email });
     global.user = user;
-    global.profileIcon = user.image;
 
     if (user === null) {
       console.log("getUserByEmail() FAILED: Could not get User");
     } else {
+      global.profileIcon = user.image;
       DEBUG && console.log("getUserByEmail() SUCCESS: User Found");
       return user;
     }

@@ -51,7 +51,7 @@ describe("Testing various routes", () => {
   });
 
   test("responds to /search/mongo", async () => {
-    // User is one of the default users in the sample_mflix users collection
+    // User is one of the default users in the sample_mflix users
     global.user = await getUserById("59b99dbacfa9a34dcd7885c1");
     const res = await request(app).get("/search/mongo?search=Walk");
     console.log(res.header);
@@ -59,11 +59,11 @@ describe("Testing various routes", () => {
     expect(res.statusCode).toBe(200);
   });
 
-  // test("responds to /search/mongo/:_id", async () => {
-  //   const res = await request(app).get(
-  //     "/search/mongo/573a1395f29313caabce1282"
-  //   );
-  //   // expect(res.header["content-type"]).toMatch(/html/);
-  //   expect(res.statusCode).toBe(200);
-  // });
+  test("responds to /search/mongo/:_id", async () => {
+    const res = await request(app).get(
+      "/search/mongo/573a13d7f29313caabda16ef"
+    );
+    expect(res.header["content-type"]).toMatch(/html/);
+    expect(res.statusCode).toBe(200);
+  });
 });
