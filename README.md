@@ -2,6 +2,7 @@
 This is my final sprint project from Semester 3 2022 in my Solfware Development Course at Keyin Collage. My group members were Dominic Whelan, Chris Doucette and Blake Waddleton.
 
 Running the Server:
+* npm install
 * npm run server
 
 Running Tests:
