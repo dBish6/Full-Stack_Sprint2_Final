@@ -10,15 +10,13 @@ const loadMoreMon = async () => {
     let currentMovieContainer = document.querySelector(".moviesContainer");
     // Gets every element with the .movie class.
     let allCurrentMovieHtml = currentMovieContainer.querySelectorAll(".movie");
-    // console.log(allCurrentMovieHtml);
-
     // Turns the object into a array and then maps each <a> tag href containing the id within the .movie class.
     let allMovieIds = Array.from(allCurrentMovieHtml).map((element) => {
       const id = element.querySelector("a").href;
       return id;
     });
-    console.log(allMovieIds);
 
+    // Filters out all the films that doesn't include the inital movie id.
     movies = movies.filter((movie) => !allMovieIds.includes(movie._id));
     // console.log(movies);
 
@@ -41,15 +39,12 @@ const loadMoreGres = async () => {
     let films = await films_results.json();
 
     let currentfilmContainer = document.querySelector(".filmsContainer");
-    // Gets every element with the .movie class.
     let allCurrentfilmHtml = currentfilmContainer.querySelectorAll(".film");
-    // Turns the object into a array and then maps each <a> tag href containing the id within the .movie class.
     let allfilmIds = Array.from(allCurrentfilmHtml).map((element) => {
       const id = element.querySelector("a").href;
       return id;
     });
 
-    // Filters out all the films that doesn't include the inital movie id.
     films = films.filter((film) => !allfilmIds.includes(film.fid));
     // console.log(films);
 
