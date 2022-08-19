@@ -6,8 +6,10 @@
       <form action="/auth/login" method="POST">
         <h1 class="signUpInHeader">Sign In to Database Gallore</h1>
         <h4 class="authMessage">
-          <% if(messages.error) { %> <%- messages.error %> <% } %> <%
-          if(messages.success) { %> <%- messages.success %> <% } %>
+          <% if(messages.error) { %> <%- messages.error %> <% } %>
+        </h4>
+        <h4 class="authSuccess">
+          <%if(messages.success) { %> <%- messages.success %> <% } %>
         </h4>
         <label for="email">Email:<span class="required">*</span> </label>
         <input type="email" name="email" id="email" required />
