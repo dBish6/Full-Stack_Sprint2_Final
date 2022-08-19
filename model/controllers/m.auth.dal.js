@@ -17,6 +17,7 @@
     Aug 17 2022, David; added the addReview function.
     Aug 17 2022, Dominic; getReviews() function added
     Aug 18 2022, Dominic; Edited error messages, comments, minor edits
+    Aug 19 2033, Chris; Changes the getUserByEmail so the global.profileIcon would get assigned after the check that the search found a user 
 */
 
 const dal = require("../mongo.db.config");
