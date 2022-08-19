@@ -8,10 +8,6 @@
   font-family: "Lato", sans-serif;
 }
 
-object {
-  display: none;
-}
-
 html {
   background-color: rgba(67, 198, 172, 0.15);
   /* background-color: rgba(196, 196, 196, 0.2); */
@@ -163,14 +159,75 @@ footer .ital {
 }
 
 @media only screen and (max-width: 845px) {
-  .homeContainer .mongoHeader h2,
-  .homeContainer .mongoHeader img {
-    margin-bottom: 1rem;
+  .navBarContainer .left h1 {
+    margin: 0 0 0 1rem;
   }
 
-  .homeContainer .postgresHeader h2,
-  .homeContainer .postgresHeader img {
-    margin-bottom: 1rem;
+  .navBarContainer .left {
+    display: flex;
+    align-items: center;
+  }
+
+  .navBarContainer .navFlex .right {
+    margin: auto 1rem auto 5vw;
+  }
+}
+
+@media only screen and (max-width: 801px) {
+  .navBarContainer .navFlex {
+    flex-direction: column;
+  }
+
+  .navBarContainer .navFlex .right {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .navBarContainer .left {
+    flex-direction: column;
+  }
+
+  .navBarContainer .left h1 {
+    font-size: 21px;
+  }
+
+  .navBarContainer .left img {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .navBarContainer .navFlex .right img {
+    width: 29px;
+    height: 29px;
+  }
+
+  .navBarContainer .navFlex .right a,
+  .navBarContainer .navFlex .home a {
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 487px) {
+  .navBarContainer {
+    padding: 1rem 2rem 1rem 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 449px) {
+  .navBarContainer {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 419px) {
+  .navBarContainer .navFlex .right {
+    padding-left: 0;
+  }
+
+  .navBarContainer .navFlex .right img {
+    display: none;
   }
 }
 
@@ -557,6 +614,52 @@ footer .ital {
   }
 }
 
+@media only screen and (max-width: 435px) {
+  .homeContainer .mongoHeader h2,
+  .homeContainer .mongoHeader img {
+    font-size: 23px;
+  }
+
+  .homeContainer .postgresHeader h2,
+  .homeContainer .postgresHeader img {
+    font-size: 23px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .homeContainer .mongoHeader {
+    margin-left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .homeContainer .mongoHeader {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 354px) {
+  .homeContainer .mongoHeader h2,
+  .homeContainer .mongoHeader img {
+    font-size: 21px;
+  }
+
+  .homeContainer .postgresHeader h2,
+  .homeContainer .postgresHeader img {
+    font-size: 21px;
+  }
+
+  .homeContainer .mongoHeader img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .homeContainer .postgresHeader img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 /* MongoDb Details Page */
 
 .mongoLogo {
@@ -665,6 +768,11 @@ footer .ital {
   background: transparent;
 }
 
+.moviesDetailsContainer .TextArea div {
+  display: flex;
+  flex-direction: column;
+}
+
 .moviesDetailsContainer .TextArea button {
   padding: 0.1rem;
   margin: 0.5rem 0.5rem auto 1.5rem;
@@ -714,6 +822,96 @@ footer .ital {
   /* font-family: "Alegreya Sans", sans-serif; */
   font-size: 18px;
   color: rgb(115, 115, 115);
+}
+
+@media only screen and (max-width: 1588px) {
+  .monDescription {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .monDescription {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1160px) {
+  .moviesDetailsContainer {
+    height: initial;
+  }
+
+  .moviesDetailsContainer .moviesDetails {
+    flex-direction: column;
+    row-gap: 0.5rem;
+  }
+
+  .monDescription {
+    margin-bottom: 2rem;
+  }
+
+  .moviesDetailsContainer .moviesDetails .monSmallDetails {
+    width: 75%;
+  }
+
+  .moviesDetailsContainer .moviesDetails .contributors {
+    width: 75%;
+  }
+
+  .moviesDetailsContainer .moviesDetails .rating {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1070px) {
+  .monDescription {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 978px) {
+  .moviesDetailsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .moviesDetailsContainer img {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 1158px) {
+  .mainFooter div {
+    position: relative;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .moviesDetailsContainer h2 {
+    width: 93vw;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .monDescription {
+    width: fit-content;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .moviesDetailsContainer .TextArea textarea {
+    width: 82vw;
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .moviesDetailsContainer h2 {
+    font-size: 24px;
+  }
+
+  .moviesDetailsContainer img {
+    width: 90vw;
+  }
 }
 
 /* Postgres Details Page */
@@ -796,6 +994,11 @@ footer .ital {
   background: transparent;
 }
 
+.filmDetailsContainer .TextArea div {
+  display: flex;
+  flex-direction: column;
+}
+
 .filmDetailsContainer .TextArea button {
   padding: 0.1rem;
   margin: 0.5rem 0.5rem auto 1.5rem;
@@ -845,6 +1048,105 @@ footer .ital {
   /* font-family: "Alegreya Sans", sans-serif; */
   font-size: 18px;
   color: rgb(115, 115, 115);
+}
+
+@media only screen and (max-width: 1588px) {
+  .gresDescription {
+    width: 55%;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .gresDescription {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .filmDetailsContainer .filmDetails .smallDetails {
+    width: 35%;
+  }
+
+  .filmDetailsContainer .filmDetails .actors {
+    width: 35%;
+  }
+}
+
+@media only screen and (max-width: 1160px) {
+  /* .filmDetailsContainer {
+    height: initial;
+  } */
+
+  /* .filmDetailsContainer .filmDetails {
+    flex-direction: column;
+    row-gap: 0.5rem;
+  } */
+
+  /* .gresDescription {
+    margin-bottom: 2rem;
+  } */
+
+  /* .filmDetailsContainer .filmDetails .smallDetails {
+    width: 75%;
+  }
+
+  .filmDetailsContainer .filmDetails .actors {
+    width: 75%;
+  } */
+}
+
+@media only screen and (max-width: 1070px) {
+  .gresDescription {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 896px) {
+  .filmDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    height: initial;
+  }
+
+  .filmDetailsContainer img {
+    margin-bottom: 0.5rem;
+  }
+
+  .filmDetailsContainer .filmDetails .smallDetails {
+    width: 75%;
+  }
+
+  .filmDetailsContainer .filmDetails .actors {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .filmDetailsContainer h2 {
+    width: 93vw;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .gresDescription {
+    width: fit-content;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .filmDetailsContainer .TextArea textarea {
+    width: 82vw;
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .filmDetailsContainer h2 {
+    font-size: 24px;
+  }
+
+  .filmDetailsContainer img {
+    width: 90vw;
+  }
 }
 
 /* MongoDb Search Page */

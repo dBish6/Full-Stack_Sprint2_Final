@@ -20,6 +20,7 @@
    August 13, 2022, David; Stylied mongo details page and search results.
    August 15, 2022, David; expaned button was implemented.
    August 17, 2022, David; added the /id/post-review POST route and success route.
+   August 18, 2022, David; made clientScripts file in public instead of using the script tag in the home.ejs and fetched the data instead with a filter, and stylied.
  */
 
 // Module Imports
