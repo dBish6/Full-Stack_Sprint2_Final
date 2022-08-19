@@ -6,9 +6,10 @@
     Author: Chris Doucette
     Creaton Date: Wednesday August 17, 2022
     Updates:
-    Date,         Author,           Description
-    Aug 18 2022,  Chris Doucette,   Troubleshooting 503 error on /search/mongo & got /search/mongo/:_id working
-    Aug 18 2022,  Chris Doucette,   Added global user so to get the /search/mongo to pass
+    Date,         Author, Description
+    Aug 18 2022,  Chris;  Troubleshooting 503 error on /search/mongo & got /search/mongo/:_id working
+    Aug 18 2022,  Chris;  Added global user so to get the /search/mongo to pass
+    Aug 19 2022,  Chris;  Added user object to the /search/mongo route test instead of searching for user from DB
     
 */
 
@@ -51,14 +52,20 @@ describe("Testing various routes", () => {
   });
 
   test("responds to /search/mongo", async () => {
+    let user = {
+      name: "Tester Tester",
+      email: "test@testing.com",
+      password: "123456789",
+    };
     // User is one of the default users in the sample_mflix users
-    global.user = await getUserById("59b99dbacfa9a34dcd7885c1");
+    global.user = user;
     const res = await request(app).get("/search/mongo?search=Walk");
     console.log(res.header);
     expect(res.header["content-type"]).toMatch(/html/);
     expect(res.statusCode).toBe(200);
   });
 
+  // For Dominic or David to try testing
   test("responds to /search/mongo/:_id", async () => {
     const res = await request(app).get(
       "/search/mongo/573a13d7f29313caabda16ef"
