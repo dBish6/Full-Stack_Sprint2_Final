@@ -10,6 +10,9 @@
     Aug 11, 2022, Dominic Whelan, Route additions and edits
     Aug 12, 2022, Dominic Whelan, deleteUser route edits
     Aug 13, 2022, Dominic Whelan, comments, logging added, cleanup
+    Aug 17, 2022, Dominic Whelan, register error handling, flash messaging
+    Aug 18, 2022, Dominic Whelan, code cleanup, comments
+
 */
 
 const express = require("express");
@@ -67,6 +70,8 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       favorite_genre: null,
       image: null,
     };
+
+    // if statements to handle optional input fields
     if (req.body.phone) {
       user.phone = req.body.phone;
     }
@@ -91,8 +96,9 @@ router.post("/register", checkNotAuthenticated, async (req, res) => {
       req.flash("success", "User succesfully created");
       res.redirect("/auth/login");
     }
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "Oops, Something went wrong");
     res.redirect("/auth/register");
   }
 });
@@ -111,13 +117,17 @@ router.post("/profile", checkAuthenticated, async (req, res) => {
       if (err) {
         return next(err);
       }
+      req.flash("success", "Successfully Unsubscribed");
       res.redirect("/auth/login");
     });
   } catch (error) {
+    req.flash("error2", "Oops, Something went wrong");
     console.error(error);
+    res.redirect("/auth/profile");
   }
 });
 
+// routes that update account information
 router.put("/profile/image", checkAuthenticated, async (req, res, next) => {
   console.log("Adding Profile Image");
   try {
@@ -151,6 +161,7 @@ router.put("/profile/genre", checkAuthenticated, async (req, res, next) => {
   }
 });
 
+// route to display all previous reviews by the user
 router.get("/profile/reviews", checkAuthenticated, async (req, res) => {
   try {
     const reviews = await getReviews(user.email);
@@ -160,18 +171,19 @@ router.get("/profile/reviews", checkAuthenticated, async (req, res) => {
     }
     res.render("auth/reviews", { title: "My Reviews", reviews });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
 // Route to call function to log out user
 router.delete("/logout", (req, res, next) => {
   DEBUG && console.log("logout initialized");
-  global.profileIcon = null;
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
+
+  req.logout(function (error) {
+    if (error) {
+      return next(error);
     }
+    global.profileIcon = null;
     res.redirect("/auth/login");
   });
 });

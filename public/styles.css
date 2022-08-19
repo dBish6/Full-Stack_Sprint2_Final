@@ -969,16 +969,10 @@ footer .ital {
 
 .loginContainer,
 .registerContainer {
-  position: relative;
-  padding: 10px;
-}
-
-.loginContainer {
-  top: 14%;
-}
-
-.registerContainer {
-  top: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
 }
 
 .signUpInHeader {
@@ -989,11 +983,11 @@ footer .ital {
 
 .loginContainer form,
 .registerContainer form {
-  width: 40vw;
+  width: 360px;
   font-size: 1.2rem;
   font-weight: 700;
   color: rgb(37, 37, 37, 0.88);
-  padding: 6px 12px;
+  padding: 24px 40px;
   border: 2px solid black;
   border-radius: 1rem;
   row-gap: 12px;
@@ -1005,16 +999,23 @@ footer .ital {
   );
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.35);
   margin: auto;
-  margin-top: 2%;
+  margin-top: 8vh;
   margin-bottom: 2%;
   display: grid;
   columns: 2;
 }
 
+.registerContainer form {
+  row-gap: 8px;
+}
+
 .loginContainer input,
-.registerContainer input {
+.registerContainer input,
+.registerExtras input {
   background-color: rgb(227, 227, 227);
   width: 100%;
+  height: 25px;
+  padding: 4px;
 }
 
 .registerExtras {
@@ -1028,15 +1029,10 @@ footer .ital {
   font-size: 1rem;
 }
 
-.loginContainer h3,
-.registerContainer h3 {
+.loginContainer h5,
+.registerContainer h5 {
   text-align: center;
-  margin: 6px 0px;
-}
-
-.loginContainer form input,
-.registerContainer form input {
-  padding: 4px;
+  font-size: 1rem;
 }
 
 .loginContainer button,
@@ -1045,7 +1041,7 @@ footer .ital {
   color: rgb(255, 255, 255, 0.8);
   background-color: rgb(25, 22, 84);
   border-radius: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   width: fit-content;
   padding: 8px 16px;
 }
@@ -1068,6 +1064,39 @@ footer .ital {
   margin: 2%;
 }
 
+@media only screen and (max-width: 700px) {
+  .loginContainer form,
+  .registerContainer form {
+    width: 36vw;
+    row-gap: 4px;
+    padding: 8px;
+  }
+  .signUpInHeader {
+    font-size: 1.2rem;
+  }
+  .loginContainer input,
+  .registerContainer input {
+    width: 100%;
+  }
+  .registerExtras {
+    flex-direction: column;
+  }
+  .registerContainer label,
+  .loginContainer label {
+    font-size: 0.8rem;
+  }
+  .registerContainer input {
+    height: 20px;
+  }
+  .loginContainer button,
+  .registerContainer button {
+    font-size: 0.8rem;
+  }
+  .loginContainer h3,
+  .registerContainer h3 {
+    margin: 2px 0;
+  }
+}
 /* Account Page */
 
 .profileContainer,
