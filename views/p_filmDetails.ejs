@@ -20,8 +20,8 @@
       </div>
     </div>
 
-    <form class="TextArea" action="/<%= pMovies[0].fid %>/post-review" method="POST">
-      <textarea placeholder="Write a review, it will be saved to your account." name="paragraph_text" cols="50" rows="5"></textarea>
+    <form class="TextArea" action="/<%= pMovies[0].fid %>/post-review" method="POST" >
+      <textarea placeholder="Write a review, it will be saved to your account." name="paragraph_text" cols="50" rows="5" maxlength="1150" required></textarea>
       <div>
         <button type="submit">Submit</button>
         <% if(messages.success) { %> <small><%- messages.success %></small> <% } %>

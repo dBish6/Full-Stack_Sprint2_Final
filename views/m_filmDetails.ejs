@@ -80,7 +80,7 @@
     </div>
 
     <form class="TextArea" action="/<%= result._id %>/post-review" method="POST">
-      <textarea placeholder="Write a review, it will be saved to your account." name="paragraph_text" cols="50" rows="5" maxlength="1250" required ></textarea>
+      <textarea placeholder="Write a review, it will be saved to your account." name="paragraph_text" cols="50" rows="5" maxlength="1150" required ></textarea>
       <div>
         <button type="submit">Submit</button>
         <% if(messages.success) { %> <small><%- messages.success %></small> <% } %>

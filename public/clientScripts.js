@@ -33,12 +33,25 @@ const loadMoreMon = async () => {
 const loadMoreGres = async () => {
   const expandBtn = document.querySelector("#gresBtn");
 
-  let movie_results = await fetch("/allPostgresMovies");
-  let movies = await movie_results.json();
+  let films_results = await fetch("/allPostgresMovies");
+  let films = await films_results.json();
+
+  let currentfilmContainer = document.querySelector(".filmsContainer");
+  // Gets every element with the .movie class.
+  let allCurrentfilmHtml = currentfilmContainer.querySelectorAll(".film");
+  // Turns the object into a array and then maps each <a> tag href containing the id within the .movie class.
+  let allfilmIds = Array.from(allCurrentfilmHtml).map((element) => {
+    const id = element.querySelector("a").href;
+    return id;
+  });
+
+  // Filters out all the films that doesn't include the inital movie id.
+  films = films.filter((film) => !allfilmIds.includes(film.fid));
+  console.log(films);
 
   let output = "";
   expandBtn.addEventListener("click", () => {
-    movies.forEach((film) => {
+    films.forEach((film) => {
       output += `<p class="film">
                      <a href="${film.fid}"><b>${film.title}</b> ( ${film.release_year} )</a>
                    </p>`;
