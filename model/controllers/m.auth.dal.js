@@ -146,8 +146,8 @@ const getMongoReviews = async (email) => {
 const getPostgresReviews = async (email) => {
   let response;
   try {
-    response = await dal.query(`SELECT * FROM review WHERE email ILIKE $1;`, [
-      `%${email}%`,
+    response = await dal.query("SELECT * FROM review WHERE email = $1;", [
+      email,
     ]);
     return response.rows;
   } catch (error) {
