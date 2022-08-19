@@ -10,6 +10,7 @@
     Aug 13 2022, Chris Doucette, Began updating testing to work with updated create, delete & search functions
     Aug 14 2022, Chris Doucette, Completed updating testing work with updated create, delete & search functions 
     Aug 15 2022, Chris Doucette, Added beforeAll to get db Connection & updated deleteUser to check for toBeUndefined()
+    Aug 19 2022, Chris; Troubleshot why the deleteUser test was failing & made changes to the m.auth.dal.js file to fix issue of when no user is found in getUserByEmail
 */
 
 const {
@@ -28,6 +29,8 @@ describe("Testing on some functions", () => {
       // const app = require("../server");
       await dal.connect();
       global.userCollection = dal.db("sample_mflix").collection("users");
+      global.profileIcon = null;
+      // global.user = user;
       global.DEBUG = false;
     } catch (error) {
       console.error(error);
@@ -75,7 +78,10 @@ describe("Testing on some functions", () => {
 
   test("deleteUser function testing", async () => {
     // Deleting users created in addUser Test function
+    // Test Criteria 1
     const userEmail1 = "test.test@testing.com";
+
+    //Test Criteria 2
     const userEmail2 = "test2.test2@testing.com";
 
     // Searches for user by Email
