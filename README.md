@@ -6,9 +6,9 @@ Running the Server:
 
 Running Tests:
 * npm test
-* npm test --m.auth.dal.test.js
-* npm test --p.search.dal.test.js
-* npm test --routes.test.js
+* npm test -- m.auth.dal.test.js
+* npm test -- p.search.dal.test.js
+* npm test -- routes.test.js
 
 Event Emitters:
 The events format is as follows; dataTime, id, message, and level.
