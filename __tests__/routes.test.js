@@ -34,30 +34,35 @@ describe("Testing various routes", () => {
   beforeAll(async () => {
     try {
       await dal.connect();
-      // Global variables needed for testing
+      // You actually don't need global here, it works somehow without it, but it makes sense having it there.
       global.movieCollection = dal.db("sample_mflix").collection("movies");
       global.userCollection = dal.db("sample_mflix").collection("users");
       global.commentCollection = dal.db("sample_mflix").collection("comments");
       global.profileIcon = null;
       global.DEBUG = false;
-
-      // Will need to update this user to a user in tester's DB
-      global.user = await getUserById("62fa3dbdc2d1679af2242785");
     } catch (error) {
       console.error(error);
     }
   });
 
-// test("index router works", (done) => {
-//   request(app)
-//     .get("/")
-//     .expect("Content-Type", "text/html; charset=utf-8")
-//     .expect(200, done);
-// });
+  afterAll(async () => {
+    // Close Database here
+    await dal.close();
+  });
 
-test("responds to /search/mongo", async () => {
-  const res = await request(app).get("/search/mongo/");
-  console.log(res.header);
-  expect(res.header["content-type"]).toMatch(/html/);
-  expect(res.statusCode).toBe(200);
+  test("responds to /search/mongo", async () => {
+    global.user = await getUserById("59b99dbacfa9a34dcd7885c1");
+    const res = await request(app).get("/search/mongo?search=Walk");
+    console.log(res.header);
+    expect(res.header["content-type"]).toMatch(/html/);
+    expect(res.statusCode).toBe(200);
+  });
+
+  test("responds to /search/mongo/:_id", async () => {
+    const res = await request(app).get(
+      "/search/mongo/573a1396f29313caabce4f0e"
+    );
+    expect(res.header["content-type"]).toMatch(/html/);
+    expect(res.statusCode).toBe(200);
+  });
 });
