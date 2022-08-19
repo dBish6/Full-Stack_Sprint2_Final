@@ -14,8 +14,7 @@ const loadMoreMon = async () => {
     return id;
   });
 
-  console.log(movies);
-  // Filters out all the movies donesn't include the inital movie id.
+  // Filters out all the movies that doesn't include the inital movie id.
   movies = movies.filter((movie) => !allMovieIds.includes(movie._id));
   console.log(movies);
 
