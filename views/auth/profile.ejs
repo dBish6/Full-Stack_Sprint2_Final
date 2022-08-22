@@ -4,7 +4,7 @@
 <body class="profileBody">
   <%- include("../partials/nav.ejs") %>
   <h1 class="authHeader">My Account</h1>
-  <hr class="topDivider"/>
+  <hr class="topDivider" />
 
   <div class="profileContainer">
     <div class="profileDetails">
@@ -23,7 +23,7 @@
         <tr>
           <td><b>Phone:</b></td>
           <td>
-            <% if(user.phone != null){ %> <b><%= user.phone %></b>
+            <% if(user.phone != null){ %> <%= user.phone %>
             <form action="/auth/profile/phone/?_method=PUT" method="POST">
               <input type="text" name="phone" value="Edit Phone" required />
               &nbsp;
@@ -74,12 +74,7 @@
           <button type="submit">Set Image</button>
         </form>
 
-        <h4>
-          Check out your reviews....
-          <!-- <form action="/auth/profile/reviews" method="GET">
-                <button type="submit">See Reveiws</button>
-              </form> -->
-        </h4>
+        <h4>Check out your reviews....</h4>
 
         <a href="/auth/profile/reviews" class="getReviewsLink">View Reviews</a>
         <br />
@@ -91,10 +86,11 @@
     </div>
   </div>
   <div class="profileButtons">
-    <form action="/auth/logout/?_method=DELETE" method="POST">
+    <form action="/auth/logout?_method=DELETE" method="POST">
       <button type="submit">Log Out</button>
     </form>
 
+    <!-- Doesn't work with method DELETE. -->
     <form action="/auth/profile" method="POST">
       <button type="submit">UnSubscribe</button>
       <% if(messages.error2) { %>

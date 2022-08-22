@@ -143,7 +143,7 @@ router.put("/profile/image", checkAuthenticated, async (req, res, next) => {
 });
 
 router.put("/profile/phone", checkAuthenticated, async (req, res, next) => {
-  console.log("Adding Profile Image");
+  console.log("Adding Phone");
   try {
     await addPhone(req.body.phone);
     user.phone = req.body.phone;
