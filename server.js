@@ -62,10 +62,10 @@ app.use(express.urlencoded({ extended: true }));
 // For fetching data.
 app.use(express.json());
 
-// For error messaging
+// For error messaging.
 app.use(flash());
 
-// Define parameters of the session
+// Define parameters of the session.
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
