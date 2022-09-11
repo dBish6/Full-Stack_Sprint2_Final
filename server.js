@@ -61,7 +61,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // For fetching data.
 app.use(express.json());
-
 // For error messaging.
 app.use(flash());
 

@@ -1,4 +1,4 @@
-/*  m.auth.dal.js
+/*  auth.js
     Routes for the Authenticate(Search for User), Sign Up (Create) and Delete User
 
     Author: Chris Doucette, David Bishop, Dominic Whelan & Blake Waddleton
