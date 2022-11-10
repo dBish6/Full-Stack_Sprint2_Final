@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "62fa84485dfb46e2e58cda70"
+  },
+  "name": "David Bishop",
+  "email": "davidbish2002@hotmail.com",
+  "password": "$2b$10$zzsm9fu7RFJhL2FHR76AIuK7nrWFA0x0Z8FrVVDkKs9DvYHv1BO36",
+  "phone": null,
+  "favorite_genre": null,
+  "image": null
+}]

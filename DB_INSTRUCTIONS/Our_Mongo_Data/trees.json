@@ -1,0 +1,127 @@
+[{
+  "_id": {
+    "$oid": "62fd5b02b55a7d6faa325252"
+  },
+  "input": [
+    "3",
+    "2",
+    "1",
+    "5"
+  ],
+  "tree": {
+    "root": {
+      "key": 2,
+      "left": {
+        "key": 1,
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "key": 3,
+        "left": null,
+        "right": {
+          "key": 5,
+          "left": null,
+          "right": null
+        }
+      }
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62fd5bceb55a7d6faa325253"
+  },
+  "input": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "tree": {
+    "root": {
+      "key": 2,
+      "left": {
+        "key": 1,
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "key": 4,
+        "left": {
+          "key": 3,
+          "left": null,
+          "right": null
+        },
+        "right": {
+          "key": 5,
+          "left": null,
+          "right": null
+        }
+      }
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62fe850ed7c2adf5446e33ce"
+  },
+  "input": [
+    "3",
+    "2",
+    "1",
+    "5"
+  ],
+  "tree": {
+    "root": {
+      "key": 2,
+      "left": {
+        "key": 1,
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "key": 3,
+        "left": null,
+        "right": {
+          "key": 5,
+          "left": null,
+          "right": null
+        }
+      }
+    }
+  }
+},{
+  "_id": {
+    "$oid": "63002f7c85b696730d67caf9"
+  },
+  "input": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "tree": {
+    "root": {
+      "key": 2,
+      "left": {
+        "key": 1,
+        "left": null,
+        "right": null
+      },
+      "right": {
+        "key": 4,
+        "left": {
+          "key": 3,
+          "left": null,
+          "right": null
+        },
+        "right": {
+          "key": 5,
+          "left": null,
+          "right": null
+        }
+      }
+    }
+  }
+}]
