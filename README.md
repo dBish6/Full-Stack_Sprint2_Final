@@ -1,5 +1,5 @@
 # Full-Stack_Sprint2_Final
-__This respository is now archived__ - the project has moved to https://github.com/dBish6/class-work/tree/master/Semester3.
+__This respository is now archived__ - the project has moved to https://github.com/dBish6/class-work/tree/master/Semester3/Full-Stack_Sprint2_Final.
 
 This is my final sprint project from Semester 3 2022 in my Solfware Development Course at Keyin Collage. My group members were Dominic Whelan, Chris Doucette and Blake Waddleton.
 The propose of this project was to show our understanding of an REST API and using CRUD with Postgres and MongoDb.
